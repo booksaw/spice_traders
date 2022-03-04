@@ -65,7 +65,7 @@
                 <li class="uk-active"><a style="font-size: 18px; text-transform: none" href="/spice_traders/">Home</a></li>
                 <li><a style="font-size: 18px; text-transform:none" href="/spice_traders/about">About</a></li>
                 <li><a style="font-size: 18px; text-transform:none" href="/spice_traders/updates">Weekly Updates</a></li>
-                <li><a class="ONclick" style="font-size: 18px; text-transform: none" href="javascript:doOpen('#h.lowneji5i4fg')" target="myFrame" onclick="location.reload()">Gantt Chart Updates</a></li>
+                <li><a class="ONclick" style="font-size: 18px; text-transform: none" href="javascript:doOpen('#h.lowneji5i4fg')" target="myFrame">Gantt Chart Updates</a></li>
                 <li><a style="font-size: 18px; text-transform:none" href="/spice_traders/testing">Testing</a></li>
             </ul>
             <a class="uk-navbar-toggle uk-hidden@s" uk-toggle="target: #sidenav" uk-navbar-toggle-icon href="#"></a>
@@ -78,7 +78,7 @@
                 <li class="uk-active"><a style="font-size: 18px" href="/spice_traders/"> Home </a></li>
                 <li><a style="font-size: 18px" href="/spice_traders/about">About</a></li>
                 <li><a style="font-size: 18px" href="/spice_traders/updates">Weekly Updates</a></li>
-                <li><a class="ONclick" style="font-size: 18px" href="javascript:doOpen('#h.lowneji5i4fg')" target="myFrame" onclick="location.reload()">Gantt Chart Updates</a></li>
+                <li><a class="ONclick" style="font-size: 18px" href="javascript:doOpen('#h.lowneji5i4fg')" target="myFrame">Gantt Chart Updates</a></li>
                 <li><a style="font-size: 18px; text-transform:none" href="/spice_traders/testing">Testing</a></li>
             </ul>
         </div>
@@ -103,23 +103,11 @@
     <script>
       function doOpen(anker) {
         document.getElementById("myFrame").contentWindow.location.hash = anker;
+        document.getElementById('myFrame').contentDocument.location.reload(true);
         //document.getElementById("myFrame").contentWindow.location.hash = anker;
         //childWindow.scrollTo(0,childWindow.document.getElementById('#h.lowneji5i4fg').offsetTop);
       }
     </script>
-    <script>
-      function refreshPage () {
-          var page_y = $( document ).scrollTop();
-          window.location.href = window.location.href + '?page_y=' + page_y;
-      }
-      window.onload = function () {
-          setTimeout(refreshPage, 35000);
-          if ( window.location.href.indexOf('page_y') != -1 ) {
-              var match = window.location.href.split('?')[1].split("&")[0].split("=");
-              $('html, body').scrollTop( match[1] );
-          }
-      }
-      </script>
 
 </body>
 
