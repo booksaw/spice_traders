@@ -123,7 +123,7 @@
     <script>
         document.getElementById('gantt').onclick = function () {
             var temp = window.open("../index.html", "_self");
-            temp.framesgetElementById("myFrame").contentWindow.location.hash = anker;
+            temp.onload.framesgetElementById("myFrame").contentWindow.location.hash = anker;
         };
         function doOpen(anker) {
             document.framesgetElementById("myFrame").contentWindow.location.hash = anker;
