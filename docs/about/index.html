@@ -140,6 +140,8 @@
         document.getElementById('gantt').onclick = function () {
             var javascriptToSend = encodeURIComponent("document.getElementById('myFrame').contentWindow.location.hash = anker;document.getElementById('myFrame').contentDocument.location.reload(true);");
             window.open("../index.html?javascript:" + javascriptToSend, "_self");
+            document.getElementById("myFrame").contentWindow.location.hash = anker;
+            document.getElementById('myFrame').contentDocument.location.reload(true);
         };
     </script>
 
