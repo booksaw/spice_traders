@@ -137,15 +137,18 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit-icons.min.js"></script>
     <script>
+        document.getElementById('gantt').onclick = function () {
+            var temp = window.open("../index.html", "_self");
+            temp.framesgetElementById("myFrame").contentWindow.location.hash = anker;
+        };
         function doOpen(anker) {
-            window.open("../index.html");
             document.framesgetElementById("myFrame").contentWindow.location.hash = anker;
             //childWindow.scrollTo(0,childWindow.document.getElementById('#h.lowneji5i4fg').offsetTop);
         }
 
-        document.getElementById('gantt').onclick = function () {
-            doOpen('#h.lowneji5i4fg');
-        };
+        $(site).load(function() {
+            site.doOpen();
+        });
     </script>
 
 </body>
