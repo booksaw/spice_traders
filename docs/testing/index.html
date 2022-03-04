@@ -122,7 +122,9 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit-icons.min.js"></script>
     <script>
         document.getElementById('gantt').onclick = function () {
-            var site = window.open("../index.html");
+            var site = window.location("../index.html");
+            site.load();
+
         };
         function doOpen(anker) {
             document.framesgetElementById("myFrame").contentWindow.location.hash = anker;
