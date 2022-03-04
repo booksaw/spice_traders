@@ -102,12 +102,7 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit-icons.min.js"></script>
     <script>
       function doOpen(anker) {
-        var temp = document.getElementById("myFrame").contentWindow.location.hash
-        if (temp.addEventListener) {
-          temp.addEventListener("click", temp = anker, false)
-        } else if (temp.attatchEvent) {
-          temp.addEventListener("click", temp = anker)
-        }
+        var temp = document.getElementById("myFrame").contentWindow.location.hash = anker;
         //document.getElementById("myFrame").contentWindow.location.hash = anker;
         //childWindow.scrollTo(0,childWindow.document.getElementById('#h.lowneji5i4fg').offsetTop);
       }
