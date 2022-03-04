@@ -122,7 +122,8 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit-icons.min.js"></script>
     <script>
         function doOpen(anker) { 
-            window.parent.document.getElementById("myFrame").contentWindow.location.hash = anker;
+            const openerWindow = window.opener
+            openerWindow.document.getElementById("myFrame").contentWindow.location.hash = anker;
             //childWindow.scrollTo(0,childWindow.document.getElementById('#h.lowneji5i4fg').offsetTop);
         }
     </script>
