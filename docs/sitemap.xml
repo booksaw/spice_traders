@@ -4,4 +4,7 @@
         <loc>https://github.com/booksaw/spice_traders/about</loc>
         <priority>0</priority>
     </url>
+    <url>
+        <loc>https://github.com/booksaw/spice_traders/testing</loc>
+    </url>
 </urlset>

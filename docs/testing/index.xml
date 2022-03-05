@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>ENG1 - Spice Traders</title>
-        <link>https://booksaw.github.io/spice_traders/</link>>
+        <link>https://booksaw.github.io/spice_traders/about/</link>>
         <description>Website for Spice Traders for Engineering 1 Module at the University of York</description>
         <language>en-us</language>
-        <atom:link href="https://booksaw.github.io/PirateDucks/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://booksaw.github.io/PirateDucks/testing/index.xml" rel="self" type="application/rss+xml" />
     </channel>
 
 </rss>
