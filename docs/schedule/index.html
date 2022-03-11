@@ -12,6 +12,9 @@
         grid-row-start: 2;
         grid-row-end: 3;
     }
+    #content {
+        position:absolute; left: 0; right: 0; bottom: 0; top:50px; 
+    }
 </style>
 <html lang="en-us"><head>
 
@@ -30,12 +33,18 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/css/uikit.min.css ">
 
+    <!-- Scripts -->
+
+    <script src="/js/index.js"></script>
+    <script src="/js/jquery.fitvids.js"></script>
+    <script src="/js/jquery.js"></script>
+
     <!-- Main Style -->
 
     <link rel="stylesheet" href="css/style.min.css" integrity="" media="screen">
     <link rel="stylesheet" href="css/syntax.min.css" integrity="" media="screen">
 
-    <link rel="alternate" type="application/rss+xml" href="https://booksaw.github.io/PirateDucks/testing/index.xml" title="ENG1 - Duck Pirates" />
+    <link rel="alternate" type="application/rss+xml" href="https://booksaw.github.io/PirateDucks/about/index.xml" title="ENG1 - Duck Pirates" />
 <script src="https://cdn.jsdelivr.net/npm/mailgo@0.9.14/dist/mailgo.min.js" defer></script>
 
     <!-- Favicon -->
@@ -46,14 +55,17 @@
     <link rel="manifest" href="/site.webmanifest">
 
 </head>
+
+<!-- Nav Bar -->
+
 <body class="about">
     <div class="wrapper"><div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
         <nav class="uk-navbar-container uk-margin" uk-navbar="mode: click;" style="padding-right: 3rem">
             <ul class="uk-navbar-nav uk-visible@s">
-                <li><a style="font-size: 18px; text-transform: none" href="/spice_traders/">Home</a></li>
+                <li class="uk-active"><a style="font-size: 18px; text-transform: none" href="/spice_traders/">Home</a></li>
                 <li><a style="font-size: 18px; text-transform:none" href="/spice_traders/about">About</a></li>
-                <li class="uk-active"><a style="font-size: 18px; text-transform:none" href="/spice_traders/updates">Weekly Updates</a></li>
-                <li><a style="font-size: 18px; text-transform: none" href="/spice_traders/schedule">Assessment Scheduling</a></li>
+                <li><a style="font-size: 18px; text-transform:none" href="/spice_traders/updates">Weekly Updates</a></li>
+                <li class="uk-active"><a style="font-size: 18px; text-transform: none" href="/spice_traders/schedule">Assessment Scheduling</a></li>
                 <li><a style="font-size: 18px; text-transform:none" href="/spice_traders/testing">Testing</a></li>
                 <li><a style="font-size: 18px; text-transform:none" href="/spice_traders/javadocs">JavaDocs</a></li>
             </ul>
@@ -66,17 +78,13 @@
             <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical">
                 <li><a style="font-size: 18px" href="/spice_traders/"> Home </a></li>
                 <li><a style="font-size: 18px" href="/spice_traders/about">About</a></li>
-                <li class="uk-active"><a style="font-size: 18px" href="/spice_traders/updates">Weekly Updates</a></li>
-                <li><a style="font-size: 18px" href="/spice_traders/schedule">Assessment Scheduling</a></li>
-                <li><a style="font-size: 18px; text-transform:none" href="/spice_traders/testing">Testing</a></li>
+                <li><a style="font-size: 18px" href="/spice_traders/updates">Weekly Updates</a></li>
+                <li class="uk-active"><a style="font-size: 18px" href="/spice_traders/schedule">Assessment Scheduling</a></li>
+                <li><a style="font-size: 18px;" href="/spice_traders/testing">Testing</a></li>
                 <li><a style="font-size: 18px;" href="/spice_traders/javadocs">JavaDocs</a></li>
             </ul>
         </div>
     </div>
-
-    <!-- <section class="uk-margin-large-bottom">
-        <h1 class="uk-heading-large uk-text-center"></h1>
-    </section> -->
 
     <!-- Hexagon Stylesheet -->
     
@@ -84,54 +92,16 @@
 
     <!-- About -->
 
-
     <link rel="stylesheet" href="/css/about.min.css">
 
-    <section class="uk-margin-large-bottom">
-        <h1 class="uk-text-center">Weekly Updates</h1>
-    </section>
-
-    <section class="uk-margin-large-bottom">
-        <div class="uk-container">
-            <div class="uk-flex-center uk-grid">
-                <div class="uk-width-expand@m">
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-    <!-- Code commented out below here as its only necessary incase we need to write something else -->
-    <!-- <section class="uk-margin-large-bottom">
-        <div class="uk-container">
-            <div class="uk-child-width-1-4@l uk-child-width-1-2@s uk-child-width  uk-text-center uk-flex-between" uk-grid style="padding-left: 20px; padding-right: 20px">
-        </div>
-    </section>
-
+    <!-- Main -->
+    <div id="content">
+        <iframe id="myFrame" style="border: none; height: 100%; width: 100%; position:absolute;" src="/spice_traders/schedule/old/Home.html" title="Main site" scrolling="yes" seamless="seamless"></iframe>
     </div>
 
-    <section class="uk-margin-large-top">
-        <div class="uk-container uk-text-center">
-            <div class="uk-grid-small uk-child-width-1-4@m uk-text-center uk-flex-center uk-margin-medium-bottom" uk-grid>
-                <div uk-lightbox>
-                    <h2></h2>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-    <!-- JS Plugins -->
+    <!-- JS Plugins/Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit-icons.min.js"></script>
-    <script>
-        document.getElementById('gantt').onclick = function () {
-            var javascriptToSend = encodeURIComponent("document.getElementById('myFrame').contentWindow.location.hash = anker;document.getElementById('myFrame').contentDocument.location.reload(true);");
-            window.open("../index.html?javascript:" + javascriptToSend, "_self");
-            document.getElementById("myFrame").contentWindow.location.hash = anker;
-            document.getElementById('myFrame').contentDocument.location.reload(true);
-        };
-    </script>
 
 </body>
 

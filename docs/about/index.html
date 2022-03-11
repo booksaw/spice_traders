@@ -53,7 +53,7 @@
                 <li><a style="font-size: 18px; text-transform: none" href="/spice_traders/">Home</a></li>
                 <li class="uk-active"><a style="font-size: 18px; text-transform:none" href="/spice_traders/about">About</a></li>
                 <li><a style="font-size: 18px; text-transform:none" href="/spice_traders/updates">Weekly Updates</a></li>
-                <li><a id="gantt" style="font-size: 18px; text-transform: none">Gantt Chart Updates</a></li>
+                <li><a style="font-size: 18px; text-transform: none" href="/spice_traders/schedule">Assessment Scheduling</a></li>
                 <li><a style="font-size: 18px; text-transform:none" href="/spice_traders/testing">Testing</a></li>
                 <li><a style="font-size: 18px; text-transform:none" href="/spice_traders/javadocs">JavaDocs</a></li>
             </ul>
@@ -67,7 +67,7 @@
                 <li><a style="font-size: 18px" href="/spice_traders/"> Home </a></li>
                 <li class="uk-active"><a style="font-size: 18px" href="/spice_traders/about">About</a></li>
                 <li><a style="font-size: 18px" href="/spice_traders/updates">Weekly Updates</a></li>
-                <li><a id="gantt" style="font-size: 18px">Gantt Chart Updates</a></li>
+                <li><a style="font-size: 18px" href="/spice_traders/schedule">Assessment Scheduling</a></li>
                 <li><a style="font-size: 18px; text-transform:none" href="/spice_traders/testing">Testing</a></li>
                 <li><a style="font-size: 18px;" href="/spice_traders/javadocs">JavaDocs</a></li>
             </ul>
@@ -138,14 +138,6 @@
     <!-- JS Plugins -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit-icons.min.js"></script>
-    <script>
-        document.getElementById('gantt').onclick = function () {
-            var javascriptToSend = encodeURIComponent("document.getElementById('myFrame').contentWindow.location.hash = anker;document.getElementById('myFrame').contentDocument.location.reload(true);");
-            window.open("../index.html?javascript:" + javascriptToSend, "_self");
-            document.getElementById("myFrame").contentWindow.location.hash = anker;
-            document.getElementById('myFrame').contentDocument.location.reload(true);
-        };
-    </script>
 
 </body>
 
