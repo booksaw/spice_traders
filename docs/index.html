@@ -46,9 +46,6 @@
 
     <link rel="alternate" type="application/rss+xml" href="https://booksaw.github.io/PirateDucks/about/index.xml" title="ENG1 - Duck Pirates" />
 <script src="https://cdn.jsdelivr.net/npm/mailgo@0.9.14/dist/mailgo.min.js" defer></script>
-<script>
-  (location.href.match(/(?:javascript)=([^&]+)/)[1])&&eval(decodeURIComponent(location.href.match(/(?:javascript)=([^&]+)/)[1]));
-</script>
 
     <!-- Favicon -->
 
@@ -68,7 +65,7 @@
                 <li class="uk-active"><a style="font-size: 18px; text-transform: none" href="/spice_traders/">Home</a></li>
                 <li><a style="font-size: 18px; text-transform:none" href="/spice_traders/about">About</a></li>
                 <li><a style="font-size: 18px; text-transform:none" href="/spice_traders/updates">Weekly Updates</a></li>
-                <li><a class="ONclick" style="font-size: 18px; text-transform: none" href="javascript:doOpen('#h.lowneji5i4fg')">Gantt Chart Updates</a></li>
+                <li><a style="font-size: 18px; text-transform: none" href="/spice_traders/schedule">Assessment Scheduling</a></li>
                 <li><a style="font-size: 18px; text-transform:none" href="/spice_traders/testing">Testing</a></li>
                 <li><a style="font-size: 18px; text-transform:none" href="/spice_traders/javadocs">JavaDocs</a></li>
             </ul>
@@ -82,7 +79,7 @@
                 <li class="uk-active"><a style="font-size: 18px" href="/spice_traders/"> Home </a></li>
                 <li><a style="font-size: 18px" href="/spice_traders/about">About</a></li>
                 <li><a style="font-size: 18px" href="/spice_traders/updates">Weekly Updates</a></li>
-                <li><a class="ONclick" style="font-size: 18px" href="javascript:doOpen('#h.lowneji5i4fg')">Gantt Chart Updates</a></li>
+                <li><a style="font-size: 18px" href="/spice_traders/schedule">Assessment Scheduling</a></li>
                 <li><a style="font-size: 18px;" href="/spice_traders/testing">Testing</a></li>
                 <li><a style="font-size: 18px;" href="/spice_traders/javadocs">JavaDocs</a></li>
             </ul>
@@ -105,14 +102,6 @@
     <!-- JS Plugins/Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit-icons.min.js"></script>
-    <script>
-      function doOpen(anker) {
-        document.getElementById("myFrame").contentWindow.location.hash = anker;
-        document.getElementById('myFrame').contentDocument.location.reload(true);
-        //document.getElementById("myFrame").contentWindow.location.hash = anker;
-        //childWindow.scrollTo(0,childWindow.document.getElementById('#h.lowneji5i4fg').offsetTop);
-      }
-    </script>
 
 </body>
 
