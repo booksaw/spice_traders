@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<style>
+    html {
+        height: 100vh;
+    }
+    body {
+        min-height: 100vh;
+        display: grid;
+        grid-template-rows: 1fr auto;
+    }
+    .footer {
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+    #content {
+        position:absolute; left: 0; right: 0; bottom: 0; top:50px; 
+    }
+</style>
+<html lang="en-us"><head>
+
+    <meta charset="utf-8">
+    <title>Engineering 1 Project Website</title>
+
+    <!-- responsive meta -->
+
+    <meta name="description" property="og:description" content="The website for team 26 for the Engineering 1 project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="image" property="og:image" content="/">
+    <meta name="author" content="Marc Perales Salomo">
+    <meta name="generator" content="Hugo 0.74.3" />
+
+    <!-- plugins -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/css/uikit.min.css ">
+
+    <!-- Scripts -->
+
+    <script src="/js/index.js"></script>
+    <script src="/js/jquery.fitvids.js"></script>
+    <script src="/js/jquery.js"></script>
+
+    <!-- Main Style -->
+
+    <link rel="stylesheet" href="css/style.min.css" integrity="" media="screen">
+    <link rel="stylesheet" href="css/syntax.min.css" integrity="" media="screen">
+
+    <link rel="alternate" type="application/rss+xml" href="https://booksaw.github.io/PirateDucks/about/index.xml" title="ENG1 - Duck Pirates" />
+<script src="https://cdn.jsdelivr.net/npm/mailgo@0.9.14/dist/mailgo.min.js" defer></script>
+
+    <!-- Favicon -->
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+</head>
+
+<!-- Nav Bar -->
+
+<body class="about">
+    <div class="wrapper"><div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
+        <nav class="uk-navbar-container uk-margin" uk-navbar="mode: click;" style="padding-right: 3rem">
+            <ul class="uk-navbar-nav uk-visible@s">
+                <li><a style="font-size: 18px; text-transform: none" href="/spice_traders/">Home</a></li>
+                <li><a style="font-size: 18px; text-transform:none" href="/spice_traders/about">About</a></li>
+                <li><a style="font-size: 18px; text-transform:none" href="/spice_traders/updates">Weekly Updates</a></li>
+                <li><a style="font-size: 18px; text-transform: none" href="/spice_traders/schedule">Assessment Scheduling</a></li>
+                <li><a style="font-size: 18px; text-transform:none" href="/spice_traders/testing">Testing</a></li>
+                <li class="uk-active"><a style="font-size: 18px; text-transform:none" href="/spice_traders/javadocs">JavaDocs</a></li>
+            </ul>
+            <a class="uk-navbar-toggle uk-hidden@s" uk-toggle="target: #sidenav" uk-navbar-toggle-icon href="#"></a>
+        </nav>
+    </div>
+
+    <div id="sidenav" uk-offcanvas="overlay: true">
+        <div class="uk-offcanvas-bar uk-flex uk-flex-column">
+            <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical">
+                <li><a style="font-size: 18px" href="/spice_traders/"> Home </a></li>
+                <li><a style="font-size: 18px" href="/spice_traders/about">About</a></li>
+                <li><a style="font-size: 18px" href="/spice_traders/updates">Weekly Updates</a></li>
+                <li><a style="font-size: 18px" href="/spice_traders/schedule">Assessment Scheduling</a></li>
+                <li><a style="font-size: 18px;" href="/spice_traders/testing">Testing</a></li>
+                <li class="uk-active"><a style="font-size: 18px;" href="/spice_traders/javadocs">JavaDocs</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Hexagon Stylesheet -->
+    
+    <link rel="stylesheet" type="text/css" href="css/hexagon.min.css">
+
+    <!-- About -->
+
+    <link rel="stylesheet" href="/css/about.min.css">
+
+    <!-- Main -->
+    <div id="content">
+        <iframe id="myFrame" style="border: none; height: 100%; width: 100%; position:absolute;" target="_parent" src="/spice_traders/javadocs/JavaDocs/index.html" title="Main site" scrolling="yes" seamless="seamless"></iframe>
+    </div>
+
+    <!-- JS Plugins/Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit-icons.min.js"></script>
+
+</body>
+
+</html>
