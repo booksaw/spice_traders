@@ -7,13 +7,14 @@
         min-height: 100vh;
         display: grid;
         grid-template-rows: 1fr auto;
+        overflow-y: hidden;
     }
     .footer {
         grid-row-start: 2;
         grid-row-end: 3;
     }
     #content {
-        position:absolute; left: 0; right: 0; bottom: 0; top:50px; 
+        position: absolute; left: 0; right: 0; bottom: 0; top: 100px;
     }
 </style>
 <html lang="en-us"><head>
@@ -96,13 +97,7 @@
 
     <!-- Main -->
     <section>
-        <hr style="height:10px; visibility:hidden;" />
-        <hr style="height:10px; visibility:hidden;" />
-        <hr style="height:10px; visibility:hidden;" />
         <div id="content">
-            <hr style="height:10px; visibility:hidden;" />
-            <hr style="height:10px; visibility:hidden;" />
-            <hr style="height:10px; visibility:hidden;" />
             <iframe id="myFrame" style="border: none; height: 100%; width: 100%; position:absolute;" target="_parent" src="/spice_traders/javadocs/JavaDocs/index.html" title="Main site" scrolling="yes" seamless="seamless"></iframe>
         </div>
     </section>
