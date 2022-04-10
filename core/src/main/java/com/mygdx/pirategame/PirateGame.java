@@ -46,6 +46,8 @@ public class PirateGame extends Game {
 	private DeathScreen deathScreen;
 	private HelpScreen helpScreen;
 	private VictoryScreen victoryScreen;
+	
+	public boolean gameRunning = true;
 
 	private audioControls options;
 	public Music song;
@@ -63,6 +65,7 @@ public class PirateGame extends Game {
 	public final static float NORMAL = 1f;
 	public final static float HARD = 0.7f;
 	public float DIFFICULTY = 1;
+
 
 
 	/**
@@ -128,6 +131,7 @@ public class PirateGame extends Game {
 			case DEATH:
 				if (deathScreen == null) deathScreen = new DeathScreen(this);
 				this.setScreen(deathScreen);
+				gameRunning = false;
 				break;
 
 			case HELP:
@@ -218,4 +222,9 @@ public class PirateGame extends Game {
 	public void dispose () {
 		batch.dispose();
 	}
+
+	public boolean gameRunning() {
+		return gameRunning;
+	}
+
 }

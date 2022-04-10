@@ -763,16 +763,19 @@ public class GameScreen implements Screen {
     public void gameOverCheck() {
         //Lose game if ship on 0 health or Alcuin is destroyed
         if (Hud.getHealth() <= 0 || getCollege(CollegeMetadata.ALCUIN).destroyed) {
+        	game.gameRunning = true;
             game.changeScreen(PirateGame.DEATH);
             game.killGame();
             game.resetValues();
         }
         //Win game if all colleges destroyed
         else if (getCollege(CollegeMetadata.ANNELISTER).destroyed && getCollege(CollegeMetadata.CONSTANTINE).destroyed && getCollege(CollegeMetadata.GOODRICKE).destroyed) {
-            game.changeScreen(PirateGame.VICTORY);
+        	game.gameRunning = true;
+        	game.changeScreen(PirateGame.VICTORY);
             game.killGame();
             game.resetValues();
         }
+        
     }
 
     /**
@@ -1004,4 +1007,8 @@ public class GameScreen implements Screen {
     public Hud getHud(){
         return hud;
     }
+
+	public boolean GameRunning() {
+		return game.gameRunning();
+	}
 }

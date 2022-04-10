@@ -26,7 +26,7 @@ public class Hud implements Disposable {
 
     private float timeCount;
     private static Integer score;
-    private static Integer health;
+    public static Integer health;
     private final Texture hp;
     private final Texture boxBackground;
     private final Texture coinPic;
