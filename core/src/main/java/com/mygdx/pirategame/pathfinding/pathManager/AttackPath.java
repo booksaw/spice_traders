@@ -39,7 +39,6 @@ public class AttackPath implements PathManager {
 
         // limiting attempts at finding a valid attack path
         for (int i = 0; i < 10; i++) {
-        	System.out.println("attempting i = " + i);
             // generate random position for ship to go around the college
             // making the player position the origin
             Vector2 diff;

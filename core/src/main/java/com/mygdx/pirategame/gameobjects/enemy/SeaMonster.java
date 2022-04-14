@@ -22,6 +22,8 @@ import com.mygdx.pirategame.pathfinding.pathManager.AttackPath;
 import com.mygdx.pirategame.pathfinding.pathManager.PathManager;
 import com.mygdx.pirategame.pathfinding.pathManager.PatrolPath;
 import com.mygdx.pirategame.save.GameScreen;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,6 +75,28 @@ public class SeaMonster extends Enemy {
 
         // Scale the damage that the entity takes with the difficulty
         damage = 5 * screen.difficulty;
+    }
+
+    public SeaMonster(GameScreen screen, Element element) {
+        super(screen, element);
+
+        //Set audios
+        destroy = Gdx.audio.newSound(Gdx.files.internal("sfx_and_music/ship-explosion-2.wav"));
+        hit = Gdx.audio.newSound(Gdx.files.internal("sfx_and_music/ship-hit.wav"));
+
+        projectiles = new Array<>();
+        waterSlashTexture = new Texture(Gdx.files.internal("sea_monster/waterslash.png"));
+
+        // use idle animation by default
+        loadAnimation();
+
+        //Set the position and size of the sea monster
+        setBounds(0, 0, 300 / PirateGame.PPM, 300 / PirateGame.PPM);
+        setOrigin(90 / PirateGame.PPM, COLLISIONRADIUS / PirateGame.PPM);
+
+        // Scale the damage that the entity takes with the difficulty
+        damage = 5 * screen.difficulty;
+
     }
 
     /**
@@ -324,6 +348,11 @@ public class SeaMonster extends Enemy {
             Vector2 v = travelToCheckpoint(speed, cp);
             b2body.setLinearVelocity(v);
         }
+    }
+
+    @Override
+    protected void saveChild(Document document, Element element) {
+        // nothing to do here
     }
 
     /**

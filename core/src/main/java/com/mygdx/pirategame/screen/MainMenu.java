@@ -100,7 +100,11 @@ public class MainMenu implements Screen {
                 fc.setFileFilter(filter);
                 int returnVal = fc.showOpenDialog(null);
                 if(returnVal == JFileChooser.APPROVE_OPTION && fc.getSelectedFile() != null){
-                    parent.changeScreen(new GameScreen(parent, new XmlSaveLoader(fc.getSelectedFile())));
+                    XmlSaveLoader xmlLoader = new XmlSaveLoader(fc.getSelectedFile());
+                    new GameScreen(parent, xmlLoader);
+                    if(xmlLoader.success()) {
+                        parent.changeScreen(new GameScreen(parent, new XmlSaveLoader(fc.getSelectedFile())));
+                    }
                 }
 
             }

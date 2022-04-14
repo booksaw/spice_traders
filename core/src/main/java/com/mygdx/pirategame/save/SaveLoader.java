@@ -1,9 +1,13 @@
 package com.mygdx.pirategame.save;
 
 import com.mygdx.pirategame.Hud;
+import com.mygdx.pirategame.PirateGame;
+import com.mygdx.pirategame.gameobjects.enemy.CollegeMetadata;
+import com.mygdx.pirategame.gameobjects.enemy.EnemyShip;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import javax.swing.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
@@ -11,6 +15,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
+import java.util.Locale;
 
 /**
  * Used as a superclass for all loaders
@@ -44,6 +49,24 @@ public abstract class SaveLoader {
             Hud.save(document, hud);
             root.appendChild(hud);
 
+            // saving the colleges
+            for(CollegeMetadata collegeMeta : CollegeMetadata.values()) {
+                Element collegeEle = document.createElement(collegeMeta.toString().toLowerCase());
+                screen.getCollege(collegeMeta).save(document, collegeEle);
+                root.appendChild(collegeEle);
+            }
+
+            // saving the ships not tied to a college
+            for(EnemyShip ship : screen.getEnemyShips()){
+                if(ship.collegeMeta != null){
+                    continue;
+                }
+
+                Element shipEle = document.createElement("ship");
+                ship.save(document, shipEle);
+                root.appendChild(shipEle);
+
+            }
 
 
             document.appendChild(root);
@@ -55,10 +78,14 @@ public abstract class SaveLoader {
 
             transformer.transform(domSource, streamResult);
 
+
+
         } catch(Exception e) {
-            // TODO save file is invalid, error message needs displaying
+            JOptionPane.showMessageDialog(null, "Something went wrong with file saving");
+            GameScreen.game.changeScreen(PirateGame.MENU);
         }
-        // TODO save to XML
+
+
     }
 
 }

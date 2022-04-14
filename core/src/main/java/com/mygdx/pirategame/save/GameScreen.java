@@ -39,6 +39,7 @@ import com.mygdx.pirategame.pathfinding.PathFinder;
 import com.mygdx.pirategame.gameobjects.entity.*;
 
 import com.mygdx.pirategame.screen.GoldShop;
+import com.mygdx.pirategame.screen.MainMenu;
 import com.mygdx.pirategame.screen.OptionsScreen;
 import com.mygdx.pirategame.world.AvailableSpawn;
 import com.mygdx.pirategame.world.WorldContactListener;
@@ -357,7 +358,7 @@ public class GameScreen implements Screen {
         exit.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                Gdx.app.exit();
+                game.changeScreen(PirateGame.MENU);
             }
         });
     }
@@ -475,8 +476,7 @@ public class GameScreen implements Screen {
 
         // space bar removes tutorial screen
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-            tutorials.setAlpha(0);
-            tutorialTexture.dispose();
+            hideTutorial();
         }
 
         // Clears gold shop instance
@@ -542,6 +542,14 @@ public class GameScreen implements Screen {
         camera.position.y = player.b2body.getPosition().y;
         camera.update();
         renderer.setView(camera);
+    }
+
+    /**
+     * Used to hide the tutorial screen
+     */
+    public void hideTutorial() {
+        tutorials.setAlpha(0);
+        tutorialTexture.dispose();
     }
 
     /**

@@ -5,6 +5,8 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.pirategame.HealthBar;
 import com.mygdx.pirategame.save.GameScreen;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 /**
  * Enemy
@@ -43,6 +45,19 @@ public abstract class Enemy extends Sprite {
         bar = new HealthBar(this);
     }
 
+    public Enemy(GameScreen screen, Element element){
+        this.world = screen.getWorld();
+        this.screen = screen;
+        setPosition(Float.parseFloat(element.getElementsByTagName("x").item(0).getTextContent()), Float.parseFloat(element.getElementsByTagName("y").item(0).getTextContent()));
+        this.setToDestroy = false;
+        this.destroyed = false;
+        this.health = Integer.parseInt(element.getElementsByTagName("health").item(0).getTextContent());
+
+        defineEnemy();
+        bar = new HealthBar(this);
+        bar.changeHealth(100 - health);
+    }
+
     /**
      * Defines enemy
      */
@@ -55,6 +70,35 @@ public abstract class Enemy extends Sprite {
 
     public abstract void onContactOther();
     public abstract void update(float dt);
+
+    /**
+     * Used to save any information about the enemy
+     * @param document The document controlling the saving
+     * @param element the element to save to
+     */
+    public void save(Document document, Element element){
+        Element xCoord = document.createElement("x");
+        xCoord.appendChild(document.createTextNode(Float.toString(getX())));
+        element.appendChild(xCoord);
+
+        Element yCoord = document.createElement("y");
+        yCoord.appendChild(document.createTextNode(Float.toString(getY())));
+        element.appendChild(yCoord);
+
+        Element healthele = document.createElement("health");
+        healthele.appendChild(document.createTextNode(Integer.toString(health)));
+        element.appendChild(healthele);
+
+        saveChild(document, element);
+    }
+
+    /**
+     * Used to save any information required by the child class
+     * @param document The document controlling the saving
+     * @param element The element to save to
+     */
+    protected abstract void saveChild(Document document, Element element);
+
 
     /**
      * Checks recieved damage

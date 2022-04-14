@@ -21,6 +21,8 @@ import com.mygdx.pirategame.pathfinding.pathManager.PathManager;
 import com.mygdx.pirategame.pathfinding.pathManager.PatrolPath;
 import com.mygdx.pirategame.pathfinding.pathManager.RandomPath;
 import com.mygdx.pirategame.save.GameScreen;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,6 +69,38 @@ public class EnemyShip extends Enemy {
      */
     public EnemyShip(GameScreen screen, float x, float y, String path, CollegeMetadata collegeMeta) {
         super(screen, x, y);
+        enemyShip = new Texture(path);
+        //Assign college
+        this.collegeMeta = collegeMeta;
+        //Set audios
+        destroy = Gdx.audio.newSound(Gdx.files.internal("sfx_and_music/ship-explosion-2.wav"));
+        hit = Gdx.audio.newSound(Gdx.files.internal("sfx_and_music/ship-hit.wav"));
+
+        cannonBalls = new Array<>();
+        //Set the position and size of the college
+        setBounds(0, 0, 64 / PirateGame.PPM, 110 / PirateGame.PPM);
+        setRegion(enemyShip);
+        setOrigin(32 / PirateGame.PPM, COLLISIONRADIUS / PirateGame.PPM);
+
+        // Scale the damage that the entity takes with the difficulty
+        damage = 20 * screen.difficulty;
+
+        if (collegeMeta != null) {
+            this.pathManager = new PatrolPath(this, screen);
+        } else {
+            this.pathManager = new RandomPath(this, screen);
+        }
+    }
+
+    /**
+     * Used to load an enemy ship from storage
+     * @param screen The GameScreen displaying this ship
+     * @param path The path to the aset
+     * @param element The element storing loation information
+     * @param collegeMeta The metadata for the relevent college
+     */
+    public EnemyShip(GameScreen screen, String path, Element element, CollegeMetadata collegeMeta){
+        super(screen, element);
         enemyShip = new Texture(path);
         //Assign college
         this.collegeMeta = collegeMeta;
@@ -191,6 +225,11 @@ public class EnemyShip extends Enemy {
         //target.nor();
         //float speed = 1.5f;
         //b2body.setLinearVelocity(target.scl(speed));
+    }
+
+    @Override
+    protected void saveChild(Document document, Element element) {
+        // nothing additional needs to be loaded
     }
 
     /**

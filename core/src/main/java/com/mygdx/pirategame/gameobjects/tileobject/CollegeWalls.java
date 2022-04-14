@@ -2,6 +2,7 @@ package com.mygdx.pirategame.gameobjects.tileobject;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Rectangle;
 import com.mygdx.pirategame.PirateGame;
+import com.mygdx.pirategame.gameobjects.enemy.CollegeMetadata;
 import com.mygdx.pirategame.save.GameScreen;
 
 /**
@@ -35,6 +36,6 @@ public class CollegeWalls extends InteractiveTileObject {
     public void onContact() {
         Gdx.app.log("wall", "collision");
         //Deal damage to the assigned college (Alcuin)
-        screen.getCollege(0).onContact();
+        screen.getCollege(CollegeMetadata.ALCUIN).onContact();
     }
 }
