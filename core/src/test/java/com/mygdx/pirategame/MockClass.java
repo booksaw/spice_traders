@@ -6,8 +6,10 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.mygdx.pirategame.gameobjects.Player;
 import com.mygdx.pirategame.pathfinding.PathFinder;
 import com.mygdx.pirategame.save.GameScreen;
+import com.mygdx.pirategame.screen.GoldShop;
 import org.mockito.Mockito;
 import org.mockito.internal.util.reflection.Whitebox;
 
@@ -28,6 +30,7 @@ public class MockClass {
         // setting up score and coins to 0
         Hud.setPoints(0);
         Hud.setCoins(0);
+
     }
 
     /**
@@ -60,5 +63,14 @@ public class MockClass {
 
         return screen;
     }
+
+    public static GoldShop mockGoldShop(){
+        GoldShop mockedGoldShop = Mockito.mock(GoldShop.class);
+
+        return mockedGoldShop;
+    }
+
+
+
 
 }

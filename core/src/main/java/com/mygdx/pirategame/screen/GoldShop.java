@@ -14,6 +14,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.mygdx.pirategame.Hud;
 import com.mygdx.pirategame.PirateGame;
+import com.mygdx.pirategame.gameobjects.Player;
 import com.mygdx.pirategame.gameobjects.enemy.College;
 import com.mygdx.pirategame.gameobjects.enemy.EnemyShip;
 import com.mygdx.pirategame.save.GameScreen;
@@ -25,6 +26,7 @@ import java.util.List;
 
 import static com.mygdx.pirategame.save.GameScreen.GAME_RUNNING;
 import static com.badlogic.gdx.math.MathUtils.ceil;
+import static com.mygdx.pirategame.save.GameScreen.game;
 
 
 public class GoldShop implements Screen {
@@ -56,6 +58,10 @@ public class GoldShop implements Screen {
     private TextButton healthBoostBtn;
     private TextButton increaseCannonDamageBtn;
     private TextButton item4;
+
+    public final int fasterCannonPrice = 50;
+    public final int healthBoostPrice = 75;
+    public final int increaseCannonDamagePrice = 150;
 
     public GoldShop(PirateGame pirateGame, OrthographicCamera camera, GameScreen gameScreen) {
         this.parent = pirateGame;
@@ -189,29 +195,39 @@ public class GoldShop implements Screen {
         }
     }
 
+    private void displayMsg(String title, String msg, String msgType){
+        if (camera != null){
+            if (msgType == "error"){
+                JOptionPane.showMessageDialog(null, msg, title, JOptionPane.ERROR_MESSAGE);
+            } else if (msgType == "info"){
+                JOptionPane.showMessageDialog(null, msg, title, JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    }
     /**
      * Method which handles purchase of Faster cannon
      */
     public void purchaseFasterCannon(){
-        int fasterCannonPrice = 50;
-
+        Player player = getPlayer();
         // Check player has enough coins
         if (Hud.getCoins() >= fasterCannonPrice){
-            int currentVelocity = gameScreen.getPlayer().getCannonVelocity();
+            int currentVelocity = player.getCannonVelocity();
             // Limit max velocity of cannon to 12, as players can
             // purchase this powerup multiple times
             if (currentVelocity * 1.2f <= 12) {
                 Hud.setCoins(Hud.getCoins() - fasterCannonPrice);
                 Hud.updateCoins();
                 int newVelocity = ceil(currentVelocity * 1.2f);
-                gameScreen.getPlayer().setCannonVelocity(newVelocity);
+                player.setCannonVelocity(newVelocity);
                 playPurchaseSound();
-                JOptionPane.showMessageDialog(null, "Your cannon now fires 20% faster!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                displayMsg("Success", "Your cannon now fires 20% faster!","info");
+
             } else {
-                JOptionPane.showMessageDialog(null, "Cannot purchase again: you have maximised this powerup", "Error", JOptionPane.ERROR_MESSAGE);
+
+                displayMsg("Error", "Cannot purchase again: you have maximised this powerup","error");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "You do not have enough coins to purchase this powerup", "Error", JOptionPane.ERROR_MESSAGE);
+            displayMsg("Error","You do not have enough coins to purchase this powerup","error");
         }
 
     }
@@ -220,7 +236,6 @@ public class GoldShop implements Screen {
      * Method which handles purchase of health boost (i.e. repairs ship)
      */
     public void purchaseHealthBoost(){
-        int healthBoostPrice = 75;
 
         //Check if player has enough coins
         if (Hud.getCoins() >= healthBoostPrice){
@@ -236,10 +251,9 @@ public class GoldShop implements Screen {
     }
 
     public void purchaseIncreaseCannonDamage(){
-        int price = 150;
 
-        if (Hud.getCoins() >= price){
-            Hud.setCoins(Hud.getCoins() - price);
+        if (Hud.getCoins() >= increaseCannonDamagePrice){
+            Hud.setCoins(Hud.getCoins() - increaseCannonDamagePrice);
             Hud.updateCoins();
 
             /**
@@ -335,5 +349,9 @@ public class GoldShop implements Screen {
     public void dispose() {
         stage.dispose();
         //shapeRenderer.dispose();
+    }
+
+    public Player getPlayer(){
+        return gameScreen.getPlayer();
     }
 }

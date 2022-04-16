@@ -58,10 +58,10 @@ public class Player extends Sprite {
         cannonBalls = new Array<>();
         // Decrease health if playing on hard mode
         System.out.println(screen.difficulty);
-        if (screen.difficulty < 1){
+        //System.out.println(Hud.getHealth());
+        if (screen.difficulty < 1 && Hud.getHealth() != null){
             Hud.changeHealth(-(int) (Hud.getHealth() * screen.difficulty / 4));
         }
-        System.out.println(Hud.getHealth());
     }
 
     /**
