@@ -60,7 +60,7 @@ public class fasterCannonTest {
 
         // Test that the cannon velocity has changed
         int newVelocity = testPlayer.getCannonVelocity();
-        int expectedVelocity = ceil(originalVelocity * 1.2f);
+        int expectedVelocity = ceil(originalVelocity * mockedGoldShop.fasterCannonMultiplier);
         assertEquals(newVelocity,expectedVelocity);
 
     }
