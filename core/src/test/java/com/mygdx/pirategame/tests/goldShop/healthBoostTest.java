@@ -19,11 +19,10 @@ import com.mygdx.pirategame.save.GameScreen;
 import com.mygdx.pirategame.tests.FakeGL20;
 
 @RunWith(PirateGameTest.class)
-public class fasterCannonTest {
+public class healthBoostTest {
 
     private static GameScreen mockedGameScreen;
     private static GoldShop mockedGoldShop;
-    private static Player testPlayer;
 
     @BeforeClass
     public static void init() {
@@ -39,64 +38,67 @@ public class fasterCannonTest {
 
         mockedGoldShop = MockClass.mockGoldShop();
         mockedGameScreen = MockClass.mockGameScreen();
-        testPlayer = new Player(mockedGameScreen);
-        Mockito.when(mockedGoldShop.getPlayer()).thenReturn(testPlayer);
-        Mockito.doCallRealMethod().when(mockedGoldShop).purchaseFasterCannon();
+;
+        Mockito.doCallRealMethod().when(mockedGoldShop).purchaseHealthBoost();
+        // Make sure player health is not 0
+        Hud.setHealth(100);
+
 
     }
 
 
     /**
-     * Test cannon velocity increases after purchase of faster cannon from Gold Shop
+     * Test player's health increases after purchase
      */
     @Test
-    public void testVelocityIncrease(){
-        int originalVelocity = testPlayer.getCannonVelocity();
+    public void testHealthIncrease(){
+        int originalHealth = Hud.getHealth();
 
-        // Give the player 50 coins
-        Hud.setCoins(50);
+        // Give the player enough coins to purchase the health boost
+        Hud.setCoins(mockedGoldShop.healthBoostPrice);
 
-        mockedGoldShop.purchaseFasterCannon();
+        mockedGoldShop.purchaseHealthBoost();
 
-        // Test that the cannon velocity has changed
-        int newVelocity = testPlayer.getCannonVelocity();
-        int expectedVelocity = ceil(originalVelocity * mockedGoldShop.fasterCannonMultiplier);
-        assertEquals(newVelocity,expectedVelocity);
+        int newHealth = Hud.getHealth();
+
+        assertEquals(newHealth,originalHealth + mockedGoldShop.healthBoostValue);
+
 
     }
 
     /**
-     * Test user balance decreases by the price of the faster cannon on purchase from Gold Shop
+     * Test user balance decreases by the price of the health boost on purchase from Gold Shop
      */
     @Test
     public void testCoinBalanceAfterPurchase(){
         // Give the player enough coins to purchase the faster cannon
-        Hud.setCoins(mockedGoldShop.fasterCannonPrice);
+        Hud.setCoins(mockedGoldShop.healthBoostPrice);
         int originalCoins = Hud.getCoins();
 
-        mockedGoldShop.purchaseFasterCannon();
+
+        mockedGoldShop.purchaseHealthBoost();
 
         // Test that the player's coin balance has decreased after purchase
         int newCoins = Hud.getCoins();
-        assertEquals(newCoins, originalCoins - mockedGoldShop.fasterCannonPrice);
+        assertEquals(newCoins, originalCoins - mockedGoldShop.healthBoostPrice);
     }
 
     /**
-     * Test that the player is not given a faster cannon if they do not have enough coins
+     * Test that the player is not given a health boost if they do not have enough coins
      */
     @Test
     public void testNotEnoughCoins(){
         // Give player less coins than needed to purchase faster cannon
-        Hud.setCoins(mockedGoldShop.fasterCannonPrice - 1);
+        Hud.setCoins(mockedGoldShop.healthBoostPrice - 1);
 
-        int originalVelocity = testPlayer.getCannonVelocity();
+        int originalHealth = Hud.getHealth();
 
-        mockedGoldShop.purchaseFasterCannon();
+        mockedGoldShop.purchaseHealthBoost();
 
-        int newVelocity = testPlayer.getCannonVelocity();
+        int newHealth = Hud.getHealth();
 
         // Check that the cannon velocity has not changed
-        assertEquals(newVelocity,originalVelocity);
+        assertEquals(originalHealth,newHealth);
     }
 
 

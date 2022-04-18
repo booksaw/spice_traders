@@ -16,11 +16,13 @@ import com.mygdx.pirategame.Hud;
 import com.mygdx.pirategame.PirateGame;
 import com.mygdx.pirategame.gameobjects.Player;
 import com.mygdx.pirategame.gameobjects.enemy.College;
+import com.mygdx.pirategame.gameobjects.enemy.CollegeMetadata;
 import com.mygdx.pirategame.gameobjects.enemy.EnemyShip;
 import com.mygdx.pirategame.save.GameScreen;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -59,9 +61,14 @@ public class GoldShop implements Screen {
     private TextButton increaseCannonDamageBtn;
     private TextButton item4;
 
+    // Updating these values here will automatically update buttons, labels and tests
     public final int fasterCannonPrice = 50;
     public final int healthBoostPrice = 75;
     public final int increaseCannonDamagePrice = 150;
+
+    public final float fasterCannonMultiplier = 1.2f;
+    public final int healthBoostValue = 50;
+    public final float increaseCannonDamageMultiplier = 1.2f;
 
     public GoldShop(PirateGame pirateGame, OrthographicCamera camera, GameScreen gameScreen) {
         this.parent = pirateGame;
@@ -100,17 +107,17 @@ public class GoldShop implements Screen {
 
 
         //create skill tree buttons
-        fasterCannonBtn = new TextButton("Cannon ball speed +20%", skin);
+        fasterCannonBtn = new TextButton("Cannon ball speed +" + multiplierToPercent(fasterCannonMultiplier), skin);
 
         //Sets enabled or disabled
         if (states.get(0) == 1){
             fasterCannonBtn.setDisabled(true);
         }
-        healthBoostBtn = new TextButton("Health Boost +50", skin);
+        healthBoostBtn = new TextButton("Health Boost +" + healthBoostValue, skin);
         if (states.get(1) == 1){
             healthBoostBtn.setDisabled(true);
         }
-        increaseCannonDamageBtn = new TextButton("Increase Cannon Damage +20%", skin);
+        increaseCannonDamageBtn = new TextButton("Increase Cannon Damage +" + multiplierToPercent(increaseCannonDamageMultiplier), skin);
         if (states.get(2) == 1){
             increaseCannonDamageBtn.setDisabled(true);
         }
@@ -123,9 +130,9 @@ public class GoldShop implements Screen {
         }
 
         // Item price labels
-        final Label unlock100 = new Label("50 gold",skin);
-        final Label unlock200 = new Label("75 gold",skin);
-        final Label unlock300 = new Label("150 gold",skin);
+        final Label fasterCannonPriceLabel = new Label(fasterCannonPrice + " gold",skin);
+        final Label healthBoostPriceLabel = new Label(healthBoostPrice + " gold",skin);
+        final Label increaseCannonDamageLabel = new Label(increaseCannonDamagePrice + " gold",skin);
         final Label unlock400 = new Label("400 gold",skin);
         final Label goldShop = new Label("Gold Shop",skin);
         goldShop.setFontScale(1.2f);
@@ -171,13 +178,13 @@ public class GoldShop implements Screen {
         table.add(goldShop);
         table.row().pad(10, 0, 10, 0);
         table.add(fasterCannonBtn).width(stage.getCamera().viewportWidth / 5f).height(stage.getCamera().viewportHeight / 9f);
-        table.add(unlock100);
+        table.add(fasterCannonPriceLabel);
         table.row().pad(10, 0, 10, 0);
         table.add(healthBoostBtn).width(stage.getCamera().viewportWidth / 5f).height(stage.getCamera().viewportHeight / 9f);
-        table.add(unlock200);
+        table.add(healthBoostPriceLabel);
         table.row().pad(10, 0, 10, 0);
         table.add(increaseCannonDamageBtn).width(stage.getCamera().viewportWidth / 5f).height(stage.getCamera().viewportHeight / 9f);
-        table.add(unlock300);
+        table.add(increaseCannonDamageLabel);
         table.row().pad(10, 0, 10, 0);
         table.add(item4).width(stage.getCamera().viewportWidth / 5f).height(stage.getCamera().viewportHeight / 9f);
         table.add(unlock400);
@@ -214,13 +221,13 @@ public class GoldShop implements Screen {
             int currentVelocity = player.getCannonVelocity();
             // Limit max velocity of cannon to 12, as players can
             // purchase this powerup multiple times
-            if (currentVelocity * 1.2f <= 12) {
+            if (currentVelocity * fasterCannonMultiplier <= 12) {
                 Hud.setCoins(Hud.getCoins() - fasterCannonPrice);
                 Hud.updateCoins();
-                int newVelocity = ceil(currentVelocity * 1.2f);
+                int newVelocity = ceil(currentVelocity * fasterCannonMultiplier);
                 player.setCannonVelocity(newVelocity);
                 playPurchaseSound();
-                displayMsg("Success", "Your cannon now fires 20% faster!","info");
+                displayMsg("Success", "Your cannon now fires" + multiplierToPercent(fasterCannonMultiplier) + " faster!","info");
 
             } else {
 
@@ -241,11 +248,11 @@ public class GoldShop implements Screen {
         if (Hud.getCoins() >= healthBoostPrice){
             Hud.setCoins(Hud.getCoins() - healthBoostPrice);
             Hud.updateCoins();
-            Hud.changeHealth(50);
+            Hud.changeHealth(healthBoostValue);
             playPurchaseSound();
-            JOptionPane.showMessageDialog(null, "You have received a health boost of 50!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            displayMsg("Success","You have received a health boost of " + healthBoostValue + "!","info");
         } else {
-            JOptionPane.showMessageDialog(null, "You do not have enough coins to purchase this boost", "Error", JOptionPane.ERROR_MESSAGE);
+            displayMsg("Error","You do not have enough coins to purchase this boost!","error");
         }
 
     }
@@ -264,20 +271,19 @@ public class GoldShop implements Screen {
              */
 
             // Iterate through each college and increase damage
-            for (College col : gameScreen.getColleges().values()){
-
-                col.damage = Math.round(col.damage * 1.2f);
+            for (College col : getColleges().values()){
+                col.damage = Math.round(col.damage * increaseCannonDamageMultiplier);
             }
 
             // Iterate through each enemy ship and increase damage
-            for (EnemyShip ship: gameScreen.getEnemyShips()){
-                ship.damage = Math.round(ship.damage * 1.2f);
+            for (EnemyShip ship: getEnemyShips()){
+                ship.damage = Math.round(ship.damage * increaseCannonDamageMultiplier);
             }
 
             playPurchaseSound();
-            JOptionPane.showMessageDialog(null, "Cannon damage has been increased by 20%", "Success", JOptionPane.INFORMATION_MESSAGE);
+            displayMsg("Success","Cannon damage has been increased by " + multiplierToPercent(increaseCannonDamageMultiplier),"info");
         } else {
-            JOptionPane.showMessageDialog(null, "You do not have enough coins to purchase this powerup", "Error", JOptionPane.ERROR_MESSAGE);
+            displayMsg("Error","You do not have enough coins to purchase this powerup", "error");
         }
     }
 
@@ -351,7 +357,38 @@ public class GoldShop implements Screen {
         //shapeRenderer.dispose();
     }
 
+    /**
+     * Get player object from game screen
+     * This method is primarily to aid with testing when mocking
+     * i.e. Mockito catches when this method is called and returns test values instead
+     * @return Player object
+     */
     public Player getPlayer(){
         return gameScreen.getPlayer();
+    }
+
+    /**
+     * Get the HashMap of colleges
+     * This method is primarily to aid with testing when mocking
+     * i.e. Mockito catches when this method is called and returns test values instead
+     * @return HashMap of colleges
+     */
+    public HashMap<CollegeMetadata, College> getColleges(){ return gameScreen.getColleges();}
+
+    /**
+     *  Get the list of all enemy ships
+     *  This method is primarily to aid with testing when mocking
+     *  i.e. Mockito catches when this method is called and returns test values instead
+     * @return List of enemy ships
+     */
+    public ArrayList<EnemyShip> getEnemyShips() { return gameScreen.getEnemyShips();}
+
+    /**
+     * Converts a multipler (e.g 1.2f) to a percentage (e.g. 20%)
+     * @param multiplier
+     * @return String of percentage value of multiplier
+     */
+    private String multiplierToPercent(float multiplier){
+        return (int) (multiplier * 100) - 100 + "%";
     }
 }
