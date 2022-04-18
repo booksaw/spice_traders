@@ -23,7 +23,6 @@ public class healthBoostTest {
 
     private static GameScreen mockedGameScreen;
     private static GoldShop mockedGoldShop;
-    private static Player testPlayer;
 
     @BeforeClass
     public static void init() {
@@ -39,8 +38,7 @@ public class healthBoostTest {
 
         mockedGoldShop = MockClass.mockGoldShop();
         mockedGameScreen = MockClass.mockGameScreen();
-        testPlayer = new Player(mockedGameScreen);
-        Mockito.when(mockedGoldShop.getPlayer()).thenReturn(testPlayer);
+;
         Mockito.doCallRealMethod().when(mockedGoldShop).purchaseHealthBoost();
         // Make sure player health is not 0
         Hud.setHealth(100);
