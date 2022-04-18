@@ -340,7 +340,19 @@ public class Hud implements Disposable {
      */
     public static void changeHealth(int value) {
         health += value;
-        healthLabel.setText(String.format("%02d", health));
+        if (healthLabel != null) {
+            healthLabel.setText(String.format("%02d", health));
+        }
+    }
+
+    /**
+     * Sets health to specific value
+     * @param value The amount of health that the player's health is set to
+     */
+    public static void setHealth(int value){
+        if (value > 0){
+            health = value;
+        }
     }
 
     /**
@@ -354,6 +366,7 @@ public class Hud implements Disposable {
             coinLabel.setText(String.format("%03d", coins));
         }
     }
+
 
     /**
      * Changes points by value increase

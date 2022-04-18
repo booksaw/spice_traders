@@ -23,6 +23,7 @@ public class MockClass {
      */
     public static void mockHudStatic() {
         Hud hud = Mockito.mock(Hud.class);
+
         Whitebox.setInternalState(hud, "scoreLabel", new Label(String.format("%03d", 0), new Label.LabelStyle(new BitmapFont(), Color.WHITE)));
         Whitebox.setInternalState(hud, "coinLabel", new Label(String.format("%03d", 0), new Label.LabelStyle(new BitmapFont(), Color.YELLOW)));
         Whitebox.setInternalState(hud, "coinMulti", 1);
@@ -30,7 +31,7 @@ public class MockClass {
         // setting up score and coins to 0
         Hud.setPoints(0);
         Hud.setCoins(0);
-
+        Hud.setHealth(100);
     }
 
     /**

@@ -63,6 +63,8 @@ public class GoldShop implements Screen {
     public final int healthBoostPrice = 75;
     public final int increaseCannonDamagePrice = 150;
 
+    public final int healthBoostValue = 50; // The amount health is increased by when health boost is purchased
+
     public GoldShop(PirateGame pirateGame, OrthographicCamera camera, GameScreen gameScreen) {
         this.parent = pirateGame;
         this.camera = camera;
@@ -241,11 +243,11 @@ public class GoldShop implements Screen {
         if (Hud.getCoins() >= healthBoostPrice){
             Hud.setCoins(Hud.getCoins() - healthBoostPrice);
             Hud.updateCoins();
-            Hud.changeHealth(50);
+            Hud.changeHealth(healthBoostValue);
             playPurchaseSound();
-            JOptionPane.showMessageDialog(null, "You have received a health boost of 50!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            displayMsg("Success","You have received a health boost of " + healthBoostValue + "!","info");
         } else {
-            JOptionPane.showMessageDialog(null, "You do not have enough coins to purchase this boost", "Error", JOptionPane.ERROR_MESSAGE);
+            displayMsg("Error","You do not have enough coins to purchase this boost!","error");
         }
 
     }
