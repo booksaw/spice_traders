@@ -56,12 +56,10 @@ public class increaseCannonDamageTest {
 
 
         testCollege = new College(mockedGameScreen, CollegeMetadata.ANNELISTER, 0, null);
-        testCollege.damage = 5;
         colleges.put(CollegeMetadata.ANNELISTER,testCollege);
 
         String shipTexture = "college/Ships/" + CollegeMetadata.ANNELISTER.getFilePath() + "_ship.png";
         testEnemyShip = new EnemyShip(mockedGameScreen,0,0,shipTexture,CollegeMetadata.ANNELISTER);
-        testEnemyShip.damage = 5;
         ships.add(testEnemyShip);
 
     }
@@ -85,10 +83,6 @@ public class increaseCannonDamageTest {
 
         float newCollegeDamage = testCollege.damage;
         float newShipDamage = testEnemyShip.damage;
-
-        System.out.println("Original damage: " + originalCollegeDamage);
-        System.out.println("Expected damage: " + expectedCollegeDamage);
-        System.out.println("New damage: " + newCollegeDamage);
 
         assertEquals(newCollegeDamage,expectedCollegeDamage,0.00001);
         assertEquals(newShipDamage,expectedShipDamage,0.00001);
