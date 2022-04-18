@@ -16,11 +16,13 @@ import com.mygdx.pirategame.Hud;
 import com.mygdx.pirategame.PirateGame;
 import com.mygdx.pirategame.gameobjects.Player;
 import com.mygdx.pirategame.gameobjects.enemy.College;
+import com.mygdx.pirategame.gameobjects.enemy.CollegeMetadata;
 import com.mygdx.pirategame.gameobjects.enemy.EnemyShip;
 import com.mygdx.pirategame.save.GameScreen;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -269,13 +271,12 @@ public class GoldShop implements Screen {
              */
 
             // Iterate through each college and increase damage
-            for (College col : gameScreen.getColleges().values()){
-
+            for (College col : getColleges().values()){
                 col.damage = Math.round(col.damage * increaseCannonDamageMultiplier);
             }
 
             // Iterate through each enemy ship and increase damage
-            for (EnemyShip ship: gameScreen.getEnemyShips()){
+            for (EnemyShip ship: getEnemyShips()){
                 ship.damage = Math.round(ship.damage * increaseCannonDamageMultiplier);
             }
 
@@ -356,9 +357,31 @@ public class GoldShop implements Screen {
         //shapeRenderer.dispose();
     }
 
+    /**
+     * Get player object from game screen
+     * This method is primarily to aid with testing when mocking
+     * i.e. Mockito catches when this method is called and returns test values instead
+     * @return Player object
+     */
     public Player getPlayer(){
         return gameScreen.getPlayer();
     }
+
+    /**
+     * Get the HashMap of colleges
+     * This method is primarily to aid with testing when mocking
+     * i.e. Mockito catches when this method is called and returns test values instead
+     * @return HashMap of colleges
+     */
+    public HashMap<CollegeMetadata, College> getColleges(){ return gameScreen.getColleges();}
+
+    /**
+     *  Get the list of all enemy ships
+     *  This method is primarily to aid with testing when mocking
+     *  i.e. Mockito catches when this method is called and returns test values instead
+     * @return List of enemy ships
+     */
+    public ArrayList<EnemyShip> getEnemyShips() { return gameScreen.getEnemyShips();}
 
     /**
      * Converts a multipler (e.g 1.2f) to a percentage (e.g. 20%)
