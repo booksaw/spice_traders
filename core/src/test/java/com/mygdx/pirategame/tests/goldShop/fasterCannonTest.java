@@ -99,6 +99,36 @@ public class fasterCannonTest {
         assertEquals(newVelocity,originalVelocity);
     }
 
+    /**
+     * Test that cannon velocity does not increase greater than 12 on purchase of faster cannon
+     * Note that this powerup can be purchased multiple times so is limited to not make the player too powerful
+     * The limit of 12 is hardcoded in the purchaseFasterCannon() method in the GoldShop class
+     */
+    @Test
+    public void testMaxCannonVelocity(){
+
+        /**
+         * Test the edge case where getCannonVelocity() * fasterCannonMultiplier == 12, so velocity should now become 12
+         */
+        Hud.setCoins(mockedGoldShop.fasterCannonPrice);
+        testPlayer.setCannonVelocity(ceil(12 / mockedGoldShop.fasterCannonMultiplier));
+
+        mockedGoldShop.purchaseFasterCannon();
+        // Cannon velocity should now equal 12
+        assertEquals(testPlayer.getCannonVelocity(),12);
+
+        /**
+         * Test the case where getCannonVelocity() * fasterCannonMultiplier > 12
+         * In this case the cannon velocity should not change as purchasing would make getCannonVelocity() > 12
+         */
+
+        Hud.setCoins(mockedGoldShop.fasterCannonPrice);
+
+        mockedGoldShop.purchaseFasterCannon();
+        assertEquals(testPlayer.getCannonVelocity(),12);
+
+    }
+
 
 
 

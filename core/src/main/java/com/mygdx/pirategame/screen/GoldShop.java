@@ -159,6 +159,7 @@ public class GoldShop implements Screen {
     }
 
     private void displayMsg(String title, String msg, String msgType){
+        // If camera is null, then it is likely we are testing headlessly so do not need popup messages
         if (camera != null){
             if (msgType == "error"){
                 JOptionPane.showMessageDialog(null, msg, title, JOptionPane.ERROR_MESSAGE);
