@@ -45,4 +45,12 @@ public abstract class Entity extends Sprite {
      */
     public void entityContact() {
     }
+    
+    /**
+     * Returns the world
+     * @return world
+     */
+    public World getWorld() {
+    	return world;
+    }
 }

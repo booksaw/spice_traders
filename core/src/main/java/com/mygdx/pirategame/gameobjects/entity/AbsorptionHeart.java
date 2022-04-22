@@ -45,7 +45,7 @@ public class AbsorptionHeart extends PowerUp {
     public void update() {
         //If coin is set to destroy and isnt, destroy it
         if(setToDestroyed && !destroyed) {
-            world.destroyBody(b2body);
+            world.destroyBody(b2body); 
             destroyed = true;
         }
         //Update position of power up
