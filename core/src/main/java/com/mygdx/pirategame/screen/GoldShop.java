@@ -35,40 +35,26 @@ public class GoldShop implements Screen {
 
     private final PirateGame parent;
     private final Stage stage;
-    /*private ShapeRenderer shapeRenderer;
-    private Rectangle rectangle;*/
+
     public boolean display = false;
     private OrthographicCamera camera;
     private GameScreen gameScreen;
     private Sound purchaseSound;
 
-    //To store whether buttons are enabled or disabled
-    private static final List<Integer> states = new ArrayList<Integer>();
-
-    /**
-     * adding default states
-     */
-    static {
-        //0 = enabled, 1 = disabled
-        states.add(0);
-        states.add(0);
-        states.add(0);
-        states.add(1);
-    }
 
     private static TextButton fasterCannonBtn;
     private TextButton healthBoostBtn;
     private TextButton increaseCannonDamageBtn;
-    private TextButton item4;
+    private TextButton closeButton;
 
     // Updating these values here will automatically update buttons, labels and tests
     public final int fasterCannonPrice = 50;
     public final int healthBoostPrice = 75;
     public final int increaseCannonDamagePrice = 150;
-
     public final float fasterCannonMultiplier = 1.2f;
     public final int healthBoostValue = 50;
     public final float increaseCannonDamageMultiplier = 1.2f;
+
 
     public GoldShop(PirateGame pirateGame, OrthographicCamera camera, GameScreen gameScreen) {
         this.parent = pirateGame;
@@ -99,48 +85,21 @@ public class GoldShop implements Screen {
         table.setFillParent(true);
         stage.addActor(table);
 
-        /*// Shop background
-        shapeRenderer = new ShapeRenderer();
-        shapeRenderer.setAutoShapeType(true);
-        rectangle = new Rectangle(stage.getCamera().position.x - stage.getCamera().viewportWidth / 5f, stage.getCamera().position.y - stage.getCamera().viewportHeight / 2.4f,
-                stage.getCamera().viewportWidth / 2.5f, stage.getCamera().viewportHeight / 1.2f);*/
-
-
-        //create skill tree buttons
+        // Create buttons
         fasterCannonBtn = new TextButton("Cannon ball speed +" + multiplierToPercent(fasterCannonMultiplier), skin);
-
-        //Sets enabled or disabled
-        if (states.get(0) == 1){
-            fasterCannonBtn.setDisabled(true);
-        }
         healthBoostBtn = new TextButton("Health Boost +" + healthBoostValue, skin);
-        if (states.get(1) == 1){
-            healthBoostBtn.setDisabled(true);
-        }
         increaseCannonDamageBtn = new TextButton("Increase Cannon Damage +" + multiplierToPercent(increaseCannonDamageMultiplier), skin);
-        if (states.get(2) == 1){
-            increaseCannonDamageBtn.setDisabled(true);
-        }
-
-        item4 = new TextButton("????????????", skin);
-
-        if (states.get(3) == 1){
-            item4.setDisabled(true);
-
-        }
+        closeButton = new TextButton("Close", skin);
 
         // Item price labels
         final Label fasterCannonPriceLabel = new Label(fasterCannonPrice + " gold",skin);
         final Label healthBoostPriceLabel = new Label(healthBoostPrice + " gold",skin);
         final Label increaseCannonDamageLabel = new Label(increaseCannonDamagePrice + " gold",skin);
-        final Label unlock400 = new Label("400 gold",skin);
         final Label goldShop = new Label("Gold Shop",skin);
         goldShop.setFontScale(1.2f);
 
-        //Return Button
-        TextButton closeButton = new TextButton("Close", skin);
 
-        // Close the gold shop
+        // Add listener for close shop button
         closeButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
@@ -185,9 +144,6 @@ public class GoldShop implements Screen {
         table.row().pad(10, 0, 10, 0);
         table.add(increaseCannonDamageBtn).width(stage.getCamera().viewportWidth / 5f).height(stage.getCamera().viewportHeight / 9f);
         table.add(increaseCannonDamageLabel);
-        table.row().pad(10, 0, 10, 0);
-        table.add(item4).width(stage.getCamera().viewportWidth / 5f).height(stage.getCamera().viewportHeight / 9f);
-        table.add(unlock400);
         table.row().pad(10, 0, 10, 0);
         table.add(closeButton).width(stage.getCamera().viewportWidth / 5f).height(stage.getCamera().viewportHeight / 9f);
         table.top();
@@ -294,18 +250,6 @@ public class GoldShop implements Screen {
      */
     @Override
     public void render(float delta) {
-        /*// Render background color of shop
-        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-        shapeRenderer.setColor(Color.GOLD);
-        shapeRenderer.rect(rectangle.getX(), rectangle.getY(), rectangle.getWidth(), rectangle.getHeight());
-        shapeRenderer.end();
-
-        // Render border around background
-        shapeRenderer.begin();
-        shapeRenderer.setColor(Color.BLACK);
-        shapeRenderer.rect(rectangle.getX(), rectangle.getY(), rectangle.getWidth()+1, rectangle.getHeight()+1);
-        shapeRenderer.end();*/
-
 
         // tell our stage to do actions and draw itself
         stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
