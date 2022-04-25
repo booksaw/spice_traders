@@ -9,12 +9,15 @@ import com.mygdx.pirategame.Hud;
 import com.mygdx.pirategame.PirateGame;
 import com.mygdx.pirategame.save.GameScreen;
 
+/**
+ * Speed boost powerup which makes the player able to move faster
+ */
 public class SpeedBoost extends PowerUp {
     private Texture speedBoost;
 
     /**
      * x
-     * Instantiates an entity
+     * Instantiates the powerup and icon on map
      * Sets position in world
      *
      * @param screen Visual data
@@ -64,6 +67,9 @@ public class SpeedBoost extends PowerUp {
         }
     }
 
+    /**
+     * Handle powerup expiration
+     */
     @Override
     public void endPowerUp() {
         // Reset speed and acceleration variables

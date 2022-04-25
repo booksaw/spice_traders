@@ -16,9 +16,7 @@ import com.badlogic.gdx.utils.Scaling;
 import com.mygdx.pirategame.PirateGame;
 
 /**
- * Main menu is the first screen the player sees. Allows them to navigate where they want to go to
- * @author Sam Pearson
- * @version 1.0
+ * Screen to give player option to select game difficulty
  */
 public class DifficultyScreen implements Screen {
 
@@ -28,7 +26,7 @@ public class DifficultyScreen implements Screen {
     private Image backgroundImage;
 
     /**
-     * Instantiates a new Main menu.
+     * Instantiates a new difficulty screen.
      *
      * @param PirateGame the main starting body of the game. Where screen swapping is carried out.
      */
@@ -38,8 +36,7 @@ public class DifficultyScreen implements Screen {
     }
 
     /**
-     * What should be displayed on the options screen
-     *
+     * What should be displayed on the difficulty screen
      */
     @Override
     public void show() {

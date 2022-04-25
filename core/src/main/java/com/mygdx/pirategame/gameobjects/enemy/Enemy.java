@@ -45,6 +45,11 @@ public abstract class Enemy extends Sprite {
         bar = new HealthBar(this);
     }
 
+    /**
+     * Instantiates an enemy using save file
+     * @param screen Visual data that player sees
+     * @param element Data about the enemy from the save file
+     */
     public Enemy(GameScreen screen, Element element){
         this.world = screen.getWorld();
         this.screen = screen;
@@ -59,16 +64,21 @@ public abstract class Enemy extends Sprite {
     }
 
     /**
-     * Defines enemy
+     * Method to define enemy properties
      */
     protected abstract void defineEnemy();
 
     /**
-     * Defines contact
+     * Method for handling enemy contact
      */
     public abstract void onContact();
 
     public abstract void onContactOther();
+
+    /**
+     * Method for handling enemy updates
+     * @param dt Time since last update
+     */
     public abstract void update(float dt);
 
     /**

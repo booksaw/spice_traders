@@ -18,6 +18,8 @@ import org.w3c.dom.Element;
 /**
  * Hud
  * Produces a hud for the player
+ * This shows the number of coins, health, points the player has
+ * Also displays time remaining for any powerups collected
  *
  * @author Ethan Alabaster, Sam Pearson
  * @version 1.0
