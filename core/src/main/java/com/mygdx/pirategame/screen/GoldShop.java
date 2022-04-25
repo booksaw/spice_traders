@@ -158,6 +158,12 @@ public class GoldShop implements Screen {
         }
     }
 
+    /**
+     * Display a pop up JOptionPane message to the user
+     * @param title The title of the pop up message which the user sees
+     * @param msg The message you want to show the user
+     * @param msgType The type of message (either "error" or "info"), this determines the style of the JOptionPane
+     */
     private void displayMsg(String title, String msg, String msgType){
         // If camera is null, then it is likely we are testing headlessly so do not need popup messages
         if (camera != null){

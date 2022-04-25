@@ -17,7 +17,7 @@ import com.mygdx.pirategame.Hud;
 import com.mygdx.pirategame.PirateGame;
 
 /**
- * The type for the victory screen
+ * Victory Screen which is displayed when all colleges have been defeated
  *
  * @author Sam Pearson
  * @version 1.0

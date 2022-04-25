@@ -17,12 +17,12 @@ public class AbsorptionHeart extends PowerUp {
 
     /**
      * x
-     * Instantiates an entity
-     * Sets position in world
+     * Instantiates Absorption Heart entity
+     * Sets position in world which the heart shows and can be picked up for the player
      *
      * @param screen Visual data
-     * @param x      x position of entity
-     * @param y      y position of entity
+     * @param x      x position of absorption heart
+     * @param y      y position of absorption hear
      */
     public AbsorptionHeart(GameScreen screen, float x, float y) {
         super(screen, x, y);
@@ -71,7 +71,7 @@ public class AbsorptionHeart extends PowerUp {
     }
 
     /**
-     * Defines all the parts of the speed boost physical model. Sets it up for collisions
+     * Defines all the parts of the absorption heart physical model. Sets it up for collisions
      */
     @Override
     protected void defineEntity() {
@@ -96,6 +96,10 @@ public class AbsorptionHeart extends PowerUp {
         b2body.createFixture(fdef).setUserData(this);
     }
 
+    /**
+     * Handle when the absorption heart comes into contact with the player
+     * (i.e. the player picks up the powerup)
+     */
     @Override
     public void entityContact() {
         if (!destroyed) {
@@ -106,7 +110,6 @@ public class AbsorptionHeart extends PowerUp {
 
             // Set to destroy
             setToDestroyed = true;
-            Gdx.app.log("absorptionHeart", "collision");
             // Play pickup sound
             if (screen.game.getPreferences().isEffectsEnabled()) {
                 getSound().play(screen.game.getPreferences().getEffectsVolume());

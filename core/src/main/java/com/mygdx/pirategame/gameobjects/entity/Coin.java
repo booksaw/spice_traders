@@ -29,9 +29,9 @@ public class Coin extends Entity {
     /**
      * Instantiates a new Coin.
      *
-     * @param screen the screen its going onto
-     * @param x      the x value to be placed at
-     * @param y      the y value to be placed at
+     * @param screen the screen the coin will display one
+     * @param x      the x coordinate where the coin will be placed
+     * @param y      the y coordinate where the coin will be placed
      */
     public Coin(GameScreen screen, float x, float y) {
         super(screen, x, y);
@@ -158,7 +158,7 @@ public class Coin extends Entity {
             Hud.changeCoins(1);
             //Set to destroy
             setToDestroyed = true;
-            Gdx.app.log("coin", "collision");
+
             //Play pickup sound
             if (screen.game.getPreferences().isEffectsEnabled()) {
                 coinPickup.play(screen.game.getPreferences().getEffectsVolume());

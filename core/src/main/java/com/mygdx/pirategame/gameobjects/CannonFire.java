@@ -39,6 +39,10 @@ public class CannonFire extends Sprite {
      * Determines general cannonball data
      * Determines firing sound
      *
+     * For assessment 2, the method of firing cannons for the player has changed from using the keyboard to mouse click.
+     * Additionally, the cannon now fires in the direction of the mouse, not just from the side of the ship like before.
+     * We changed this because we felt it makes the game easier to play.
+     *
      * @param screen visual data
      * @param body body of origin
      * @param camera game scaling camera
@@ -55,11 +59,6 @@ public class CannonFire extends Sprite {
         System.out.println(targetX);
         System.out.println(targetY);
 
-
-        // Value of player source used to calculate angle
-        // Changed to fix issues with shooting and resize
-        //sourceX = Gdx.graphics.getWidth() / 2;
-        //sourceY = Gdx.graphics.getHeight() / 2;
 
         // Value of player source used to calculate angle
         sourceX = camera.viewportWidth /2;

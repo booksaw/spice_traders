@@ -598,18 +598,7 @@ public class GameScreen implements Screen {
         for (Map.Entry<CollegeMetadata, College> college : colleges.entrySet()) {
             college.getValue().draw(game.batch);
         }
-        /*
-        // Set image
-        Texture point = new Texture("entity/cannonball.png");
-        Sprite circle = new Sprite(point);
 
-        circle.setPosition(6200 / PirateGame.PPM, 1100 / PirateGame.PPM);
-        // scales the sprite depending on window size divided by a constant
-        circle.setSize(100 / PirateGame.PPM, 100 / PirateGame.PPM);
-
-        circle.draw(game.batch);
-
-         */
 
         //Updates all ships
         for (int i = 0; i < ships.size(); i++) {

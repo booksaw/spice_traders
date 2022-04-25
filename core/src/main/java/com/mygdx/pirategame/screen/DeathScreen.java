@@ -18,7 +18,7 @@ import com.mygdx.pirategame.PirateGame;
 
 /**
  * Death Screen
- * Produces a death screen on player death
+ * Tells the player that they have died and the game is over when player has no health remaining
  *
  *@author Sam Pearson
  *@version 1.0
@@ -69,23 +69,29 @@ public class DeathScreen implements Screen {
 
         stage.addActor(textTable);
 
+        // Create buttons
         TextButton replayButton = new TextButton("Replay", skin);
+        TextButton backButton = new TextButton("Return To Menu", skin);
 
+        // Add buttons to table to display on screen
+        buttonsTable.add(replayButton).fillX().uniformX();
+        buttonsTable.row().pad(10, 0, 10, 0);
+        buttonsTable.add(backButton).fillX().uniformX();
+        buttonsTable.bottom();
+
+        // Add buttons table to stage
+        stage.addActor(buttonsTable);
+
+        // Handle when buttons are clicked
         replayButton.addListener(new ChangeListener() {
              @Override
              public void changed(ChangeEvent event, Actor actor) {
+                 // Start new game
                 parent.changeScreen(PirateGame.GAME);
                 parent.killEndScreen();
              }
         });
 
-        buttonsTable.add(replayButton).fillX().uniformX();
-        buttonsTable.row().pad(10, 0, 10, 0);
-
-        //Create back button
-        TextButton backButton = new TextButton("Return To Menu", skin);
-
-        //Return to main menu and kill screen
         backButton.addListener(new ChangeListener() {
             /**
              * Switches screen
@@ -96,15 +102,12 @@ public class DeathScreen implements Screen {
              */
             @Override
             public void changed(ChangeEvent event, Actor actor) {
+                // Go to main menu screen
                 parent.changeScreen(PirateGame.MENU);
                 parent.killEndScreen();
             }
         });
 
-        buttonsTable.add(backButton).fillX().uniformX();
-        buttonsTable.bottom();
-
-        stage.addActor(buttonsTable);
 
     }
 
