@@ -11,14 +11,14 @@ import com.mygdx.pirategame.gameobjects.enemy.EnemyShip;
 import com.mygdx.pirategame.save.GameScreen;
 
 /**
- * Heals the player when picked up
+ * This powerup freezes enemies and prevents them from attacking the player
  */
 public class FreezeEnemy extends PowerUp {
     private Texture freezeEnemy;
 
     /**
-     * x
-     * Instantiates an entity
+     *
+     * Instantiates the powerup
      * Sets position in world
      *
      * @param screen Visual data
@@ -42,7 +42,7 @@ public class FreezeEnemy extends PowerUp {
     }
 
     /**
-     * Updates the absorption heart state. If needed, deletes the absorption heart if picked up
+     * Updates the powerup state. If needed, deletes the freeze enemy powerup icon if picked up
      */
     public void update() {
         //If coin is set to destroy and isnt, destroy it
@@ -67,6 +67,9 @@ public class FreezeEnemy extends PowerUp {
         }
     }
 
+    /**
+     * Handles power up expiring
+     */
     @Override
     public void endPowerUp() {
         // Start enemy movement
@@ -75,7 +78,7 @@ public class FreezeEnemy extends PowerUp {
     }
 
     /**
-     * Defines all the parts of the speed boost physical model. Sets it up for collisions
+     * Defines all the parts of the freeze enemy power up physical model. Sets it up for collisions
      */
     @Override
     protected void defineEntity() {
@@ -100,6 +103,9 @@ public class FreezeEnemy extends PowerUp {
         b2body.createFixture(fdef).setUserData(this);
     }
 
+    /**
+     * Handle contact with player ship
+     */
     @Override
     public void entityContact() {
         if (!destroyed) {
@@ -111,7 +117,7 @@ public class FreezeEnemy extends PowerUp {
 
             // Set to destroy
             setToDestroyed = true;
-            Gdx.app.log("freezeEnemy", "collision");
+
             // Play pickup sound
             if (screen.game.getPreferences().isEffectsEnabled()) {
                 getSound().play(screen.game.getPreferences().getEffectsVolume());

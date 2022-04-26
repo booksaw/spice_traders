@@ -35,7 +35,7 @@ public class Player extends Sprite {
     /**
      * Instantiates a new Player. Constructor only called once per game
      *
-     * @param screen visual data
+     * @param screen The screen the player ship will be shown on
      */
     public Player(GameScreen screen) {
         // Retrieves world data and creates ship texture
@@ -66,7 +66,7 @@ public class Player extends Sprite {
 
     /**
      * used to load player information from file
-      * @param element The element that stores the player information
+      * @param element The element in the file that stores the player information
      */
     public Player(GameScreen screen, Element element) {
         this(screen);
@@ -95,7 +95,6 @@ public class Player extends Sprite {
         }
 
         if (inTornadoRange) {
-            System.out.println("close");
             // move player towards tornado if in range
 
             // position of target to move towards

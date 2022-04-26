@@ -51,7 +51,7 @@ public class SeaMonster extends Enemy {
     private List<Checkpoint> path;
 
     /**
-     * Instantiates an enemy
+     * Instantiates the sea monster enemy
      *
      * @param screen Visual data
      * @param x      x position of entity
@@ -107,6 +107,9 @@ public class SeaMonster extends Enemy {
     private TextureRegion current_frame;
     private float state_time = 0f;
 
+    /**
+     * Handle animation of sea monster
+     */
     public static void loadAnimation() {
         int idleCols = 7;
         int movingCols = 8;
@@ -153,7 +156,7 @@ public class SeaMonster extends Enemy {
     }
 
     /**
-     * Defines enemy
+     * Defines characteristics of Sea Monster
      */
     @Override
     protected void defineEnemy() {
@@ -182,7 +185,6 @@ public class SeaMonster extends Enemy {
     @Override
     public void onContact() {
         updateDelay = 50;
-        Gdx.app.log("sea monster", "collision");
         //Play collision sound
         if (GameScreen.game.getPreferences().isEffectsEnabled()) {
             hit.play(GameScreen.game.getPreferences().getEffectsVolume());
@@ -220,7 +222,7 @@ public class SeaMonster extends Enemy {
     }
 
     /**
-     * Used
+     * Move sea monster towards checkpoint
      *
      * @param maxDistance The max distance that can be travelled
      * @param cp          The checkpoint to travel towards
@@ -399,6 +401,9 @@ public class SeaMonster extends Enemy {
         }
     }
 
+    /**
+     * Dispose of textures when not needed anymore
+     */
     public static void dispose(){
         waterSlashTexture.dispose();
         hit.dispose();

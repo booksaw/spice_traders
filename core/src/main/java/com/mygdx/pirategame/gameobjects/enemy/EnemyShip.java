@@ -315,7 +315,6 @@ public class EnemyShip extends Enemy {
     @Override
     public void onContact() {
         updateDelay = 50;
-        Gdx.app.log("enemy", "collision");
         //Play collision sound
         if (GameScreen.game.getPreferences().isEffectsEnabled()) {
             hit.play(GameScreen.game.getPreferences().getEffectsVolume());
@@ -326,6 +325,7 @@ public class EnemyShip extends Enemy {
         bar.changeHealth(damage);
         Hud.changePoints(5);
     }
+
 
     @Override
     public void onContactOther() {

@@ -9,13 +9,18 @@ import com.mygdx.pirategame.Hud;
 import com.mygdx.pirategame.PirateGame;
 import com.mygdx.pirategame.save.GameScreen;
 
+/**
+ * Coin magnet powerup class
+ * When the player has this powerup, they will pickup all coins within a radius of the player
+ * This class is for the powerup item, actual handling of coin magnet characteristics is handled by the coin class.
+ */
 public class CoinMagnet extends PowerUp {
     private Texture coinMagnet;
     public boolean toggleCoinMagnet = false;
 
     /**
-     * x
-     * Instantiates an entity
+     *
+     * Instantiates Coin Magnet powerup
      * Sets position in world
      *
      * @param screen Visual data
@@ -39,7 +44,7 @@ public class CoinMagnet extends PowerUp {
     }
 
     /**
-     * Defines the properties of an entity
+     * Defines the physical properties of the coin magnet object
      */
     @Override
     protected void defineEntity() {
@@ -85,6 +90,9 @@ public class CoinMagnet extends PowerUp {
         }
     }
 
+    /**
+     * Handle update of the coin magnet
+     */
     @Override
     public void update() {
         //If coin is set to destroy and isn't, destroy it
@@ -120,10 +128,12 @@ public class CoinMagnet extends PowerUp {
         for (Coin coin : screen.getCoins()) coin.toggleCoinMagnet();
     }
 
+    /**
+     * Define behaviour when powerup timer has finished
+     */
     @Override
     public void endPowerUp() {
         toggleCoinMagnet();
         active = false;
-        Gdx.app.log("coinMagnet", "ended");
     }
 }

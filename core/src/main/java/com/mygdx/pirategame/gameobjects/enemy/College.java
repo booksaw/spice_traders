@@ -179,6 +179,11 @@ public class College extends Enemy {
         }
     }
 
+    /**
+     * Method for saving ships in game save files
+     * @param document The document controlling the saving
+     * @param element The element to save to
+     */
     @Override
     protected void saveChild(Document document, Element element) {
 
@@ -234,7 +239,6 @@ public class College extends Enemy {
     @Override
     public void onContact() {
         //Damage the college and lower health bar
-        Gdx.app.log("enemy", "collision");
         health -= damage;
         bar.changeHealth(damage);
 
@@ -244,6 +248,9 @@ public class College extends Enemy {
         }
     }
 
+    /**
+     *
+     */
     @Override
     public void onContactOther() {
         // nothing to do here

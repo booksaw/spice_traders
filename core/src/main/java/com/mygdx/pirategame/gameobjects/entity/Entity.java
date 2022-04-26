@@ -36,7 +36,7 @@ public abstract class Entity extends Sprite {
     }
 
     /**
-     * Defines the properties of an entity
+     * Defines the physical properties of an entity
      */
     protected abstract void defineEntity();
 

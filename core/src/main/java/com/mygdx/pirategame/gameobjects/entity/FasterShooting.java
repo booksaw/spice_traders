@@ -9,6 +9,10 @@ import com.mygdx.pirategame.Hud;
 import com.mygdx.pirategame.PirateGame;
 import com.mygdx.pirategame.save.GameScreen;
 
+/**
+ * Faster shooting powerup
+ * When a player has this powerup, their cannon will fire faster
+ */
 public class FasterShooting extends PowerUp {
     private Texture fasterShooting;
 
@@ -64,6 +68,9 @@ public class FasterShooting extends PowerUp {
         }
     }
 
+    /**
+     * Handle expiration of the powerup
+     */
     @Override
     public void endPowerUp() {
         // Reset the speed of shooting by resetting shooting delay
@@ -101,7 +108,7 @@ public class FasterShooting extends PowerUp {
     }
 
     /**
-     * What happens when an entity collides with the speed boost, only the player ship can
+     * What happens when an entity collides with the speed boost. Only the player ship can collide/activate this function
      */
     @Override
     public void entityContact() {

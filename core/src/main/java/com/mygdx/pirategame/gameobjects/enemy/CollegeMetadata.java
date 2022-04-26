@@ -8,6 +8,9 @@ import com.mygdx.pirategame.PirateGame;
  */
 public enum CollegeMetadata {
 
+    /**
+     * Define colleges
+     */
     ALCUIN(0, "alcuin", 1900 / PirateGame.PPM, 2100 / PirateGame.PPM, 1800 / PirateGame.PPM, 2100 / PirateGame.PPM, 7),
     ANNELISTER(1, "anne_lister", 6304 / PirateGame.PPM, 1199 / PirateGame.PPM, 6200 / PirateGame.PPM, 1100 / PirateGame.PPM, 8),
     CONSTANTINE(2, "constantine", 6240 / PirateGame.PPM, 6703 / PirateGame.PPM, 6400 / PirateGame.PPM, 6700 / PirateGame.PPM, 8),
@@ -17,8 +20,12 @@ public enum CollegeMetadata {
     // 8900, 5500 constantine
     // 8000, 1700 anne lister
 
+    /**
+     * Method for getting college data from ID
+     * @param id ID number of college (0-3)
+     * @return College data
+     */
     public static CollegeMetadata getCollegeMetaFromId(Integer id) {
-        System.out.println("college " + id);
         switch (id) {
             case 0:
                 return ALCUIN;
@@ -29,8 +36,7 @@ public enum CollegeMetadata {
             case 3:
                 return GOODRICKE;
         }
-        System.out.println("returning null");
-        return null;
+        throw new Error("Invalid college ID provided");
     }
 
     private final int collegeID;
