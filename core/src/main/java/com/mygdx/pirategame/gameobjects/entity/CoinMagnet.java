@@ -16,7 +16,7 @@ import com.mygdx.pirategame.save.GameScreen;
  */
 public class CoinMagnet extends PowerUp {
     private Texture coinMagnet;
-    private boolean toggleCoinMagnet = false;
+    public boolean toggleCoinMagnet = false;
 
     /**
      *
@@ -101,8 +101,7 @@ public class CoinMagnet extends PowerUp {
             destroyed = true;
         }
         //Update position of power up
-        else if(!destroyed) {
-            setPosition(b2body.getPosition().x - getWidth() / 2f, b2body.getPosition().y - getHeight() / 2f);
+        else if(!destroyed) {            setPosition(b2body.getPosition().x - getWidth() / 2f, b2body.getPosition().y - getHeight() / 2f);
         }
         if (toggleCoinMagnet) {
             toggleCoinMagnet();
