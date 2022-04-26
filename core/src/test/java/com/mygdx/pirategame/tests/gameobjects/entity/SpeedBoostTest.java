@@ -10,6 +10,7 @@ import com.mygdx.pirategame.MockClass;
 import com.mygdx.pirategame.PirateGameTest;
 import com.mygdx.pirategame.gameobjects.entity.AbsorptionHeart;
 import com.mygdx.pirategame.gameobjects.entity.CoinMagnet;
+import com.mygdx.pirategame.gameobjects.entity.SpeedBoost;
 import com.mygdx.pirategame.save.GameScreen;
 import com.mygdx.pirategame.save.NewGameSaveLoader;
 import com.mygdx.pirategame.tests.FakeGL20;
@@ -19,14 +20,12 @@ import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.junit.Assert;
 
-import static org.junit.Assert.assertTrue;
-
 /**
- * Unit tests for the AbsorptionHeart class
+ * Unit tests for the SpeedBoost class
  *
  */
 @RunWith(PirateGameTest.class)
-public class AbsorptionHeartTest {
+public class SpeedBoostTest {
 
     private static GameScreen mockedGameScreen;
 
@@ -49,48 +48,48 @@ public class AbsorptionHeartTest {
      */
     @Test(expected = Test.None.class)
     public void testInstantiation() {
-        new AbsorptionHeart(mockedGameScreen, 10, 10);
+        new SpeedBoost(mockedGameScreen, 10, 10);
     }
-    
+
     /**
      * Tests to see if heart is destroyed after setting destroyed to true and updating
      */
     @Test
     public void testDestroy() {
-    	AbsorptionHeart heart = new AbsorptionHeart(mockedGameScreen, 10, 10);
-    	World world = heart.getWorld();
-    	Array<Body> bodies = new Array<Body>();
-    	world.getBodies(bodies);
-    	
-    	heart.setToDestroyed = true;
-    	heart.update();
-    	world.getBodies(bodies);
-    	
-    	Assert.assertFalse(bodies.contains(heart.b2body, false));
+        SpeedBoost speedBoost = new SpeedBoost(mockedGameScreen, 10, 10);
+        World world = speedBoost.getWorld();
+        Array<Body> bodies = new Array<Body>();
+        world.getBodies(bodies);
+
+        speedBoost.setToDestroyed = true;
+        speedBoost.update();
+        world.getBodies(bodies);
+
+        Assert.assertFalse(bodies.contains(speedBoost.b2body, false));
     }
-    
+
     /**
      * Tests to see if heart is positioned correctly when not destroyed
      */
     @Test
     public void testPosition() {
-    	AbsorptionHeart heart = new AbsorptionHeart(mockedGameScreen, 10, 10);
-    	Vector2 oldPos = heart.b2body.getPosition();
-    	heart.update();
-    	Vector2 newPos = heart.b2body.getPosition();
-    	    	
-    	Assert.assertTrue(oldPos == newPos);
+        SpeedBoost speedBoost = new SpeedBoost(mockedGameScreen, 10, 10);
+        Vector2 oldPos = speedBoost.b2body.getPosition();
+        speedBoost.update();
+        Vector2 newPos = speedBoost.b2body.getPosition();
+
+        Assert.assertTrue(oldPos == newPos);
     }
-    
+
     /**
-     * Tests to see if power up ends correctly, this ability isn't on a timer so this is all that is needed
+     * Tests to see if power up ends correctly
      */
     @Test
     public void testPowerupEnd() {
-    	AbsorptionHeart heart = new AbsorptionHeart(mockedGameScreen, 10, 10);
-    	heart.timer = heart.duration + 1;
-    	heart.update();
-      	Assert.assertTrue(!heart.active);
+        SpeedBoost speedBoost = new SpeedBoost(mockedGameScreen, 10, 10);
+        speedBoost.timer = speedBoost.duration + 1;
+        speedBoost.update();
+        Assert.assertTrue(!speedBoost.active);
     }
 
     /**
@@ -98,28 +97,19 @@ public class AbsorptionHeartTest {
      */
     @Test
     public void testDefineEntity() {
-        AbsorptionHeart heart = new AbsorptionHeart(mockedGameScreen, 10, 10);
-        Assert.assertTrue(heart.b2body != null);
+        SpeedBoost speedBoost = new SpeedBoost(mockedGameScreen, 10, 10);
+        Assert.assertTrue(speedBoost.b2body != null);
     }
 
-    /**
-     * Tests to see if the collision body is correctly defined
-     */
-    @Test
-    public void testGetSound() {
-        AbsorptionHeart heart = new AbsorptionHeart(mockedGameScreen, 10, 10);
-        Assert.assertNotNull(heart.getSound());
-    }
 
-/*
-    *//**
-     * Tests to see if entity is destroyed upon contact with another object
-     * body destruction has been previously tested when setToDestroyed is true
-     *//*
-    @Test
-    public void testContact() {
-    	AbsorptionHeart heart = new AbsorptionHeart(mockedGameScreen, 10, 10);
-    	heart.entityContact();
-      	Assert.assertTrue(heart.setToDestroyed);
-    }*/
+//    /**
+//     * Tests to see if entity is destroyed upon contact with another object
+//     * body destruction has been previously tested when setToDestroyed is true
+//     */
+//    @Test
+//    public void testContact() {
+//    	AbsorptionHeart heart = new AbsorptionHeart(mockedGameScreen, 10, 10);
+//    	heart.entityContact();
+//      	Assert.assertTrue(heart.setToDestroyed);
+//    }
 }

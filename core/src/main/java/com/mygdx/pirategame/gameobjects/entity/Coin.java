@@ -16,7 +16,7 @@ import com.mygdx.pirategame.save.GameScreen;
  * Creates an object for each coin
  * Extends the entity class to define coin as an entity
  *
- *@author Joe Dickinson
+ *@author Joe Dickinson, Charlie Crosley
  *@version 1.0
  */
 public class Coin extends Entity {
@@ -66,8 +66,10 @@ public class Coin extends Entity {
                 // move coin towards player if in range
 
                 // position of player
-                float targetX = player.getX();
-                float targetY = player.getY();
+                //float targetX = player.getX();
+                float targetX = screen.getPlayerPos().x;
+                //float targetY = player.getY();
+                float targetY = screen.getPlayerPos().y;
                 // position of coin
                 float sourceX = b2body.getPosition().x;
                 float sourceY = b2body.getPosition().y;
