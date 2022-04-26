@@ -9,6 +9,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.pirategame.MockClass;
+import com.mygdx.pirategame.PirateGameTest;
 import com.mygdx.pirategame.gameobjects.entity.AbsorptionHeart;
 import com.mygdx.pirategame.gameobjects.entity.Coin;
 import com.mygdx.pirategame.save.GameScreen;
@@ -16,8 +17,10 @@ import com.mygdx.pirategame.tests.FakeGL20;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 
+@RunWith(PirateGameTest.class)
 public class CoinTest {
 
     private static GameScreen mockedGameScreen;
