@@ -319,7 +319,7 @@ public class EnemyShip extends Enemy {
         if (GameScreen.game.getPreferences().isEffectsEnabled()) {
             hit.play(GameScreen.game.getPreferences().getEffectsVolume());
         }
-        System.out.println(damage);
+        //System.out.println(damage);
         //Deal with the damage
         health -= damage;
         bar.changeHealth(damage);

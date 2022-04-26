@@ -56,8 +56,8 @@ public class CannonFire extends Sprite {
         mouse = PirateGame.getScaledMouseLocation(camera);
         targetX = mouse.x;
         targetY = mouse.y;
-        System.out.println(targetX);
-        System.out.println(targetY);
+        //.out.println(targetX);
+        //System.out.println(targetY);
 
 
         // Value of player source used to calculate angle

@@ -102,7 +102,7 @@ public class PathFinderTest {
 
         List<Checkpoint> cps = pathFinder.getPath(2432, 2432, 2304, 1792, 1, 1);
 
-        System.out.println(cps);
+        //System.out.println(cps);
         Assert.assertFalse(cps == null || cps.isEmpty());
     }
 

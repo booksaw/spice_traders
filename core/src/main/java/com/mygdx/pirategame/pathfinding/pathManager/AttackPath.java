@@ -83,7 +83,7 @@ public class AttackPath implements PathManager {
                 }
             }
         }
-        System.out.println("reverting to previous path");
+        //System.out.println("reverting to previous path");
         // attack path could not be found, reverting to passive
         ship.setPathManager(previousPath);
         return null;
