@@ -296,7 +296,11 @@ public class GoldShop implements Screen {
      */
     @Override
     public void hide() {
-
+        // Disables all the buttons
+        fasterCannonBtn.setDisabled(true);
+        healthBoostBtn.setDisabled(true);
+        increaseCannonDamageBtn.setDisabled(true);
+        closeButton.setDisabled(true);
     }
 
     /**
@@ -305,6 +309,10 @@ public class GoldShop implements Screen {
     @Override
     public void dispose() {
         stage.dispose();
+        fasterCannonBtn.remove();
+        healthBoostBtn.remove();
+        increaseCannonDamageBtn.remove();
+        closeButton.remove();
         //shapeRenderer.dispose();
     }
 
