@@ -186,6 +186,19 @@ public class GameScreen implements Screen {
 
         //Setting stage
         stage = new Stage(new ScreenViewport());
+
+
+        // Adds message to tell the player they can open the gold shop
+        shopLabel = new Label("Press \"E\" to enter the Gold Shop", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        Table table1 = new Table(); // Shop text
+        table1.add(shopLabel).padTop(20).top();
+        table1.top();
+        table1.setFillParent(true);
+        shopLabel.setVisible(false);
+        stage.addActor(table1);
+
+        // Initialise the gold shop
+        goldShop = new GoldShop(GameScreen.game, camera, this);
     }
 
     /**
@@ -427,11 +440,7 @@ public class GameScreen implements Screen {
 
         Body body = getPlayer().b2body;
         Vector2 position = body.getPosition();
-        shopLabel = new Label("Press \"E\" to enter the Gold Shop", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        Table table1 = new Table(); // Shop text
-        table1.add(shopLabel).padTop(20).top();
-        table1.top();
-        table1.setFillParent(true);
+
         for (Map.Entry<CollegeMetadata, College> college : colleges.entrySet()) {
             if (college.getValue().getMetaData().isPlayer()) {
                 float distance = position.dst(college.getValue().getMetaData().getCentrePosition());
@@ -451,12 +460,10 @@ public class GameScreen implements Screen {
                         }
                     }
                 } else {
-
                     shopLabel.setVisible(false);
                 }
             }
         }
-        stage.addActor(table1);
     }
 
     /**
@@ -898,13 +905,9 @@ public class GameScreen implements Screen {
      * Opens gold shop
      */
     public void openShop() {
-
-
         goldShop = new GoldShop(GameScreen.game, camera, this);
         goldShop.show();
-        //table.setVisible(false);
         gameStatus = GOLD_SHOP;
-
     }
 
     /**
@@ -913,10 +916,10 @@ public class GameScreen implements Screen {
 
     public void closeShop() {
         goldShop = new GoldShop(GameScreen.game, camera, this);
-        goldShop.dispose();
+        goldShop.show();
+        goldShop.hide();
+        goldShop = null;
         resume();
-        //table.setVisible(true);
-
     }
 
     /**
