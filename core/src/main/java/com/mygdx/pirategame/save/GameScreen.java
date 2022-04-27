@@ -69,6 +69,7 @@ public class GameScreen implements Screen {
     private static float maxSpeed = 4f;
     private static float accel = 0.1f;
     private static float shootingDelay = 0.5f;
+    private int[] pos_tornado;
     private float stateTime;
     private float timeTornado;
 
@@ -178,9 +179,9 @@ public class GameScreen implements Screen {
         //Random tornado
         Tornados = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            int[] pos = getRandomLocation();
+            pos_tornado = getRandomLocation();
             //Add a tornado at the random coords
-            Tornados.add(new Tornado(this, pos[0], pos[1]));
+            Tornados.add(new Tornado(this, pos_tornado[0], pos_tornado[1]));
         }
         
 
