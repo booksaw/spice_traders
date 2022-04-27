@@ -95,7 +95,7 @@ public class Player extends Sprite {
         }
 
         if (inTornadoRange) {
-            System.out.println("close");
+            //System.out.println("close");
             // move player towards tornado if in range
 
             // position of target to move towards
@@ -111,7 +111,7 @@ public class Player extends Sprite {
 
             double tornadoDistance = GameScreen.getNearestTornado().getDistance();
 
-            if (tornadoDistance > 3) {
+            if (tornadoDistance > 8) {
                 //System.out.println("far");
                 Player.inTornadoRange = false;
                 //Entity.tornadoContact();

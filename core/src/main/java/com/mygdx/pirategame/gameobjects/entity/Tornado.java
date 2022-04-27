@@ -33,6 +33,7 @@ public class Tornado extends Entity {
     float angle;
     //public static boolean active = false;
     private float timer;
+    private float moveTimer;
 
     public static final int COLLISIONRADIUS = 55;
     public static final int COLLISIONOFFSET = 15;
@@ -70,8 +71,9 @@ public class Tornado extends Entity {
      */
     public void update(float dt) {
         timer += dt;
+        moveTimer += dt;
         // Once tornado has existed for a certain amount of time it is removed
-        if (timer > 30) {
+        if (timer > 20) {
             setToDestroyed = true;
         }
 
@@ -94,9 +96,11 @@ public class Tornado extends Entity {
         */
 
         if (getDistance() < 5) {
-
-            System.out.println(getDistance());
-            Player.inTornadoRange = true;
+            if (moveTimer > 1) {
+                System.out.println(getDistance());
+                Player.inTornadoRange = true;
+                moveTimer = 0;
+            }
         }
 
         // Update position and angle of sea monster
