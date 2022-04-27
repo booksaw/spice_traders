@@ -2,6 +2,7 @@ package com.mygdx.pirategame.pathfinding.pathManager;
 
 import com.mygdx.pirategame.gameobjects.enemy.EnemyShip;
 import com.mygdx.pirategame.gameobjects.enemy.SeaMonster;
+import com.mygdx.pirategame.gameobjects.entity.Tornado;
 import com.mygdx.pirategame.save.GameScreen;
 
 /**
@@ -12,6 +13,7 @@ public abstract class WaitingPath implements PathManager {
 
     protected EnemyShip ship = null;
     protected SeaMonster seaMonster = null;
+    protected Tornado tornado = null;
     protected final GameScreen screen;
 
     /**
@@ -29,6 +31,11 @@ public abstract class WaitingPath implements PathManager {
         this.screen = screen;
     }
 
+    public WaitingPath(Tornado tornado, GameScreen screen) {
+        this.tornado = tornado;
+        this.screen = screen;
+    }
+
     @Override
     public void update(float dt) {
         // if the ship is in range of the player
@@ -40,6 +47,9 @@ public abstract class WaitingPath implements PathManager {
         else {
             if (seaMonster.b2body.getPosition().dst(screen.getPlayerPos()) < 3) {
                 seaMonster.setPathManager(new AttackPath(this, seaMonster, screen));
+            }
+            if (tornado.b2body.getPosition().dst(screen.getPlayerPos()) < 3) {
+                tornado.setPathManager(new AttackPath(this, tornado, screen));
             }
         }
 

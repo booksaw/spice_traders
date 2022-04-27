@@ -35,7 +35,7 @@ public class Player extends Sprite {
     /**
      * Instantiates a new Player. Constructor only called once per game
      *
-     * @param screen The screen the player ship will be shown on
+     * @param screen visual data
      */
     public Player(GameScreen screen) {
         // Retrieves world data and creates ship texture
@@ -53,20 +53,20 @@ public class Player extends Sprite {
         breakSound = Gdx.audio.newSound(Gdx.files.internal("sfx_and_music/wood-bump.mp3"));
         // Sound effect for cannonball hit
         cannonballHitSound = Gdx.audio.newSound(Gdx.files.internal("sfx_and_music/ship-hit.wav"));
-        
+
         // Sets cannonball array
         cannonBalls = new Array<>();
         // Decrease health if playing on hard mode
         System.out.println(screen.difficulty);
-        //System.out.println(Hud.getHealth());
-        if (screen.difficulty < 1 && Hud.getHealth() != null){
+        if (screen.difficulty < 1){
             Hud.changeHealth(-(int) (Hud.getHealth() * screen.difficulty / 4));
         }
+        System.out.println(Hud.getHealth());
     }
 
     /**
      * used to load player information from file
-      * @param element The element in the file that stores the player information
+     * @param element The element that stores the player information
      */
     public Player(GameScreen screen, Element element) {
         this(screen);
@@ -95,6 +95,7 @@ public class Player extends Sprite {
         }
 
         if (inTornadoRange) {
+            System.out.println("close");
             // move player towards tornado if in range
 
             // position of target to move towards
@@ -110,11 +111,10 @@ public class Player extends Sprite {
 
             double tornadoDistance = GameScreen.getNearestTornado().getDistance();
 
-            if (tornadoDistance > 8) {
+            if (tornadoDistance > 3) {
                 //System.out.println("far");
                 Player.inTornadoRange = false;
                 //Entity.tornadoContact();
-
             }
             // Uses a triangle to calculate the new trajectory
             double newAngle = Math.atan2(targetY - sourceY, targetX - sourceX);
