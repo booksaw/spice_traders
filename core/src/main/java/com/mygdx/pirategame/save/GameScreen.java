@@ -174,15 +174,15 @@ public class GameScreen implements Screen {
 
         loadManager.load(this);
 
-        /*
+        
         //Random tornado
         Tornados = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            pos = getRandomLocation();
+            int[] pos = getRandomLocation();
             //Add a tornado at the random coords
             Tornados.add(new Tornado(this, pos[0], pos[1]));
         }
-        */
+        
 
         //Setting stage
         stage = new Stage(new ScreenViewport());
