@@ -535,14 +535,14 @@ public class GameScreen implements Screen {
         }
 
         timeTornado += dt;
-        // Once it has been 60 seconds, release a tornado
+        // Once it has been x seconds, release a tornado
         if (timeTornado > 30) {
             // Release a tornado
             int[] loc = getRandomLocation();
             // Add a tornado at the random location
             Tornados.add(new Tornado(this, loc[0], loc[1]));
             System.out.println("Tornado Released");
-            // Reset timer to 0, every 60 seconds a tornado is released
+            // Reset timer to 0, every x seconds a tornado is released
             timeTornado = 0;
         }
 
