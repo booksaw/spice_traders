@@ -536,7 +536,7 @@ public class GameScreen implements Screen {
 
         timeTornado += dt;
         // Once it has been 60 seconds, release a tornado
-        if (timeTornado > 60) {
+        if (timeTornado > 30) {
             // Release a tornado
             int[] loc = getRandomLocation();
             // Add a tornado at the random location

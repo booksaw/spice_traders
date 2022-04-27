@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.mygdx.pirategame.PirateGame;
 import com.mygdx.pirategame.gameobjects.enemy.EnemyShip;
 import com.mygdx.pirategame.gameobjects.enemy.SeaMonster;
+import com.mygdx.pirategame.gameobjects.entity.Tornado;
 import com.mygdx.pirategame.save.GameScreen;
 
 import java.util.Random;
@@ -17,6 +18,7 @@ public class AttackPath implements PathManager {
     private final PathManager previousPath;
     private EnemyShip ship = null;
     private SeaMonster seaMonster = null;
+    private Tornado tornado = null;
     private final GameScreen screen;
 
     public AttackPath(PathManager previousPath, EnemyShip ship, GameScreen screen){
@@ -28,6 +30,12 @@ public class AttackPath implements PathManager {
     public AttackPath(PathManager previousPath, SeaMonster seaMonster, GameScreen screen){
         this.previousPath = previousPath;
         this.seaMonster = seaMonster;
+        this.screen = screen;
+    }
+
+    public AttackPath(PathManager previousPath, Tornado tornado, GameScreen screen){
+        this.previousPath = previousPath;
+        this.tornado = tornado;
         this.screen = screen;
     }
 
@@ -45,8 +53,10 @@ public class AttackPath implements PathManager {
             if (ship != null) {
                 diff = ship.b2body.getPosition().sub(screen.getPlayerPos());
             }
-            else {
+            else if (seaMonster != null) {
                 diff = seaMonster.b2body.getPosition().sub(screen.getPlayerPos());
+            } else {
+                diff = tornado.b2body.getPosition().sub(screen.getPlayerPos());
             }
             // limiting the distance of the player to 2 tiles
             diff = diff.limit(200 / tileWidth);
@@ -75,9 +85,13 @@ public class AttackPath implements PathManager {
                     // going to that location
                     return new Vector2(x, y);
                 }
-            }
-            else {
+            } else if (seaMonster != null) {
                 if (seaMonster.isTraversable(x, y)) {
+                    // going to that location
+                    return new Vector2(x, y);
+                }
+            } else {
+                if (tornado.isTraversable(x, y)) {
                     // going to that location
                     return new Vector2(x, y);
                 }
@@ -105,7 +119,7 @@ public class AttackPath implements PathManager {
                 fireDelay = 0;
             }
         }
-        else {
+        else if (seaMonster != null) {
             if (seaMonster.b2body.getPosition().dst(screen.getPlayerPos()) > 7) {
                 seaMonster.setPathManager(previousPath);
                 return;
@@ -115,6 +129,12 @@ public class AttackPath implements PathManager {
             if(fireDelay > 50){
                 seaMonster.fire();
                 fireDelay = 0;
+            }
+        }
+        else {
+            if (tornado.b2body.getPosition().dst(screen.getPlayerPos()) > 7) {
+                tornado.setPathManager(previousPath);
+                return;
             }
         }
     }
