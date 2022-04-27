@@ -371,6 +371,9 @@ public class GameScreen implements Screen {
         exit.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
+                gameStatus = GAME_RUNNING;
+                pauseTable.setVisible(false);
+                table.setVisible(true);
                 game.changeScreen(PirateGame.MENU);
             }
         });

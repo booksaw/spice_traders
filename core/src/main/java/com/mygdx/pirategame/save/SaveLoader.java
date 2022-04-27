@@ -44,6 +44,11 @@ public abstract class SaveLoader {
             screen.getPlayer().save(document, player);
             root.appendChild(player);
 
+            // saving player information
+            Element difficulty = document.createElement("difficulty");
+            difficulty.appendChild(document.createTextNode(String.valueOf(screen.difficulty)));
+            root.appendChild(difficulty);
+
             // saving points / gold
             Element hud = document.createElement("hud");
             Hud.save(document, hud);
