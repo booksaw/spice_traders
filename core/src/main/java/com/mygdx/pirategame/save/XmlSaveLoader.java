@@ -41,6 +41,9 @@ public class XmlSaveLoader extends SaveLoader {
             Element player = (Element) root.getElementsByTagName("player").item(0);
             screen.player = new Player(screen, player);
 
+            Element difficulty = (Element) root.getElementsByTagName("difficulty").item(0);
+            screen.difficulty = Float.parseFloat(difficulty.getTextContent());
+
             Hud.load((Element) root.getElementsByTagName("hud").item(0));
 
 
