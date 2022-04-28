@@ -62,7 +62,7 @@ public class College extends Enemy {
         setBounds(0, 0, 64 / PirateGame.PPM, 110 / PirateGame.PPM);
         setRegion(enemyCollege);
         setOrigin(32 / PirateGame.PPM, 55 / PirateGame.PPM);
-        damage = 5 * screen.difficulty;
+        damage = 5 * screen.getDifficulty();
         cannonBalls = new Array<>();
         int ranX = 0;
         int ranY = 0;
@@ -108,7 +108,7 @@ public class College extends Enemy {
         setBounds(0, 0, 64 / PirateGame.PPM, 110 / PirateGame.PPM);
         setRegion(enemyCollege);
         setOrigin(32 / PirateGame.PPM, 55 / PirateGame.PPM);
-        damage = 5 * screen.difficulty;
+        damage = 5 * screen.getDifficulty();
         cannonBalls = new Array<>();
 
         //Generates college fleet

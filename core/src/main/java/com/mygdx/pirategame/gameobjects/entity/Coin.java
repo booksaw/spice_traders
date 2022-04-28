@@ -162,7 +162,8 @@ public class Coin extends Entity {
             setToDestroyed = true;
 
             //Play pickup sound
-            if (screen.game.getPreferences().isEffectsEnabled()) {
+            // Checking if game is null allows testing of this function
+            if (screen.game != null && screen.game.getPreferences().isEffectsEnabled()) {
                 coinPickup.play(screen.game.getPreferences().getEffectsVolume());
             }
         }

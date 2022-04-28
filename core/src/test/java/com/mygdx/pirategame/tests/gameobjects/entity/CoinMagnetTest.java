@@ -8,6 +8,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.pirategame.MockClass;
 import com.mygdx.pirategame.PirateGameTest;
+import com.mygdx.pirategame.gameobjects.entity.AbsorptionHeart;
 import com.mygdx.pirategame.gameobjects.entity.CoinMagnet;
 import com.mygdx.pirategame.save.GameScreen;
 import com.mygdx.pirategame.tests.FakeGL20;
@@ -114,14 +115,14 @@ public class CoinMagnetTest {
         Assert.assertFalse(coinMagnet.toggleCoinMagnet);
     }
 
-//    /**
-//     * Tests to see if entity is destroyed upon contact with another object
-//     * body destruction has been previously tested when setToDestroyed is true
-//     */
-//    @Test
-//    public void testContact() {
-//    	AbsorptionHeart heart = new AbsorptionHeart(mockedGameScreen, 10, 10);
-//    	heart.entityContact();
-//      	Assert.assertTrue(heart.setToDestroyed);
-//    }
+    /**
+     * Tests to see if entity is destroyed upon contact with another object
+     * body destruction has been previously tested when setToDestroyed is true
+     */
+    @Test
+    public void testContact() {
+        CoinMagnet coinMagnet = new CoinMagnet(mockedGameScreen, 10, 10);
+        coinMagnet.entityContact();
+        Assert.assertTrue(coinMagnet.setToDestroyed);
+    }
 }

@@ -12,6 +12,7 @@ import com.mygdx.pirategame.MockClass;
 import com.mygdx.pirategame.PirateGameTest;
 import com.mygdx.pirategame.gameobjects.entity.AbsorptionHeart;
 import com.mygdx.pirategame.gameobjects.entity.Coin;
+import com.mygdx.pirategame.gameobjects.entity.CoinMagnet;
 import com.mygdx.pirategame.save.GameScreen;
 import com.mygdx.pirategame.tests.FakeGL20;
 import org.junit.Assert;
@@ -130,5 +131,16 @@ public class CoinTest {
         coin.coinMagnetActive = true;
         coin.entityContact();
         Assert.assertTrue(coin.inMagnetRange);
+    }
+
+    /**
+     * Tests to see if entity is destroyed upon contact with another object
+     * body destruction has been previously tested when setToDestroyed is true
+     */
+    @Test
+    public void testContact() {
+        Coin coin = new Coin(mockedGameScreen, 10, 10);
+        coin.entityContact();
+        Assert.assertTrue(coin.setToDestroyed);
     }
 }

@@ -1022,6 +1022,13 @@ public class GameScreen implements Screen {
         return monsters;
     }
 
+    /**
+     * @return a scaling float representing the game difficulty
+     */
+    public float getDifficulty() {
+        return difficulty;
+    }
+
     public boolean isGameRunning() {
         return game.isGameRunning();
     }

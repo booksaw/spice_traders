@@ -83,7 +83,7 @@ public class EnemyShip extends Enemy {
         setOrigin(32 / PirateGame.PPM, COLLISIONRADIUS / PirateGame.PPM);
 
         // Scale the damage that the entity takes with the difficulty
-        damage = 20 * screen.difficulty;
+        damage = 20 * screen.getDifficulty();
 
         if (collegeMeta != null) {
             this.pathManager = new PatrolPath(this, screen);
@@ -115,7 +115,7 @@ public class EnemyShip extends Enemy {
         setOrigin(32 / PirateGame.PPM, COLLISIONRADIUS / PirateGame.PPM);
 
         // Scale the damage that the entity takes with the difficulty
-        damage = 20 * screen.difficulty;
+        damage = 20 * screen.getDifficulty();
 
         if (collegeMeta != null) {
             this.pathManager = new PatrolPath(this, screen);
