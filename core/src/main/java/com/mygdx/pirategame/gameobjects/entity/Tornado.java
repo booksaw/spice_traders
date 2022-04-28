@@ -95,7 +95,7 @@ public class Tornado extends Entity {
         }
         */
 
-        if (getDistance() < 5) {
+        if (getDistance() < 3) {
             if (moveTimer > 1) {
                 System.out.println(getDistance());
                 Player.inTornadoRange = true;

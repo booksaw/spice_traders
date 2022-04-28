@@ -33,13 +33,9 @@ import com.mygdx.pirategame.gameobjects.enemy.College;
 import com.mygdx.pirategame.gameobjects.enemy.CollegeMetadata;
 import com.mygdx.pirategame.gameobjects.enemy.EnemyShip;
 import com.mygdx.pirategame.gameobjects.enemy.SeaMonster;
-import com.mygdx.pirategame.gameobjects.entity.Coin;
-import com.mygdx.pirategame.pathfinding.PathFinder;
-
 import com.mygdx.pirategame.gameobjects.entity.*;
-
+import com.mygdx.pirategame.pathfinding.PathFinder;
 import com.mygdx.pirategame.screen.GoldShop;
-import com.mygdx.pirategame.screen.MainMenu;
 import com.mygdx.pirategame.screen.OptionsScreen;
 import com.mygdx.pirategame.world.AvailableSpawn;
 import com.mygdx.pirategame.world.WorldContactListener;
@@ -762,12 +758,14 @@ public class GameScreen implements Screen {
     public void gameOverCheck() {
         //Lose game if ship on 0 health or Alcuin is destroyed
         if (Hud.getHealth() <= 0 || getCollege(CollegeMetadata.ALCUIN).destroyed) {
+            game.gameRunning = false;
             game.changeScreen(PirateGame.DEATH);
             game.killGame();
             game.resetValues();
         }
         //Win game if all colleges destroyed
         else if (getCollege(CollegeMetadata.ANNELISTER).destroyed && getCollege(CollegeMetadata.CONSTANTINE).destroyed && getCollege(CollegeMetadata.GOODRICKE).destroyed) {
+            game.gameRunning = true;
             game.changeScreen(PirateGame.VICTORY);
             game.killGame();
             game.resetValues();
@@ -1022,5 +1020,9 @@ public class GameScreen implements Screen {
      */
     public List<SeaMonster> getMonsters() {
         return monsters;
+    }
+
+    public boolean isGameRunning() {
+        return game.isGameRunning();
     }
 }

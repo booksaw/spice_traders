@@ -1,12 +1,5 @@
 package com.mygdx.pirategame.tests.gameobjects.enemy;
 
-import static org.junit.Assert.assertEquals;
-
-import org.junit.BeforeClass;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mockito;
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.mygdx.pirategame.Hud;
@@ -16,6 +9,12 @@ import com.mygdx.pirategame.gameobjects.enemy.College;
 import com.mygdx.pirategame.gameobjects.enemy.CollegeMetadata;
 import com.mygdx.pirategame.save.GameScreen;
 import com.mygdx.pirategame.tests.FakeGL20;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mockito;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Test the college class
@@ -64,4 +63,17 @@ public class CollegeTest {
 		assertEquals(Hud.getPoints(), Integer.valueOf(100));
 	}
 
+	@Test
+	public void testOnTrigAlcuinDeath() {
+		GameScreen screen = mockedGameScreen;
+		College college = new College(screen, CollegeMetadata.ALCUIN, 0, null);
+		// destroying the college
+		Hud.health = 0;
+		college.setToDestroy = true;
+		college.update(0);
+
+		// call to check if the death screen is displayed
+		screen.gameOverCheck();
+		assertEquals(screen.isGameRunning(), false);
+	}
 }

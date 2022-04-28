@@ -58,6 +58,8 @@ public class PirateGame extends Game {
 	public final static int HELP = 4;
 	public final static int VICTORY = 5;
 
+	public boolean gameRunning = true;
+
 	// Constant for selecting difficulty
 	public final static float EASY = 1.3f;
 	public final static float NORMAL = 1f;
@@ -127,6 +129,7 @@ public class PirateGame extends Game {
 
 			case DEATH:
 				if (deathScreen == null) deathScreen = new DeathScreen(this);
+				gameRunning = false;
 				this.setScreen(deathScreen);
 				break;
 
@@ -221,5 +224,9 @@ public class PirateGame extends Game {
 	@Override
 	public void dispose () {
 		batch.dispose();
+	}
+
+	public boolean isGameRunning() {
+		return gameRunning;
 	}
 }
