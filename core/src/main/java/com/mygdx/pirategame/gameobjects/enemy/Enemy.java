@@ -18,7 +18,7 @@ import org.w3c.dom.Element;
  */
 public abstract class Enemy extends Sprite {
     protected World world;
-    protected GameScreen screen;
+    public GameScreen screen;
     public Body b2body;
     public boolean setToDestroy;
     public boolean destroyed;

@@ -55,6 +55,9 @@ public class MockClass {
         // mocking the path finder
         Mockito.when(screen.getPathFinder()).thenReturn(new PathFinder(screen, 64));
 
+        // mocking the game difficulty
+        Mockito.when(screen.getDifficulty()).thenReturn(1f);
+
         return screen;
     }
 

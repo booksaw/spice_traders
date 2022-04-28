@@ -1,4 +1,4 @@
-package com.mygdx.pirategame.tests.screen;
+package com.mygdx.pirategame.tests.save;
 
 import com.mygdx.pirategame.save.GameScreen;
 import org.junit.Test;

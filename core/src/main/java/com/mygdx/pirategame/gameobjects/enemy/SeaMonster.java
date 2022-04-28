@@ -45,14 +45,14 @@ public class SeaMonster extends Enemy {
     private Array<CollegeFire> projectiles;
     private static Texture waterSlashTexture;
 
-    private PathManager pathManager = null;
+    public PathManager pathManager = null;
 
     /**
      * used to delay pathfinding when the ship collides with something
      */
     private int updateDelay = 0;
 
-    private List<Checkpoint> path;
+    public List<Checkpoint> path;
 
     /**
      * Instantiates the sea monster enemy
@@ -78,7 +78,7 @@ public class SeaMonster extends Enemy {
         setOrigin(90 / PirateGame.PPM, COLLISIONRADIUS / PirateGame.PPM);
 
         // Scale the damage that the entity takes with the difficulty
-        damage = 5 * screen.difficulty;
+        damage = 5 * screen.getDifficulty();
     }
 
     /**
@@ -104,8 +104,7 @@ public class SeaMonster extends Enemy {
         setOrigin(90 / PirateGame.PPM, COLLISIONRADIUS / PirateGame.PPM);
 
         // Scale the damage that the entity takes with the difficulty
-        damage = 5 * screen.difficulty;
-
+        damage = 5 * screen.getDifficulty();
     }
 
     /**
@@ -113,7 +112,7 @@ public class SeaMonster extends Enemy {
      */
     private static Animation idleAnimation;
     private static Animation movingAnimation;
-    private TextureRegion current_frame;
+    public TextureRegion current_frame;
     private float state_time = 0f;
 
     /**
@@ -195,7 +194,7 @@ public class SeaMonster extends Enemy {
     public void onContact() {
         updateDelay = 50;
         //Play collision sound
-        if (GameScreen.game.getPreferences().isEffectsEnabled()) {
+        if (GameScreen.game != null && GameScreen.game.getPreferences().isEffectsEnabled()) {
             hit.play(GameScreen.game.getPreferences().getEffectsVolume());
         }
         //Deal with the damage
@@ -220,6 +219,8 @@ public class SeaMonster extends Enemy {
      */
     public boolean inPlayerRange() {
         return screen.getPlayerPos().dst(b2body.getPosition()) < 7;
+        /*Vector2 pos = screen.getPlayerPos();
+        return pos.dst(b2body.getPosition()) < 7;*/
     }
 
     /**
@@ -283,15 +284,7 @@ public class SeaMonster extends Enemy {
         }
 
         if (setToDestroy) {
-            //Play death noise
-            if (GameScreen.game.getPreferences().isEffectsEnabled()) {
-                destroy.play(GameScreen.game.getPreferences().getEffectsVolume());
-            }
-            world.destroyBody(b2body);
-            destroyed = true;
-            //Change player coins and points
-            Hud.changePoints(50);
-            Hud.changeCoins(50);
+            destroySeaMonster();
         }
 
         // update texture to current frame in animation
@@ -314,7 +307,7 @@ public class SeaMonster extends Enemy {
         }
 
         //Update health bar
-        bar.update();
+        if (bar != null) bar.update();
 
         if (health <= 0) {
             setToDestroy = true;
@@ -369,6 +362,19 @@ public class SeaMonster extends Enemy {
             Vector2 v = travelToCheckpoint(speed, cp);
             b2body.setLinearVelocity(v);
         }
+    }
+
+    public void destroySeaMonster() {
+        //Play death noise
+        // Checking if game is null allows testing of this function
+        if (GameScreen.game != null && GameScreen.game.getPreferences().isEffectsEnabled()) {
+            destroy.play(GameScreen.game.getPreferences().getEffectsVolume());
+        }
+        world.destroyBody(b2body);
+        destroyed = true;
+        //Change player coins and points
+        Hud.changePoints(50);
+        Hud.changeCoins(50);
     }
 
     @Override

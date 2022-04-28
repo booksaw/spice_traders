@@ -8,6 +8,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
 import com.mygdx.pirategame.MockClass;
 import com.mygdx.pirategame.PirateGameTest;
+import com.mygdx.pirategame.gameobjects.entity.Coin;
 import com.mygdx.pirategame.gameobjects.entity.CoinMagnet;
 import com.mygdx.pirategame.gameobjects.entity.FasterShooting;
 import com.mygdx.pirategame.save.GameScreen;
@@ -104,14 +105,14 @@ public class FasterShootingTest {
     }
 
 
-//    /**
-//     * Tests to see if entity is destroyed upon contact with another object
-//     * body destruction has been previously tested when setToDestroyed is true
-//     */
-//    @Test
-//    public void testContact() {
-//    	AbsorptionHeart heart = new AbsorptionHeart(mockedGameScreen, 10, 10);
-//    	heart.entityContact();
-//      	Assert.assertTrue(heart.setToDestroyed);
-//    }
+    /**
+     * Tests to see if entity is destroyed upon contact with another object
+     * body destruction has been previously tested when setToDestroyed is true
+     */
+    @Test
+    public void testContact() {
+        FasterShooting fasterShooting = new FasterShooting(mockedGameScreen, 10, 10);
+        fasterShooting.entityContact();
+        Assert.assertTrue(fasterShooting.setToDestroyed);
+    }
 }

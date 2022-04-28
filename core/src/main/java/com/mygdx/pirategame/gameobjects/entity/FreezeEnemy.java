@@ -120,7 +120,8 @@ public class FreezeEnemy extends PowerUp {
             setToDestroyed = true;
 
             // Play pickup sound
-            if (screen.game.getPreferences().isEffectsEnabled()) {
+            // Checking if game is null allows testing of this function
+            if (screen.game != null && screen.game.getPreferences().isEffectsEnabled()) {
                 getSound().play(screen.game.getPreferences().getEffectsVolume());
             }
         }

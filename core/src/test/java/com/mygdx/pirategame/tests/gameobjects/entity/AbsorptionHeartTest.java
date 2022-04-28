@@ -114,15 +114,15 @@ public class AbsorptionHeartTest {
         Assert.assertNotNull(heart.getSound());
     }
 
-/*
-    *//**
+
+    /**
      * Tests to see if entity is destroyed upon contact with another object
      * body destruction has been previously tested when setToDestroyed is true
-     *//*
+     */
     @Test
     public void testContact() {
     	AbsorptionHeart heart = new AbsorptionHeart(mockedGameScreen, 10, 10);
     	heart.entityContact();
       	Assert.assertTrue(heart.setToDestroyed);
-    }*/
+    }
 }
