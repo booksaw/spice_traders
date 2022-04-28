@@ -10,14 +10,24 @@ import com.mygdx.pirategame.save.GameScreen;
 /**
  * Generates random paths for ships and randomly paths between them
  * Used for ships without an assigned college
+ * @author James McNair, Charlie Crosley
  */
 public class RandomPath extends WaitingPath {
 
 
+    /**
+     * Create a new random path for a ship
+     * @param ship The ship to create the random path for
+     * @param screen the GameScreen associated with that ship
+     */
     public RandomPath (EnemyShip ship, GameScreen screen) {
         super(ship, screen);
     }
 
+    /**
+     * generate a random destination anywhere on the map
+     * @return The generated destination
+     */
     @Override
     public Vector2 generateDestination() {
         Random rnd = new Random();

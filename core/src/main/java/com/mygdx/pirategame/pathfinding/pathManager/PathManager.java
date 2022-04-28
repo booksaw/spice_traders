@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 
 /**
  * Used to manage a type of pathing that a ship can have
+ * @author James McNair
  */
 public interface PathManager {
 

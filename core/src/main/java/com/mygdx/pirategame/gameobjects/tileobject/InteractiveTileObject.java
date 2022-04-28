@@ -10,7 +10,7 @@ import com.mygdx.pirategame.save.GameScreen;
  * Interactive Tile Object
  * Generates the world with interactive tiles
  *
- *@author Ethan Alabaster
+ *@author Ethan Alabaster, Marc Perales Salomo, James McNair
  *@version 1.0
  */
 public abstract class InteractiveTileObject {
@@ -54,6 +54,7 @@ public abstract class InteractiveTileObject {
 
     /**
      * Set filter
+     * @param filterBit the filter bit to set the filter to
      */
     public void setCategoryFilter(short filterBit) {
         Filter filter = new Filter();

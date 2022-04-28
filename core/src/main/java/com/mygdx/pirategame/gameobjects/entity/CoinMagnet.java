@@ -13,6 +13,7 @@ import com.mygdx.pirategame.save.GameScreen;
  * Coin magnet powerup class
  * When the player has this powerup, they will pickup all coins within a radius of the player
  * This class is for the powerup item, actual handling of coin magnet characteristics is handled by the coin class.
+ * @author Charlie Crosley, Robert Murphy, James McNair, Dan Wade
  */
 public class CoinMagnet extends PowerUp {
     private Texture coinMagnet;

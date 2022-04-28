@@ -12,6 +12,7 @@ import com.mygdx.pirategame.save.GameScreen;
 /**
  * Faster shooting powerup
  * When a player has this powerup, their cannon will fire faster
+ * @author Robert Murphy, James McNair, Dan Wade
  */
 public class FasterShooting extends PowerUp {
     private Texture fasterShooting;

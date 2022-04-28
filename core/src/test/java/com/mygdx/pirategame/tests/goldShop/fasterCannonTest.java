@@ -18,6 +18,10 @@ import com.mygdx.pirategame.PirateGameTest;
 import com.mygdx.pirategame.save.GameScreen;
 import com.mygdx.pirategame.tests.FakeGL20;
 
+/**
+ * Test faster cannon shooting works as expected
+ * @author Dan Wade
+ */
 @RunWith(PirateGameTest.class)
 public class fasterCannonTest {
 
@@ -25,6 +29,9 @@ public class fasterCannonTest {
     private static GoldShop mockedGoldShop;
     private static Player testPlayer;
 
+    /**
+     * Setup the test environment
+     */
     @BeforeClass
     public static void init() {
         // Use Mockito to mock the OpenGL methods since we are running headlessly

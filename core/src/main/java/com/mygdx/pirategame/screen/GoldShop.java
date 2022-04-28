@@ -30,7 +30,9 @@ import static com.mygdx.pirategame.save.GameScreen.GAME_RUNNING;
 import static com.badlogic.gdx.math.MathUtils.ceil;
 import static com.mygdx.pirategame.save.GameScreen.game;
 
-
+/**
+ * Dan Wade, Charlie Crosley, Robert Murphy
+ */
 public class GoldShop implements Screen {
 
     private final PirateGame parent;
@@ -55,7 +57,12 @@ public class GoldShop implements Screen {
     public final int healthBoostValue = 50;
     public final float increaseCannonDamageMultiplier = 1.2f;
 
-
+    /**
+     * Create a new gold shop with the specified parameters
+     * @param pirateGame The PirateGame controlling runtime
+     * @param camera The camera controlling rendering
+     * @param gameScreen The GameScreen that this ship is associated with
+     */
     public GoldShop(PirateGame pirateGame, OrthographicCamera camera, GameScreen gameScreen) {
         this.parent = pirateGame;
         this.camera = camera;
@@ -220,6 +227,9 @@ public class GoldShop implements Screen {
 
     }
 
+    /**
+     * Used to purchase the increase cannonball damage upgrade
+     */
     public void purchaseIncreaseCannonDamage(){
 
         if (Hud.getCoins() >= increaseCannonDamagePrice){

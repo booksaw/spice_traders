@@ -17,16 +17,28 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 
+/**
+ * Load a game state from an XML file
+ * @author James McNair
+ */
 public class XmlSaveLoader extends SaveLoader {
 
     private final File file;
 
+    /**
+     * Create a new XmlSaveLoader
+     * @param file The file where the gamestate is stored
+     */
     public XmlSaveLoader(File file) {
         this.file = file;
     }
 
     private boolean success;
 
+    /**
+     * Laod the game state from XML
+     * @param screen The GameScreen controlling the game
+     */
     @Override
     public void load(GameScreen screen) {
         screen.hideTutorial();
@@ -86,6 +98,9 @@ public class XmlSaveLoader extends SaveLoader {
         }
     }
 
+    /**
+     * @return If the loading was a success (true), or if there was an error (false)
+     */
     public boolean success() {
         return success;
     }

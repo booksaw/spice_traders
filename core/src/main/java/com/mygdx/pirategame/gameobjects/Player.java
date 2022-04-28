@@ -17,7 +17,7 @@ import org.w3c.dom.Element;
 
 /**
  * Creates the class of the player. Everything that involves actions coming from the player boat
- * @author Ethan Alabaster, Edward Poulter
+ * @author Ethan Alabaster, Edward Poulter, Robert Murphy, James McNair, Dan Wade, Marc Perales Salomo, Charlie Crosley
  * @version 1.0
  */
 public class Player extends Sprite {

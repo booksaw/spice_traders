@@ -15,6 +15,7 @@ import org.mockito.internal.util.reflection.Whitebox;
 
 /**
  * Useful util methods used to mock specific classes within the game
+ * @author James McNair, Dan Wade
  */
 public class MockClass {
 
@@ -57,6 +58,10 @@ public class MockClass {
         return screen;
     }
 
+    /**
+     * Used to mock the game screen with the player position also mocked
+     * @return the created GameScreen instance
+     */
     public static GameScreen mockGameScreenWithPlayer() {
         GameScreen screen = mockGameScreen();
 
@@ -65,6 +70,10 @@ public class MockClass {
         return screen;
     }
 
+    /**
+     * Used to mock the gold shop class
+     * @return The created goldShop instance
+     */
     public static GoldShop mockGoldShop(){
         GoldShop mockedGoldShop = Mockito.mock(GoldShop.class);
 

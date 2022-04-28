@@ -26,7 +26,7 @@ import java.util.Random;
  * Instantiates colleges
  * Instantiates college fleets
  *
- * @author Ethan Alabaster, Edward Poulter
+ * @author Ethan Alabaster, Edward Poulter, James McNair, Robert Murphy, Marc Perales Salomo, Charlie Crosley, Dan Wade
  * @version 1.0
  */
 
@@ -248,9 +248,6 @@ public class College extends Enemy {
         }
     }
 
-    /**
-     *
-     */
     @Override
     public void onContactOther() {
         // nothing to do here
@@ -263,6 +260,9 @@ public class College extends Enemy {
         cannonBalls.add(new CollegeFire(screen, b2body.getPosition().x, b2body.getPosition().y));
     }
 
+    /**
+     * @return The metadata for the college
+     */
     public CollegeMetadata getMetaData() {
         return collegeMeta;
     }

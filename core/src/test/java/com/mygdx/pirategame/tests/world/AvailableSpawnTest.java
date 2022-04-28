@@ -6,6 +6,7 @@ import org.junit.Test;
 
 /**
  * Testing the AvaliableSpawn class
+ * @author James McNair
  */
 public class AvailableSpawnTest {
 

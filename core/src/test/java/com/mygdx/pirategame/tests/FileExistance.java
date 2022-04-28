@@ -9,6 +9,7 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * This class is used to target the class pirategame with file assertion tests
+ * @author Marc Perales Salomo
  */
 @RunWith(PirateGameTest.class)
 public class FileExistance {

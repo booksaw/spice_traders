@@ -6,6 +6,9 @@ import java.nio.Buffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 
+/**
+ * A shell version of the game libary so tests run correctly
+ */
 public class FakeGL20 implements GL20 {
     @Override
     public void glActiveTexture(int texture) {

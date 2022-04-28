@@ -21,11 +21,21 @@ import java.util.Locale;
  * Used as a superclass for all loaders
  * loaders are classes used to load a game state
  * this class is used to handle saving and loading
+ * @author James McNair
  */
 public abstract class SaveLoader {
 
+    /**
+     * Laod a game state
+     * @param screen The GameScreen controlling the game
+     */
     public abstract void load(GameScreen screen);
 
+    /**
+     * Save the current state of the game to a file
+     * @param screen The GameScreen controlling the game
+     * @param file The file to save the data to
+     */
     public void save(GameScreen screen, File file) {
 
         try {

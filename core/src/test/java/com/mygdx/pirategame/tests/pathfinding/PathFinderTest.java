@@ -21,12 +21,16 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * Unit tests for the PathFinder class
+ * @author James McNair
  */
 @RunWith(PirateGameTest.class)
 public class PathFinderTest {
 
     private static GameScreen mockedGameScreen;
 
+    /**
+     * Setup the test environment
+     */
     @BeforeClass
     public static void init() {
         // Use Mockito to mock the OpenGL methods since we are running headlessly

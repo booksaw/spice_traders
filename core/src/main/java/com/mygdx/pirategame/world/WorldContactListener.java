@@ -14,7 +14,7 @@ import com.mygdx.pirategame.gameobjects.tileobject.InteractiveTileObject;
 /**
  * Tells the game what to do when certain entities come into contact with each other
  *
- * @author Ethan Alabaster
+ * @author Ethan Alabaster, Charlie Crosley, James McNair, Robert Murphy, Marc Perales Salomo
  * @version 1.0
  */
 public class WorldContactListener implements ContactListener {

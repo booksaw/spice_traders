@@ -19,7 +19,7 @@ import com.mygdx.pirategame.PirateGame;
 /**
  * Victory Screen which is displayed when all colleges have been defeated
  *
- * @author Sam Pearson
+ * @author Sam Pearson, Dan Wade, Marc Perales Salomo
  * @version 1.0
  */
 public class VictoryScreen implements Screen {

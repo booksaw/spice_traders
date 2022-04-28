@@ -22,12 +22,16 @@ import com.mygdx.pirategame.tests.FakeGL20;
 
 /**
  * Testing the attackPath class
+ * @author James McNair
  */
 @RunWith(PirateGameTest.class)
 public class AttackPathTest {
 
     private static GameScreen mockedGameScreen;
 
+    /**
+     * Setup the test environment
+     */
     @BeforeClass
     public static void init() {
         // Use Mockito to mock the OpenGL methods since we are running headlessly

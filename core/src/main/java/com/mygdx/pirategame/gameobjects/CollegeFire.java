@@ -14,7 +14,7 @@ import java.util.Random;
  * Defines college attack method
  * Defines college cannonball projectiles
  *
- *@author Ethan Alabaster
+ *@author Ethan Alabaster, Marc Perales Salomo, Charlie Crosley, Robert Murphy
  *@version 1.0
  */
 

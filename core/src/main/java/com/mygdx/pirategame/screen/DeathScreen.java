@@ -20,7 +20,7 @@ import com.mygdx.pirategame.PirateGame;
  * Death Screen
  * Tells the player that they have died and the game is over when player has no health remaining
  *
- *@author Sam Pearson
+ *@author Sam Pearson, Marc Perales Salomo, Dan Wade, James McNair
  *@version 1.0
  */
 public class DeathScreen implements Screen {

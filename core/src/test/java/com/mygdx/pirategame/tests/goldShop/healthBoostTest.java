@@ -18,12 +18,19 @@ import com.mygdx.pirategame.PirateGameTest;
 import com.mygdx.pirategame.save.GameScreen;
 import com.mygdx.pirategame.tests.FakeGL20;
 
+/**
+ * Class to test the heath boost upgrade
+ * @author Dan Wade
+ */
 @RunWith(PirateGameTest.class)
 public class healthBoostTest {
 
     private static GameScreen mockedGameScreen;
     private static GoldShop mockedGoldShop;
 
+    /**
+     * Setup the test environment
+     */
     @BeforeClass
     public static void init() {
         // Use Mockito to mock the OpenGL methods since we are running headlessly

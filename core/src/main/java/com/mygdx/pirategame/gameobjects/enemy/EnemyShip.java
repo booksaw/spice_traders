@@ -32,7 +32,7 @@ import java.util.List;
  * Generates enemy ship data
  * Instantiates an enemy ship
  *
- * @author Ethan Alabaster, Sam Pearson, Edward Poulter, James McNair
+ * @author Ethan Alabaster, Sam Pearson, Edward Poulter, James McNair, Marc Perales Salomo, Charlie Crosley, Robert Murphy, Dan Wade
  * @version 1.0
  */
 public class EnemyShip extends Enemy {
@@ -327,6 +327,9 @@ public class EnemyShip extends Enemy {
     }
 
 
+    /**
+     * Called when an enemy ship colldes with the player
+     */
     @Override
     public void onContactOther() {
         updateDelay = 50;
@@ -366,6 +369,10 @@ public class EnemyShip extends Enemy {
         return screen.getPathFinder().isTraversable(x, y, EnemyShip.COLLISIONRADIUS + EnemyShip.COLLISIONOFFSET, EnemyShip.COLLISIONRADIUS + EnemyShip.COLLISIONOFFSET);
     }
 
+    /**
+     * Used to set the current pathing manager for the Ship
+     * @param pathManager The new PathManager
+     */
     public void setPathManager(PathManager pathManager) {
         this.pathManager = pathManager;
         // dumping old path

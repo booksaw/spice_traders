@@ -9,6 +9,7 @@ import java.util.Random;
 
 /**
  * This class is used to manage the pathing of a ship while it is not targeting a specific entity
+ * @author James McNair
  */
 public class PatrolPath extends WaitingPath{
 
@@ -27,6 +28,10 @@ public class PatrolPath extends WaitingPath{
         }
     }
 
+    /**
+     * Generate a new destination within range of the college the ship belongs to
+     * @return
+     */
     @Override
     public Vector2 generateDestination() {
         Random rnd = new Random();

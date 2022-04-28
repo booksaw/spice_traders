@@ -5,11 +5,12 @@ import com.mygdx.pirategame.PirateGame;
 
 /**
  * Enum used to store metadata about colleges
+ * @author  booksaw, Robert Murphy, Dan Wade
  */
 public enum CollegeMetadata {
 
     /**
-     * Define colleges
+     * Define all the colleges within the game along with any constants associated with them
      */
     ALCUIN(0, "alcuin", 1900 / PirateGame.PPM, 2100 / PirateGame.PPM, 1800 / PirateGame.PPM, 2100 / PirateGame.PPM, 7),
     ANNELISTER(1, "anne_lister", 6304 / PirateGame.PPM, 1199 / PirateGame.PPM, 6200 / PirateGame.PPM, 1100 / PirateGame.PPM, 8),
@@ -48,6 +49,7 @@ public enum CollegeMetadata {
     private final int distance;
 
     /**
+     * Add another college to collegeMetadata with required constants
      * @param collegeID The id of this college
      * @param filePath  college name as used in the file path
      * @param x The x location of the college

@@ -11,12 +11,12 @@ import com.mygdx.pirategame.save.GameScreen;
 
 /**
  * Heals the player when picked up
+ * @author Robert Murphy, Charlie Crosley, James McNair, Dan Wade
  */
 public class AbsorptionHeart extends PowerUp {
     private Texture absorptionHeart;
 
     /**
-     * x
      * Instantiates Absorption Heart entity
      * Sets position in world which the heart shows and can be picked up for the player
      *
@@ -67,7 +67,7 @@ public class AbsorptionHeart extends PowerUp {
 
     @Override
     public void endPowerUp() {
-
+        // nothing needs to be done here
     }
 
     /**

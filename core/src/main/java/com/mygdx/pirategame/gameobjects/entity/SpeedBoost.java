@@ -11,6 +11,7 @@ import com.mygdx.pirategame.save.GameScreen;
 
 /**
  * Speed boost powerup which makes the player able to move faster
+ * @author Robert Murphy, Charlie Crosley
  */
 public class SpeedBoost extends PowerUp {
     private Texture speedBoost;

@@ -8,6 +8,7 @@ import com.mygdx.pirategame.save.GameScreen;
 /**
  * Superclass used for all pathing managers which are in a passive state waiting for a ship to come into range to attack
  * This class will switch to an attacking pathing manager if within range of an enemy
+ * @author James McNair, Charlie Crosley, Robert Murphy
  */
 public abstract class WaitingPath implements PathManager {
 
@@ -26,16 +27,30 @@ public abstract class WaitingPath implements PathManager {
         this.screen = screen;
     }
 
+    /**
+     * used for all passive pathing sea monsters that can start an attack
+     * @param seaMonster The sea monster that is being pathed
+     * @param screen The GameScreen controlling the level
+     */
     public WaitingPath(SeaMonster seaMonster, GameScreen screen) {
         this.seaMonster = seaMonster;
         this.screen = screen;
     }
 
+    /**
+     * Used for all passive pathing tornadoes that can start an attack
+     * @param tornado The tornado that is being pathed
+     * @param screen The GameScreen controlling the level
+     */
     public WaitingPath(Tornado tornado, GameScreen screen) {
         this.tornado = tornado;
         this.screen = screen;
     }
 
+    /**
+     * Update if the object should start an attack run
+     * @param dt The Delta time of this update
+     */
     @Override
     public void update(float dt) {
         // if the ship is in range of the player

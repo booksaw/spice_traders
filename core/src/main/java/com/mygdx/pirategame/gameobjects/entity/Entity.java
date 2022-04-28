@@ -10,7 +10,7 @@ import com.mygdx.pirategame.save.GameScreen;
  * Defines an entity
  * Instantiates an entity
  *
- *@author Ethan Alabaster
+ *@author Ethan Alabaster, Charlie Crosley, Robert Murphy, James McNair, Dan Wade
  *@version 1.0
  */
 public abstract class Entity extends Sprite {

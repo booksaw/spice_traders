@@ -12,6 +12,7 @@ import com.mygdx.pirategame.save.GameScreen;
 
 /**
  * This powerup freezes enemies and prevents them from attacking the player
+ * @author Charlie Crosley, Robert Murphy, James McNair, Dan Wade
  */
 public class FreezeEnemy extends PowerUp {
     private Texture freezeEnemy;
