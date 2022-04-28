@@ -19,7 +19,16 @@ import com.mygdx.pirategame.world.WorldCreator;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * SaveLodaer used to create a new game
+ * @author James McNair,
+ */
 public class NewGameSaveLoader extends  SaveLoader{
+
+    /**
+     * load a new game from scratch
+     * @param screen The GameScreen controlling the game
+     */
     @Override
     public void load(GameScreen screen) {
 

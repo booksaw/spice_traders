@@ -13,7 +13,7 @@ import org.w3c.dom.Element;
  * Class to generate enemies
  * Instantiates enemies
  *
- *@author Ethan Alabaster
+ *@author Ethan Alabaster, James McNair, Marc Perales Salomo, Charlie Crosley, Dan Wade
  *@version 1.0
  */
 public abstract class Enemy extends Sprite {
@@ -73,6 +73,9 @@ public abstract class Enemy extends Sprite {
      */
     public abstract void onContact();
 
+    /**
+     * Method for handling contact with anything that is not an enemy
+     */
     public abstract void onContactOther();
 
     /**

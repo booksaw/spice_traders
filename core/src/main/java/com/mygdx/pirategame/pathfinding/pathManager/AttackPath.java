@@ -11,6 +11,7 @@ import java.util.Random;
 
 /**
  * Class used for pathing an AI ship to attack a target
+ * @author James McNair, Charlie Crosley, Robert Murphy
  */
 public class AttackPath implements PathManager {
 
@@ -21,24 +22,46 @@ public class AttackPath implements PathManager {
     private Tornado tornado = null;
     private final GameScreen screen;
 
+    /**
+     * Create an attack path for a ship
+     * @param previousPath The previous pathing manager for that ship
+     * @param ship The ship that this is associated with
+     * @param screen The GameScreen controlling the ship
+     */
     public AttackPath(PathManager previousPath, EnemyShip ship, GameScreen screen){
         this.previousPath = previousPath;
         this.ship = ship;
         this.screen = screen;
     }
 
+    /**
+     * Create an attack path for a sea monster
+     * @param previousPath The previous pathing manager for that sea monster
+     * @param seaMonster The sea monster that this is associated with
+     * @param screen The GameScreen controlling the ship
+     */
     public AttackPath(PathManager previousPath, SeaMonster seaMonster, GameScreen screen){
         this.previousPath = previousPath;
         this.seaMonster = seaMonster;
         this.screen = screen;
     }
 
+    /**
+     * Create an attack path for a tornado
+     * @param previousPath The previous pathing manager for that sea monster
+     * @param tornado The sea monster that this is associated with
+     * @param screen The GameScreen controlling the ship
+     */
     public AttackPath(PathManager previousPath, Tornado tornado, GameScreen screen){
         this.previousPath = previousPath;
         this.tornado = tornado;
         this.screen = screen;
     }
 
+    /**
+     * Generates a destination within a range of the player
+     * @return The generated destination
+     */
     @Override
     public Vector2 generateDestination() {
         Random rnd = new Random();
@@ -105,6 +128,10 @@ public class AttackPath implements PathManager {
 
     private int fireDelay = 0;
 
+    /**
+     * Update the attack path
+     * @param dt The Delta time of this update
+     */
     @Override
     public void update(float dt) {
         if (ship != null) {

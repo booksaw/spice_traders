@@ -15,13 +15,16 @@ import com.mygdx.pirategame.world.WorldCreator;
 
 /**
  * Unit tests for the WorldCreator class 
- *
+ * @author  James McNair
  */
 @RunWith(PirateGameTest.class)
 public class WorldCreatorTest {
 
 	private static GameScreen mockedGameScreen;
 
+	/**
+	 * Setup the test environment
+	 */
 	@BeforeClass
 	public static void init() {
 		// Use Mockito to mock the OpenGL methods since we are running headlessly

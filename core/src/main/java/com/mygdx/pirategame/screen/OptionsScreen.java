@@ -14,7 +14,7 @@ import com.mygdx.pirategame.PirateGame;
 
 /**
  * Provides a UI for the user to interact with the audioControls interface
- * @author Sam Pearson
+ * @author Sam Pearson, Marc Perales Salomo
  * @version 1.0
  */
 public class OptionsScreen implements Screen {
@@ -37,7 +37,6 @@ public class OptionsScreen implements Screen {
 
     /**
      * What should be displayed on the options screen
-     *
      */
     @Override
     public void show() {

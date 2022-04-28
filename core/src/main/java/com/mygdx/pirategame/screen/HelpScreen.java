@@ -17,7 +17,7 @@ import com.mygdx.pirategame.PirateGame;
 
 /**
  * Screen with instructions for the user
- * @author Sam Pearson
+ * @author Sam Pearson, Marc Perales Salomo
  * @version 1.0
  */
 public class HelpScreen implements Screen {

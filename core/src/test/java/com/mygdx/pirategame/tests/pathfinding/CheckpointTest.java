@@ -10,6 +10,7 @@ import org.junit.Test;
 
 /**
  * Unit testing for the checkpoint class
+ * @author James McNair
  */
 public class CheckpointTest {
 
@@ -80,6 +81,9 @@ public class CheckpointTest {
         Assert.assertEquals(cp.getVector2(), new Vector2(1f, 1f));
     }
 
+    /**
+     * Test the toString method returns the expected value
+     */
     @Test
     public void testToString() {
         Checkpoint cp = new Checkpoint(1f, 1f, 1f);

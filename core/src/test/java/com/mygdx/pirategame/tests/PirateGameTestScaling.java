@@ -17,6 +17,7 @@ import static org.mockito.Mockito.when;
 
 /**
  * This class is used to target the class pirategame with scaling tests
+ * @author James McNair, Marc Perales Salomo
  */
 @RunWith(PirateGameTest.class)
 public class PirateGameTestScaling {

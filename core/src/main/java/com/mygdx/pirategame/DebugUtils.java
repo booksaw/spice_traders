@@ -8,6 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 
 /**
  * Methods to make debugging bugs easier (for example drawing lines to track pathfinding)
+ * @author James McNair
  */
 public class DebugUtils {
 

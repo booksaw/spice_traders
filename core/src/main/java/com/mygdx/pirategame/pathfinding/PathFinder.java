@@ -6,6 +6,10 @@ import com.mygdx.pirategame.save.GameScreen;
 
 import java.util.*;
 
+/**
+ * Class used to generate paths to a specified destination
+ * @author James McNair
+ */
 public class PathFinder {
 
     /**
@@ -29,6 +33,7 @@ public class PathFinder {
     }
 
     /**
+     * Get a path between a source and a destination that stays along the water
      * @param sourceX      the x source location
      * @param sourceY      the y source location
      * @param destinationX the x destination
@@ -139,6 +144,13 @@ public class PathFinder {
         return true;
     }
 
+    /**
+     * Check if the specified location is colliding with the specified layer
+     * @param layer The layer to check for
+     * @param x The x location to check
+     * @param y The y location to check
+     * @return If the location is colliding
+     */
     private boolean isColliding(TiledMapTileLayer layer, int x, int y) {
         TiledMapTileLayer.Cell cell = layer.getCell(x, y);
         if (cell == null) {
@@ -222,6 +234,11 @@ public class PathFinder {
             return (int) (fx - o.fx);
         }
 
+        /**
+         * Used to compare two path nodes
+         * @param o The second Pathnode to compare to
+         * @return If the pathNodes are the same
+         */
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;

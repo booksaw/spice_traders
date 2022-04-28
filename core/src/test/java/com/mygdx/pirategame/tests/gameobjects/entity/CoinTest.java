@@ -20,11 +20,18 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 
+/**
+ * Unit tests for the Coin class
+ * @author Charlie Crosley
+ */
 @RunWith(PirateGameTest.class)
 public class CoinTest {
 
     private static GameScreen mockedGameScreen;
 
+    /**
+     * Setup the test environment
+     */
     @BeforeClass
     public static void init() {
         // Use Mockito to mock the OpenGL methods since we are running headlessly

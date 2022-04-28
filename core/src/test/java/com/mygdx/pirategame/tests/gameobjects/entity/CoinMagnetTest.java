@@ -19,13 +19,16 @@ import org.junit.Assert;
 
 /**
  * Unit tests for the CoinMagnet class
- *
+ * @author Charlie Crosley
  */
 @RunWith(PirateGameTest.class)
 public class CoinMagnetTest {
 
     private static GameScreen mockedGameScreen;
 
+    /**
+     * Setup The test environment
+     */
     @BeforeClass
     public static void init() {
         // Use Mockito to mock the OpenGL methods since we are running headlessly

@@ -17,11 +17,18 @@ import com.mygdx.pirategame.gameobjects.enemy.CollegeMetadata;
 import com.mygdx.pirategame.save.GameScreen;
 import com.mygdx.pirategame.tests.FakeGL20;
 
+/**
+ * Test the college class
+ * @author James McNair, Marc Perales Salomo
+ */
 @RunWith(PirateGameTest.class)
 public class CollegeTest {
 
 	private static GameScreen mockedGameScreen;
 
+	/**
+	 * Setup the testing environment
+	 */
 	@BeforeClass
 	public static void init() {
 		// Use Mockito to mock the OpenGL methods since we are running headlessly

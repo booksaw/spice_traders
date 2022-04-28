@@ -2,6 +2,10 @@ package com.mygdx.pirategame.pathfinding;
 
 import com.badlogic.gdx.math.Vector2;
 
+/**
+ * A location checkpoint along a path
+ * @author James McNair
+ */
 public class Checkpoint {
     /**
      * Used to create a checkpoint from a tilemap grid position. The location of the checkpoint will be the centre of the grid
@@ -44,6 +48,11 @@ public class Checkpoint {
         return (int) (y / gradient);
     }
 
+    /**
+     * Compare two Checkpoints
+     * @param o The checkpoint to compare with
+     * @return If the two checkpoints are the same
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -52,6 +61,9 @@ public class Checkpoint {
         return Float.compare(that.getTileX(), getTileX()) == 0 && Float.compare(that.getTileY(), getTileY()) == 0;
     }
 
+    /**
+     * @return A string representation of the checkpoint, useful for debugging
+     */
     @Override
     public String toString() {
         return "Checkpoint{" +
@@ -60,7 +72,10 @@ public class Checkpoint {
                 ", gradient=" + gradient +
                 '}';
     }
-    
+
+    /**
+     * @return The location of the checkpoint as a vector
+     */
     public Vector2 getVector2(){
         return new Vector2(x, y);
     }

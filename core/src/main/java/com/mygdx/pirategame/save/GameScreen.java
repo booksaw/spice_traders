@@ -56,7 +56,7 @@ import java.util.*;
  * Class to generate the various screens used to play the game.
  * Instantiates all screen types and displays current screen.
  *
- * @author Ethan Alabaster, Adam Crook, Joe Dickinson, Sam Pearson, Tom Perry, Edward Poulter
+ * @author Ethan Alabaster, Adam Crook, Joe Dickinson, Sam Pearson, Tom Perry, Edward Poulter, James McNair, Robert Murphy, Marc Perales Salomo, Charlie Crosley, Dan Wade
  * @version 1.0
  */
 public class GameScreen implements Screen {
@@ -126,6 +126,7 @@ public class GameScreen implements Screen {
      * generates the world data and data for entities that exist upon it,
      *
      * @param game passes game data to current class,
+     * @param loadManager The class which manages loading and saving the game
      */
     public GameScreen(PirateGame game, SaveLoader loadManager) {
         gameStatus = GAME_RUNNING;
@@ -205,7 +206,7 @@ public class GameScreen implements Screen {
     /**
      * Randomly generates x and y and checks if they are valid
      *
-     * @return x, y
+     * @return [x, y] a random location
      */
     public int[] getRandomLocation() {
         Boolean validLoc = false;
@@ -914,7 +915,6 @@ public class GameScreen implements Screen {
     /**
      * Closes gold shop
      */
-
     public void closeShop() {
         goldShop = new GoldShop(GameScreen.game, camera, this);
         goldShop.show();
@@ -966,27 +966,45 @@ public class GameScreen implements Screen {
     }
 
 
+    /**
+     * @return Returns the tile map renderer
+     */
     public OrthogonalTiledMapRenderer getRenderer() {
         return renderer;
     }
 
+    /**
+     * @return Returns the scale of a single unit
+     */
     public float getUnitScale() {
         return 1 / PirateGame.PPM;
     }
 
+    /**
+     * @return The pathfinder being used by the game screen
+     */
     public PathFinder getPathFinder() {
         return pathFinder;
     }
 
+    /**
+     * @return The invalid spawn locations for this game
+     */
     public AvailableSpawn getInvalidSpawn() {
         return invalidSpawn;
     }
 
+    /**
+     * @return A Map of all the colleges in the game
+     */
     public HashMap<CollegeMetadata, College> getColleges() {
         return colleges;
 
     }
 
+    /**
+     * @return A list of all the enemy ships in the game
+     */
     public ArrayList<EnemyShip> getEnemyShips(){
         return ships;
     }
@@ -999,6 +1017,9 @@ public class GameScreen implements Screen {
         return hud;
     }
 
+    /**
+     * @return a list of all sea monsters in the game
+     */
     public List<SeaMonster> getMonsters() {
         return monsters;
     }

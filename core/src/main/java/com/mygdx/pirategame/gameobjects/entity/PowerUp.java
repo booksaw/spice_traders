@@ -7,6 +7,7 @@ import com.mygdx.pirategame.save.GameScreen;
 
 /**
  * Abstract class to define characteristics of power ups
+ * @author Charlie Crosley, Robert Murphy, James McNair, Dan Wade
  */
 public abstract class PowerUp extends Entity {
     private Sound pickupSound;

@@ -21,7 +21,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  * Main menu is the first screen the player sees. Allows them to navigate where they want to go to
- * @author Sam Pearson
+ * @author Sam Pearson, James McNair, Marc Perales Salomo, Charlie Crosley, Robert Murphy
  * @version 1.0
  */
 public class MainMenu implements Screen {

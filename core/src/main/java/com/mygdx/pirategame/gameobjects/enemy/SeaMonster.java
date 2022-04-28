@@ -28,6 +28,10 @@ import org.w3c.dom.Element;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class to control the functionality of the sea monster
+ * @author Charlie Crosley, James McNair, Dan Wade
+ */
 public class SeaMonster extends Enemy {
 
     public static final int COLLISIONRADIUS = 100;
@@ -77,6 +81,11 @@ public class SeaMonster extends Enemy {
         damage = 5 * screen.difficulty;
     }
 
+    /**
+     * Used to spawn a sea monster from a save file
+     * @param screen The GameScreen controlling the sea monster
+     * @param element The element in DOM where the data is stored
+     */
     public SeaMonster(GameScreen screen, Element element) {
         super(screen, element);
 
@@ -195,6 +204,9 @@ public class SeaMonster extends Enemy {
         Hud.changePoints(5);
     }
 
+    /**
+     * Called when the sea monster collides with the player
+     */
     @Override
     public void onContactOther() {
         updateDelay = 50;
@@ -242,6 +254,9 @@ public class SeaMonster extends Enemy {
         projectiles.add(new CollegeFire(screen, waterSlashTexture, b2body.getPosition().x, b2body.getPosition().y, 120, 120, angle));
     }
 
+    /**
+     * @param pathManager Set the path manager for this class
+     */
     public void setPathManager(PathManager pathManager) {
         this.pathManager = pathManager;
         // dumping old path
@@ -249,6 +264,10 @@ public class SeaMonster extends Enemy {
         if (pathManager != null) generateNewPath();
     }
 
+    /**
+     * update the location and targeting of the sea monster
+     * @param dt Time since last update
+     */
     @Override
     public void update(float dt) {
         // Update projectiles

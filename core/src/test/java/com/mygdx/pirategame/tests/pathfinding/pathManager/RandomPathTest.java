@@ -21,12 +21,16 @@ import com.mygdx.pirategame.tests.FakeGL20;
 
 /**
  * testing the randomPath class
+ * @author James McNair
  */
 @RunWith(PirateGameTest.class)
 public class RandomPathTest {
 
 	private static GameScreen mockedGameScreen;
 
+	/**
+	 * Setup the test environment
+	 */
 	@BeforeClass
 	public static void init() {
 		// Use Mockito to mock the OpenGL methods since we are running headlessly

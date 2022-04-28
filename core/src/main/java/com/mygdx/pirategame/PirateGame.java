@@ -15,7 +15,7 @@ import com.mygdx.pirategame.screen.*;
  * The start of the program. Sets up the main backbone of the game.
  * This includes most constants used for collision and changing screens
  * Provides access for screens to interact with each other and the options interface
- * @author Sam Pearson
+ * @author Sam Pearson, Robert Murphy, Marc Perales Salomo, James McNair, Charlie Crosley
  * @version 1.0
  */
 public class PirateGame extends Game {

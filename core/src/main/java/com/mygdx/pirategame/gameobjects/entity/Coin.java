@@ -16,7 +16,7 @@ import com.mygdx.pirategame.save.GameScreen;
  * Creates an object for each coin
  * Extends the entity class to define coin as an entity
  *
- *@author Joe Dickinson, Charlie Crosley
+ *@author Joe Dickinson, Charlie Crosley, Marc Perales Salomo, James McNair, Robert Murphy, Dan Wade
  *@version 1.0
  */
 public class Coin extends Entity {

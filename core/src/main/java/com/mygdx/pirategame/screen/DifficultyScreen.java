@@ -17,6 +17,7 @@ import com.mygdx.pirategame.PirateGame;
 
 /**
  * Screen to give player option to select game difficulty
+ * @author Charlie Crosley, Dan Wade
  */
 public class DifficultyScreen implements Screen {
 

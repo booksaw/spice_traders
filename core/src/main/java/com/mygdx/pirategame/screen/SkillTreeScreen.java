@@ -23,7 +23,7 @@ import java.util.List;
  * It is a visual representation for the skills that the game automatically unlocks for the player.
  * Automatically unlocked when a points threshold is reached
  *
- * @author Sam Pearson
+ * @author Sam Pearson, Marc Perales Salomo
  * @version 1.0
  */
 public class SkillTreeScreen implements Screen {

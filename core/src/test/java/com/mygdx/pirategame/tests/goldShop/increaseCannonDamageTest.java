@@ -24,6 +24,10 @@ import com.mygdx.pirategame.tests.FakeGL20;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Test the increased damage upgrade
+ * @author Dan Wade
+ */
 @RunWith(PirateGameTest.class)
 public class increaseCannonDamageTest {
 
@@ -34,6 +38,9 @@ public class increaseCannonDamageTest {
     private static HashMap<CollegeMetadata, College> colleges = new HashMap<>();
     private static ArrayList<EnemyShip> ships = new ArrayList<>();
 
+    /**
+     * Setup the test environment
+     */
     @BeforeClass
     public static void init() {
         // Use Mockito to mock the OpenGL methods since we are running headlessly

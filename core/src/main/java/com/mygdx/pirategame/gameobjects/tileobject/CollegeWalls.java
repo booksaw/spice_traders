@@ -9,7 +9,7 @@ import com.mygdx.pirategame.save.GameScreen;
  * College Walls (Alcuin)
  * Checks interaction with walls from map
  *
- *@author Ethan Alabaster, Sam Pearson
+ *@author Ethan Alabaster, Sam Pearson, Marc Perales Salomo, James McNair, Robert Murphy
  *@version 1.0
  */
 public class CollegeWalls extends InteractiveTileObject {

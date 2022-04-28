@@ -20,13 +20,16 @@ import org.junit.Assert;
 
 /**
  * Unit tests for the FasterShooting class
- *
+ * @author Charlie Crosley
  */
 @RunWith(PirateGameTest.class)
 public class FasterShootingTest {
 
     private static GameScreen mockedGameScreen;
 
+    /**
+     * Setup the test environment
+     */
     @BeforeClass
     public static void init() {
         // Use Mockito to mock the OpenGL methods since we are running headlessly

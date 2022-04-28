@@ -21,7 +21,7 @@ import org.w3c.dom.Element;
  * This shows the number of coins, health, points the player has
  * Also displays time remaining for any powerups collected
  *
- * @author Ethan Alabaster, Sam Pearson
+ * @author Ethan Alabaster, Sam Pearson, Dan Wade, Robert Crosley, Marc Perales Salomo, James McNair
  * @version 1.0
  */
 public class Hud implements Disposable {

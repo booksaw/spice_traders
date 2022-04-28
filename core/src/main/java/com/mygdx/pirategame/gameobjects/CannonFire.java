@@ -16,7 +16,7 @@ import com.mygdx.pirategame.save.GameScreen;
  * Used by player and colleges,
  * Use should extend to enemy ships when implementing ship combat
  *
- *@author Ethan Alabaster
+ *@author Ethan Alabaster, Marc Perales Salomo, James McNair, Robert Murphy, Dan Wade
  *@version 1.0
  */
 public class CannonFire extends Sprite {

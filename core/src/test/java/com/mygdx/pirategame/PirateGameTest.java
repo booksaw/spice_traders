@@ -11,6 +11,10 @@ import org.junit.runners.model.InitializationError;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Class which allows LibGDX tests to be run in headless mode
+ * @author Marc Perales Salomo, James McNair
+ */
 public class PirateGameTest extends BlockJUnit4ClassRunner implements ApplicationListener {
 
     private final Map<FrameworkMethod, RunNotifier> test_instance = new HashMap<FrameworkMethod, RunNotifier>();
