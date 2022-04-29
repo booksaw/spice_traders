@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.pirategame.Hud;
 import com.mygdx.pirategame.PirateGame;
 import com.mygdx.pirategame.save.GameScreen;
@@ -32,7 +33,6 @@ public class Player extends Sprite {
     private float tornadoTime;
     float targetX = 0;
     float targetY = 0;
-
     public static boolean inTornadoRange = false;
 
     /**
@@ -105,9 +105,6 @@ public class Player extends Sprite {
             float sourceX = b2body.getPosition().x;
             float sourceY = b2body.getPosition().y;
 
-            // If the tornado is close to the player, move away from it
-            double distance = Math.sqrt(Math.pow(targetX - b2body.getWorldCenter().x, 2) + Math.pow(targetY - b2body.getWorldCenter().y, 2));
-
             double tornadoDistance = GameScreen.getNearestTornado().getDistance();
 
             if (tornadoDistance > 8) {
@@ -129,10 +126,10 @@ public class Player extends Sprite {
 
         // target position changes based on time
         if (tornadoTime > 15) {
-            targetY = 2000;
+            targetY = screen.getTileMapHeight();
         }
         if (tornadoTime > 30) {
-            targetX = 2000;
+            targetX = screen.getTileMapWidth();;
         }
         if (tornadoTime > 45) {
             targetY = 0;
