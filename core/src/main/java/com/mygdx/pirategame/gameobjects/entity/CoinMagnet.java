@@ -75,7 +75,6 @@ public class CoinMagnet extends PowerUp {
      */
     @Override
     public void entityContact() {
-        // TODO: When collecting two of the power up, they cancel out
         if (!destroyed) {
             toggleCoinMagnet = true;
             active = true;
@@ -103,7 +102,7 @@ public class CoinMagnet extends PowerUp {
             destroyed = true;
         }
         //Update position of power up
-        else if(!destroyed) {            setPosition(b2body.getPosition().x - getWidth() / 2f, b2body.getPosition().y - getHeight() / 2f);
+        else if(!destroyed) {setPosition(b2body.getPosition().x - getWidth() / 2f, b2body.getPosition().y - getHeight() / 2f);
         }
         if (toggleCoinMagnet) {
             toggleCoinMagnet();

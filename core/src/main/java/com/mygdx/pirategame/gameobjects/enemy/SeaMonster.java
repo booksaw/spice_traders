@@ -219,8 +219,6 @@ public class SeaMonster extends Enemy {
      */
     public boolean inPlayerRange() {
         return screen.getPlayerPos().dst(b2body.getPosition()) < 7;
-        /*Vector2 pos = screen.getPlayerPos();
-        return pos.dst(b2body.getPosition()) < 7;*/
     }
 
     /**
