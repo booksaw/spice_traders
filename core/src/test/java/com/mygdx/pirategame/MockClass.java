@@ -6,7 +6,6 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.mygdx.pirategame.gameobjects.Player;
 import com.mygdx.pirategame.pathfinding.PathFinder;
 import com.mygdx.pirategame.save.GameScreen;
 import com.mygdx.pirategame.screen.GoldShop;
@@ -15,9 +14,11 @@ import org.mockito.internal.util.reflection.Whitebox;
 
 /**
  * Useful util methods used to mock specific classes within the game
- * @author James McNair, Dan Wade
+ * @author James McNair, Dan Wade, Marc Perales Salomo
  */
 public class MockClass {
+
+    public static boolean gameStatus = false;
 
     /**
      * Used to mock the Hud class so all the static methods can be used and init the points and score to 0
@@ -33,6 +34,22 @@ public class MockClass {
         Hud.setPoints(0);
         Hud.setCoins(0);
         Hud.setHealth(100);
+    }
+
+    /**
+     * Used to mock the PirateGame class with a valid sprite batch
+     *
+     * @return the created PirateGame instance
+     */
+    public static PirateGame mockPirateGame() {
+        PirateGame game = new PirateGame();
+        try {
+            game.batch = new ShellSpriteBatch();
+            gameStatus = true;
+        } catch(Exception e) {
+            // do nothing
+        }
+        return game;
     }
 
     /**
@@ -83,7 +100,8 @@ public class MockClass {
         return mockedGoldShop;
     }
 
-
-
+    public boolean getGameStatus() {
+        return gameStatus;
+    }
 
 }

@@ -78,8 +78,8 @@ public class GameScreen implements Screen {
     private final TiledMap map;
     private final OrthogonalTiledMapRenderer renderer;
 
-    private final World world;
-    private final Box2DDebugRenderer b2dr;
+    private World world;
+    private Box2DDebugRenderer b2dr;
 
     Player player;
     private static HashMap<CollegeMetadata, College> colleges = new HashMap<>();
@@ -90,7 +90,7 @@ public class GameScreen implements Screen {
     private static ArrayList<Tornado> Tornados = new ArrayList<>();
 
     private final AvailableSpawn invalidSpawn = new AvailableSpawn();
-    private final Hud hud;
+    private Hud hud;
 
     public static final int GAME_RUNNING = 0;
     public static final int GAME_PAUSED = 1;
@@ -116,11 +116,11 @@ public class GameScreen implements Screen {
     /**
      * Initialises the Game Screen,
      * generates the world data and data for entities that exist upon it,
-     *
-     * @param game passes game data to current class,
+     *  @param game passes game data to current class,
      * @param loadManager The class which manages loading and saving the game
+     * @param headlessMode passes whether the game is running in headless
      */
-    public GameScreen(PirateGame game, SaveLoader loadManager) {
+    public GameScreen(PirateGame game, SaveLoader loadManager, boolean headlessMode) {
         gameStatus = GAME_RUNNING;
         GameScreen.game = game;
         this.loadManager = loadManager;
@@ -133,32 +133,6 @@ public class GameScreen implements Screen {
         // set the difficulty of the game
         difficulty = game.DIFFICULTY;
 
-        // Initialize a hud
-        hud = new Hud(game.batch);
-
-        // Initialising box2d physics
-        world = new World(new Vector2(0, 0), true);
-        if (PHYSICSDEBUG) {
-            b2dr = new Box2DDebugRenderer();
-        } else {
-            b2dr = null;
-        }
-
-        // making the Tiled tmx file render as a map
-        maploader = new TmxMapLoader();
-        map = maploader.load("map/map.tmx");
-        renderer = new OrthogonalTiledMapRenderer(map, getUnitScale());
-        pathFinder = new PathFinder(this, 64);
-
-        new WorldCreator(this);
-
-        // stores tutorial texture
-        tutorialTexture = new Texture("Tutorial.png");
-        tutorials = new Sprite(tutorialTexture);
-
-        // Setting up contact listener for collisions
-        world.setContactListener(new WorldContactListener());
-
         // Spawning enemy ship and coin. x and y is spawn location
         colleges = new HashMap<>();
 
@@ -166,31 +140,70 @@ public class GameScreen implements Screen {
         monsters = new ArrayList<>();
         Coins = new ArrayList<>();
 
-        loadManager.load(this);
+        if (headlessMode) {
 
-        //Random tornado
-        Tornados = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            pos_tornado = getRandomLocation();
-            //Add a tornado at the random coords
-            Tornados.add(new Tornado(this, pos_tornado[0], pos_tornado[1]));
+            maploader = null;
+            map = null;
+            renderer = null;
+            pathFinder = null;
+            tutorials = null;
+            tutorialTexture = null;
+            // Setting Stage
+            stage = null;
+        } else {
+            // Initialising box2d physics
+            world = new World(new Vector2(0, 0), true);
+            if (PHYSICSDEBUG) {
+                b2dr = new Box2DDebugRenderer();
+            } else {
+                b2dr = null;
+            }
+
+            // making the Tiled tmx file render as a map
+            maploader = new TmxMapLoader();
+            map = maploader.load("map/map.tmx");
+            renderer = new OrthogonalTiledMapRenderer(map, getUnitScale(), game.batch);
+            pathFinder = new PathFinder(this, 64);
+
+            new WorldCreator(this);
+
+            // stores tutorial texture
+            tutorialTexture = new Texture("Tutorial.png");
+            tutorials = new Sprite(tutorialTexture);
+
+            // Setting up contact listener for collisions
+            world.setContactListener(new WorldContactListener());
+
+            // Initialize a hud
+            hud = new Hud(game.batch);
+
+            loadManager.load(this);
+
+            // Setting Stage
+            stage = new Stage(new ScreenViewport());
+
+            //Random tornado
+            Tornados = new ArrayList<>();
+            for (int i = 0; i < 5; i++) {
+                pos_tornado = getRandomLocation();
+                //Add a tornado at the random coords
+                Tornados.add(new Tornado(this, pos_tornado[0], pos_tornado[1]));
+
+            }
+
+            // Adds message to tell the player they can open the gold shop
+            shopLabel = new Label("Press \"E\" to enter the Gold Shop", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+            Table table1 = new Table(); // Shop text
+            table1.add(shopLabel).padTop(20).top();
+            table1.top();
+            table1.setFillParent(true);
+            shopLabel.setVisible(false);
+            stage.addActor(table1);
+
+            // Initialise the gold shop
+            goldShop = new GoldShop(GameScreen.game, camera, this);
         }
 
-        //Setting stage
-        stage = new Stage(new ScreenViewport());
-
-
-        // Adds message to tell the player they can open the gold shop
-        shopLabel = new Label("Press \"E\" to enter the Gold Shop", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        Table table1 = new Table(); // Shop text
-        table1.add(shopLabel).padTop(20).top();
-        table1.top();
-        table1.setFillParent(true);
-        shopLabel.setVisible(false);
-        stage.addActor(table1);
-
-        // Initialise the gold shop
-        goldShop = new GoldShop(GameScreen.game, camera, this);
     }
 
     /**
