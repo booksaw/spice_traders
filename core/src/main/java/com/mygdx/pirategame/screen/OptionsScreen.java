@@ -119,8 +119,6 @@ public class OptionsScreen implements Screen {
             }
         });
 
-
-
         Label titleLabel = new Label("Options", skin);
         Label musicLabel = new Label("Music Volume", skin);
         Label effectLabel = new Label("Effect Volume", skin);
@@ -155,10 +153,8 @@ public class OptionsScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         stage.act(Math.min(Gdx.graphics.getDeltaTime(), 1 / 30f));
         stage.draw();
-
-
-
     }
+
     /**
      * Changes the camera size, Scales the hud to match the camera
      *

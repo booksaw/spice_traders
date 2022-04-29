@@ -436,7 +436,6 @@ public class GameScreen implements Screen {
             if (college.getValue().getMetaData().isPlayer()) {
                 float distance = position.dst(college.getValue().getMetaData().getCentrePosition());
                 if (distance < college.getValue().getMetaData().getDistance()) {
-                    //System.out.println(distance);
                     shopLabel.setVisible(true);
 
                     if (Gdx.input.isKeyJustPressed(Input.Keys.E)) {
@@ -932,7 +931,6 @@ public class GameScreen implements Screen {
         }
     }
 
-
     /**
      * @return Returns the tile map renderer
      */
@@ -998,6 +996,9 @@ public class GameScreen implements Screen {
         return difficulty;
     }
 
+    /**
+     * @return if the game is running
+     */
     public boolean isGameRunning() {
         return game.isGameRunning();
     }

@@ -172,8 +172,6 @@ public class Hud implements Disposable {
             scoreLabel.setText(String.format("%03d", score));
             timeCount = 0;
 
-
-
             // Checks if each power up has been collected and adds it to display
             if (coinMagnet > 0) {
                 table4.add(coinMagnetLabel).padBottom(25).top().right().padRight(40);

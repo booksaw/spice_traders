@@ -5,7 +5,7 @@ import com.mygdx.pirategame.PirateGame;
 
 /**
  * Enum used to store metadata about colleges
- * @author  booksaw, Robert Murphy, Dan Wade
+ * @author James McNair, Robert Murphy, Dan Wade
  */
 public enum CollegeMetadata {
 
@@ -16,10 +16,6 @@ public enum CollegeMetadata {
     ANNELISTER(1, "anne_lister", 6304 / PirateGame.PPM, 1199 / PirateGame.PPM, 6200 / PirateGame.PPM, 1100 / PirateGame.PPM, 8),
     CONSTANTINE(2, "constantine", 6240 / PirateGame.PPM, 6703 / PirateGame.PPM, 6400 / PirateGame.PPM, 6700 / PirateGame.PPM, 8),
     GOODRICKE(3, "goodricke", 1760 / PirateGame.PPM, 6767 / PirateGame.PPM, 1700 / PirateGame.PPM, 6700 / PirateGame.PPM, 8);
-    // 1030, 650 alcuin
-    // 1260, 3800 goodricke
-    // 8900, 5500 constantine
-    // 8000, 1700 anne lister
 
     /**
      * Method for getting college data from ID
@@ -66,13 +62,6 @@ public enum CollegeMetadata {
         this.centreX = centreX;
         this.centreY = centreY;
         this.distance = distance;
-    }
-
-    /**
-     * @return The ID of this college
-     */
-    public int getCollegeID() {
-        return collegeID;
     }
 
     /**

@@ -9,7 +9,6 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.*;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.pirategame.Hud;
 import com.mygdx.pirategame.PirateGame;
 import com.mygdx.pirategame.save.GameScreen;
@@ -98,7 +97,6 @@ public class Player extends Sprite {
         }
 
         if (inTornadoRange) {
-            //System.out.println("close");
             // move player towards tornado if in range
 
             // position of player
@@ -108,9 +106,7 @@ public class Player extends Sprite {
             double tornadoDistance = GameScreen.getNearestTornado().getDistance();
 
             if (tornadoDistance > 8) {
-                //System.out.println("far");
                 Player.inTornadoRange = false;
-                //Entity.tornadoContact();
             }
             // Uses a triangle to calculate the new trajectory
             double newAngle = Math.atan2(targetY - sourceY, targetX - sourceX);

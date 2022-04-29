@@ -199,9 +199,7 @@ public class PirateGame extends Game {
 		gameScreen = null;
 		skillTreeScreen = null;
 	}
-
-
-
+	
 	/**
 	 * Kill end screens so they can be made again.
 	 */

@@ -59,7 +59,6 @@ public class CannonFire extends Sprite {
         System.out.println(targetX);
         System.out.println(targetY);
 
-
         // Value of player source used to calculate angle
         sourceX = camera.viewportWidth /2;
         sourceY = camera.viewportHeight /2;

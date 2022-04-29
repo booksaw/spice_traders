@@ -55,7 +55,7 @@ public class SkillTreeScreen implements Screen {
      *
      * @param pirateGame the main starting body of the game. Where screen swapping is carried out.
      */
-//In the constructor, the parent and stage are set. Also the states list is set
+    //In the constructor, the parent and stage are set. Also the states list is set
     public SkillTreeScreen(PirateGame pirateGame){
         parent = pirateGame;
         stage = new Stage(new ScreenViewport());
@@ -73,12 +73,10 @@ public class SkillTreeScreen implements Screen {
         table.setFillParent(true);
         stage.addActor(table);
 
-
         // Table for the return button
         final Table Other = new Table();
         Other.setFillParent(true);
         stage.addActor(Other);
-
 
         //The skin for the actors
         Skin skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
@@ -148,7 +146,6 @@ public class SkillTreeScreen implements Screen {
      * @param points the current amount of points
      */
     public static void pointsCheck(int points){
-
         //States.get() checks whether it has already been unlocked. 1 = not unlocked, 0 = unlocked
         if(states.get(0) == 1 && points >= 100){
             //Change acceleration
@@ -181,7 +178,6 @@ public class SkillTreeScreen implements Screen {
      * Renders the visual data for all objects
      * @param delta Delta Time
      */
-
     @Override
     public void render(float delta) {
         Gdx.gl.glClearColor(0f, 0f, 0f, 1);
