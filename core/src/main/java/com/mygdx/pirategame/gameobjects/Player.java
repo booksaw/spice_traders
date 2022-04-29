@@ -29,6 +29,9 @@ public class Player extends Sprite {
     private Array<CannonFire> cannonBalls;
     private float timeFired = 0;
     private int cannonVelocity = 5;
+    private float tornadoTime;
+    float targetX = 0;
+    float targetY = 0;
 
     public static boolean inTornadoRange = false;
 
@@ -98,10 +101,6 @@ public class Player extends Sprite {
             //System.out.println("close");
             // move player towards tornado if in range
 
-            // position of target to move towards
-            float targetX = 0;
-            float targetY = 0;
-
             // position of player
             float sourceX = b2body.getPosition().x;
             float sourceY = b2body.getPosition().y;
@@ -128,6 +127,21 @@ public class Player extends Sprite {
             b2body.setTransform(newPos, 0);
         }
 
+        // target position changes based on time
+        if (tornadoTime > 15) {
+            targetY = 2000;
+        }
+        if (tornadoTime > 30) {
+            targetX = 2000;
+        }
+        if (tornadoTime > 45) {
+            targetY = 0;
+        }
+        if (tornadoTime > 60) {
+            tornadoTime = 0;
+        }
+
+        tornadoTime += dt;
         // Add delay timer between shots
         timeFired += dt;
     }
