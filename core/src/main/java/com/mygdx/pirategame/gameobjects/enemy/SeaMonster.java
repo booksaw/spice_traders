@@ -364,6 +364,9 @@ public class SeaMonster extends Enemy {
         }
     }
 
+    /**
+     * Destroys the Sea Monster and plays death sound
+     */
     public void destroySeaMonster() {
         //Play death noise
         // Checking if game is null allows testing of this function

@@ -31,7 +31,6 @@ public class Tornado extends Entity {
     public Body b2bodyTornado;
     public boolean movement = false;
     float angle;
-    //public static boolean active = false;
     private float timer;
     private float moveTimer;
 
@@ -77,24 +76,6 @@ public class Tornado extends Entity {
             setToDestroyed = true;
         }
 
-        /*
-        if (destroyed) {
-            return;
-        }
-
-        if (setToDestroy) {
-            //Play death noise
-            if (GameScreen.game.getPreferences().isEffectsEnabled()) {
-                destroy.play(GameScreen.game.getPreferences().getEffectsVolume());
-            }
-            world.destroyBody(b2body);
-            destroyed = true;
-            //Change player coins and points
-            Hud.changePoints(50);
-            Hud.changeCoins(50);
-        }
-        */
-
         if (getDistance() < 3) {
             if (moveTimer > 1) {
                 System.out.println(getDistance());
@@ -103,10 +84,10 @@ public class Tornado extends Entity {
             }
         }
 
-        // Update position and angle of sea monster
+        // Update position and angle of Tornado
         // Sprite is off center when moving animation is playing, so it is offset
         if (movement) {
-            // rotate sea monster when in moving animation
+            // rotate Tornado when in moving animation
             setPosition(b2body.getPosition().x - getWidth() / 4f, b2body.getPosition().y - getHeight() / 2f);
             angle = (float) Math.atan2(b2body.getLinearVelocity().y, b2body.getLinearVelocity().x);
             b2body.setTransform(b2body.getWorldCenter(), angle - ((float) Math.PI) / 2.0f);
@@ -211,17 +192,6 @@ public class Tornado extends Entity {
     public void entityContact() {
         updateDelay = 50;
         if (pathManager != null) generateNewPath();
-
-        //System.out.println("near");
-        //Player.inTornadoRange = true;
-        /*
-        if (active) {
-            //inTornadoRange = true;
-            Player.inTornadoRange = true;
-            System.out.println("active");
-        }
-
-         */
     }
 
     /**
@@ -239,6 +209,10 @@ public class Tornado extends Entity {
         return distance;
     }
 
+    /**
+     * Used to set the current pathing manager for the Tornado
+     * @param pathManager The new PathManager
+     */
     public void setPathManager(PathManager pathManager) {
         this.pathManager = pathManager;
         // dumping old path
@@ -249,9 +223,7 @@ public class Tornado extends Entity {
     /**
      * Used to generate a new path from the current location to a random point on the map
      */
-
     public void generateNewPath() {
-
         Vector2 destination = pathManager.generateDestination();
         if (destination == null) {
             // destination will be regenerated next update
@@ -259,26 +231,26 @@ public class Tornado extends Entity {
         }
         path = screen.getPathFinder().getPath((b2body.getPosition().x * PirateGame.PPM), (b2body.getPosition().y * PirateGame.PPM), destination.x, destination.y, COLLISIONRADIUS + COLLISIONOFFSET, COLLISIONRADIUS + COLLISIONOFFSET);
         if (path != null && path.size() > 1) {
-            // removing the start node from the path as ship is already at it
+            // removing the start node from the path as Tornado is already at it
             path.remove(0);
         }
     }
 
     /**
-     * Checks if the ship should pathfind or just sit still (used to reduce needless load)
+     * Checks if the Tornado should pathfind or just sit still (used to reduce needless load)
      *
-     * @return If the ship is in range of the player
+     * @return If the Tornado is in range of the player
      */
     public boolean inPlayerRange() {
         return screen.getPlayerPos().dst(b2body.getPosition()) < 7;
     }
 
     /**
-     * Used to check if the set location is traversable by a ship of this size
+     * Used to check if the set location is traversable by a Tornado of this size
      *
      * @param x The x location of the proposed location
      * @param y The y location of the proposed location
-     * @return If the ship can go there
+     * @return If the Tornado can go there
      */
     public boolean isTraversable(float x, float y) {
         return screen.getPathFinder().isTraversable(x, y, COLLISIONRADIUS + COLLISIONOFFSET, COLLISIONRADIUS + COLLISIONOFFSET);
@@ -289,7 +261,6 @@ public class Tornado extends Entity {
      * @param cp          The checkpoint to travel towards
      * @return The vector that needs to be applied to travel towards the checkpoint
      */
-
     private Vector2 travelToCheckpoint(float maxDistance, Checkpoint cp) {
         Vector2 v = new Vector2(cp.x - (b2body.getPosition().x * PirateGame.PPM) - getWidth() / 2, cp.y - (b2body.getPosition().y * PirateGame.PPM) - getHeight() / 2);
 

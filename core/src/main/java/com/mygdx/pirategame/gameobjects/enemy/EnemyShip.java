@@ -41,7 +41,6 @@ public class EnemyShip extends Enemy {
     public static final int COLLISIONOFFSET = 15;
     public static boolean movement = true;
     public static boolean fire = true;
-    // TODO: Stop cannonballs using 'fire'
 
     private Texture enemyShip;
     public CollegeMetadata collegeMeta;

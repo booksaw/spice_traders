@@ -107,10 +107,6 @@ public class GameScreen implements Screen {
 
     public Random rand = new Random();
 
-    private Integer attackingCollege;
-    private final List<Integer> collegesLeft = new LinkedList<Integer>(Arrays.asList(1, 2, 3));
-    private final Random collegeRand = new Random();
-
     private GoldShop goldShop;
     private static Label shopLabel;
     private final SaveLoader loadManager;
@@ -172,7 +168,6 @@ public class GameScreen implements Screen {
 
         loadManager.load(this);
 
-        
         //Random tornado
         Tornados = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
@@ -180,7 +175,6 @@ public class GameScreen implements Screen {
             //Add a tornado at the random coords
             Tornados.add(new Tornado(this, pos_tornado[0], pos_tornado[1]));
         }
-        
 
         //Setting stage
         stage = new Stage(new ScreenViewport());
@@ -314,7 +308,6 @@ public class GameScreen implements Screen {
         pauseTable.row().pad(20, 0, 10, 0);
         pauseTable.add(exit).fillX().uniformX();
         pauseTable.center();
-
 
         pauseButton.addListener(new ChangeListener() {
             @Override
@@ -607,7 +600,6 @@ public class GameScreen implements Screen {
             college.getValue().draw(game.batch);
         }
 
-
         //Updates all ships
         for (int i = 0; i < ships.size(); i++) {
             // if the ship is in a college
@@ -731,27 +723,6 @@ public class GameScreen implements Screen {
     }
 
     /**
-     * When called, finds the next college that the player can attack
-     */
-    public void nextCollege() {
-        // Selects, at random, an index from length of collegeLeft list
-        Integer collegeIndex = collegeRand.nextInt(collegesLeft.size());
-        // Gets the collegeID from the collegeLeft list
-        attackingCollege = collegesLeft.get(collegeIndex);
-        // Removes the college selected from the collegeLeft list
-        collegesLeft.remove(collegeIndex);
-    }
-
-    /**
-     * Returns the college which can currently be attacked
-     *
-     * @return integer : returns CollegeID
-     */
-    public Integer getAttackingCollege() {
-        return attackingCollege;
-    }
-
-    /**
      * Checks if the game is over
      * i.e. goal reached (all colleges bar 0 are destroyed)
      */
@@ -825,8 +796,6 @@ public class GameScreen implements Screen {
     public static void setMaxSpeed(Float value) {
         maxSpeed = value;
     }
-
-
 
     /**
      * Fetches the current shooting delay
