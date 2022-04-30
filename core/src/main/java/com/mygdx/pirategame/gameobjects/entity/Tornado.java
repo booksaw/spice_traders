@@ -12,6 +12,8 @@ import com.mygdx.pirategame.pathfinding.Checkpoint;
 import com.mygdx.pirategame.pathfinding.pathManager.AttackPath;
 import com.mygdx.pirategame.pathfinding.pathManager.PathManager;
 import com.mygdx.pirategame.save.GameScreen;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,13 +23,13 @@ import java.util.List;
  * Creates an object for each tornado
  * Extends the entity class to define tornado as an entity
  *
- *@author Robert Murphy
- *@version 1.0
+ * @author Robert Murphy
+ * @version 1.0
  */
 public class Tornado extends Entity {
-    private Texture tornado;
-    private Sound tornadoSound;
-    private Player player;
+    private final Texture tornado;
+    private final Sound tornadoSound;
+    private final Player player;
     public Body b2bodyTornado;
     public boolean movement = false;
     float angle;
@@ -65,6 +67,30 @@ public class Tornado extends Entity {
 
         setPosition(b2body.getPosition().x - getWidth() / 2f, b2body.getPosition().y - getHeight() / 2f);
     }
+
+    /**
+     * Instantiates a new Tornado.
+     *
+     * @param screen the screen it's going onto
+     * @param element      the element where tornado location data is saved
+     */
+    public Tornado(GameScreen screen, Element element) {
+        super(screen, Float.parseFloat(element.getElementsByTagName("x").item(0).getTextContent()), Float.parseFloat(element.getElementsByTagName("y").item(0).getTextContent()));
+        // Set tornado image
+        tornado = new Texture("entity/tornado.png");
+        // Set the position and size of the tornado
+        setBounds(0, 0, 144 / PirateGame.PPM, 144 / PirateGame.PPM);
+        // Set the texture
+        setRegion(tornado);
+        // Sets origin of the tornado
+        setOrigin(24 / PirateGame.PPM, 24 / PirateGame.PPM);
+        tornadoSound = Gdx.audio.newSound(Gdx.files.internal("sfx_and_music/coin-pickup.mp3")); // CHANGE
+
+        player = screen.getPlayer();
+
+        setPosition(Float.parseFloat(element.getElementsByTagName("x").item(0).getTextContent()), Float.parseFloat(element.getElementsByTagName("y").item(0).getTextContent()));
+    }
+
 
     /**
      * Updates the tornado state.
@@ -111,8 +137,7 @@ public class Tornado extends Entity {
             angle = (float) Math.atan2(b2body.getLinearVelocity().y, b2body.getLinearVelocity().x);
             b2body.setTransform(b2body.getWorldCenter(), angle - ((float) Math.PI) / 2.0f);
             setRotation((float) (b2body.getAngle() * 180 / Math.PI) + 90);
-        }
-        else {
+        } else {
             // Reset velocity and rotation when in idle animation
             setPosition(b2body.getPosition().x - getWidth() / 2f, b2body.getPosition().y - getHeight() / 2f);
             b2body.setTransform(b2body.getWorldCenter(), 0);
@@ -131,7 +156,7 @@ public class Tornado extends Entity {
             return;
         }
         // Attack the player and follow them if in range, play moving animation by setting movement to true
-        else if (inPlayerRange() && !movement){
+        else if (inPlayerRange() && !movement) {
             setPathManager(new AttackPath(pathManager, this, screen));
             movement = true;
         }
@@ -140,14 +165,13 @@ public class Tornado extends Entity {
         if ((path == null || path.isEmpty()) && pathManager != null) {
             generateNewPath();
             return;
-        }
-        else {
+        } else {
             if (pathManager == null) return;
 
             // updating the pathing manager
             pathManager.update(dt);
 
-            if (path  == null) return;
+            if (path == null) return;
 
             if (path.isEmpty()) return;
             Checkpoint cp = path.get(0);
@@ -303,8 +327,24 @@ public class Tornado extends Entity {
      * @param batch The batch of the program
      */
     public void draw(Batch batch) {
-        if(!destroyed) {
+        if (!destroyed) {
             super.draw(batch);
         }
+    }
+
+    /**
+     * Used to save any information about the enemy
+     *
+     * @param document The document controlling the saving
+     * @param element  the element to save to
+     */
+    public void save(Document document, Element element) {
+        Element xCoord = document.createElement("x");
+        xCoord.appendChild(document.createTextNode(Float.toString(getX())));
+        element.appendChild(xCoord);
+
+        Element yCoord = document.createElement("y");
+        yCoord.appendChild(document.createTextNode(Float.toString(getY())));
+        element.appendChild(yCoord);
     }
 }

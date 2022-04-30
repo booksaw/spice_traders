@@ -12,6 +12,7 @@ import com.mygdx.pirategame.gameobjects.enemy.CollegeMetadata;
 import com.mygdx.pirategame.gameobjects.enemy.EnemyShip;
 import com.mygdx.pirategame.gameobjects.enemy.SeaMonster;
 import com.mygdx.pirategame.gameobjects.entity.Coin;
+import com.mygdx.pirategame.gameobjects.entity.Tornado;
 import com.mygdx.pirategame.pathfinding.PathFinder;
 import com.mygdx.pirategame.world.WorldContactListener;
 import com.mygdx.pirategame.world.WorldCreator;
@@ -57,6 +58,10 @@ public class NewGameSaveLoader extends  SaveLoader{
         //Random sea monsters
         int[] pos = screen.getRandomLocation();
         screen.getMonsters().add(new SeaMonster(screen, pos[0], pos[1]));
+
+        //Random tornado
+        pos = screen.getRandomLocation();
+        screen.getTornadoes().add(new Tornado(screen, pos[0], pos[1]));
 
         //Random coins
         for (int i = 0; i < 100; i++) {
