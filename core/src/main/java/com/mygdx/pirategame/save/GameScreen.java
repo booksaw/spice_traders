@@ -82,13 +82,13 @@ public class GameScreen implements Screen {
     private World world;
     private Box2DDebugRenderer b2dr;
 
-    Player player;
+    public Player player;
     private static HashMap<CollegeMetadata, College> colleges = new HashMap<>();
     private static ArrayList<EnemyShip> ships = new ArrayList<>();
     private static ArrayList<SeaMonster> monsters = new ArrayList<>();
     private static ArrayList<Coin> Coins = new ArrayList<>();
     public static ArrayList<PowerUp> PowerUps = new ArrayList<>();
-    private static ArrayList<Tornado> Tornados = new ArrayList<>();
+    public static ArrayList<Tornado> Tornados = new ArrayList<>();
 
     private final AvailableSpawn invalidSpawn = new AvailableSpawn();
     private Hud hud;
@@ -1024,6 +1024,13 @@ public class GameScreen implements Screen {
      */
     public Stage getStage() {
         return stage;
+    }
+
+    /**
+     * @return the camera
+     */
+    public OrthographicCamera getCamera() {
+        return camera;
     }
 
     /**

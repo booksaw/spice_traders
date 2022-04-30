@@ -29,7 +29,7 @@ import java.util.List;
 public class Tornado extends Entity {
     private final Texture tornado;
     private final Sound tornadoSound;
-    private final Player player;
+    public Player player;
     public Body b2bodyTornado;
     public boolean movement = false;
     float angle;
