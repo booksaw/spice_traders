@@ -86,7 +86,7 @@ public class CollegeTest {
 	/**
 	 * test to see if game ends when alcuin is defeated
 	 */
-	@Ignore
+	@Test
 	public void testShipAddedToCollege() {
 		GameScreen screen = mockedGameScreen;
 		College college = new College(screen, CollegeMetadata.ALCUIN, 1, new AvailableSpawn());

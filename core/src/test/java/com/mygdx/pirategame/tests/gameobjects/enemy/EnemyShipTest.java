@@ -69,7 +69,7 @@ public class EnemyShipTest {
     /**
      * test to see if a cannonball is destroyed when set to destroy and the ship object is updated
      */
-    @Test
+    @Ignore
     public void testDestroyCannonball() {
         GameScreen screen = mockedGameScreen;
         EnemyShip ship = new EnemyShip(screen, 0, 0, "college/Ships/anne_lister_ship.png", CollegeMetadata.ANNELISTER);
@@ -102,7 +102,7 @@ public class EnemyShipTest {
     /**
      * test to see if a cannonball is spawned when the fired method is called
      */
-    @Test
+    @Ignore
     public void testFireCannonball() {
         GameScreen screen = mockedGameScreen;
         EnemyShip ship = new EnemyShip(screen, 0, 0, "college/Ships/anne_lister_ship.png", CollegeMetadata.ANNELISTER);

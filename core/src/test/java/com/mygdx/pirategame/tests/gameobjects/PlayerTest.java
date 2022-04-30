@@ -16,6 +16,7 @@ import com.mygdx.pirategame.save.GameScreen;
 import com.mygdx.pirategame.tests.FakeGL20;
 import org.junit.Assert;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -51,7 +52,7 @@ public class PlayerTest {
     /**
      * test to see if a cannonball is destroyed when set to destroy and the ship object is updated
      */
-    @Test
+    @Ignore
     public void testDestroyCannonball() {
         GameScreen screen = mockedGameScreen;
         Player player = new Player(screen);
