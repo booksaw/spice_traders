@@ -33,7 +33,7 @@ import java.util.Random;
 public class College extends Enemy {
     private final Texture enemyCollege;
     public Random rand = new Random();
-    private final Array<CollegeFire> cannonBalls;
+    public final Array<CollegeFire> cannonBalls;
     private final AvailableSpawn noSpawn;
     public ArrayList<EnemyShip> fleet = new ArrayList<>();
     private final Sound cannonballHitSound;
@@ -243,7 +243,7 @@ public class College extends Enemy {
         bar.changeHealth(damage);
 
         // Plays explosion sound effect
-        if (GameScreen.game.getPreferences().isEffectsEnabled()) {
+        if (GameScreen.game != null && GameScreen.game.getPreferences().isEffectsEnabled()) {
             cannonballHitSound.play(GameScreen.game.getPreferences().getEffectsVolume());
         }
     }

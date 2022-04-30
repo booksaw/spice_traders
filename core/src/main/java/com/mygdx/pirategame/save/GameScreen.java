@@ -87,7 +87,7 @@ public class GameScreen implements Screen {
     private static ArrayList<EnemyShip> ships = new ArrayList<>();
     private static ArrayList<SeaMonster> monsters = new ArrayList<>();
     private static ArrayList<Coin> Coins = new ArrayList<>();
-    private static ArrayList<PowerUp> PowerUps = new ArrayList<>();
+    public static ArrayList<PowerUp> PowerUps = new ArrayList<>();
     private static ArrayList<Tornado> Tornados = new ArrayList<>();
 
     private final AvailableSpawn invalidSpawn = new AvailableSpawn();
@@ -103,8 +103,8 @@ public class GameScreen implements Screen {
 
     private final PathFinder pathFinder;
 
-    private Table pauseTable;
-    private Table table;
+    public Table pauseTable;
+    public Table table;
 
     public Random rand = new Random();
 
@@ -141,6 +141,7 @@ public class GameScreen implements Screen {
         monsters = new ArrayList<>();
         Coins = new ArrayList<>();
 
+
         if (headlessMode) {
 
             maploader = null;
@@ -151,6 +152,7 @@ public class GameScreen implements Screen {
             tutorialTexture = null;
             // Setting Stage
             stage = null;
+
         } else {
             // Initialising box2d physics
             world = new World(new Vector2(0, 0), true);
@@ -179,12 +181,12 @@ public class GameScreen implements Screen {
             hud = new Hud(game.batch);
 
 
-        ships = new ArrayList<>();
-        monsters = new ArrayList<>();
-        Tornados = new ArrayList<>();
-        Coins = new ArrayList<>();
+            ships = new ArrayList<>();
+            monsters = new ArrayList<>();
+            Tornados = new ArrayList<>();
+            Coins = new ArrayList<>();
 
-        loadManager.load(this);
+            loadManager.load(this);
 
             // Setting Stage
             stage = new Stage(new ScreenViewport());
@@ -274,6 +276,7 @@ public class GameScreen implements Screen {
     @Override
     public void show() {
         Gdx.input.setInputProcessor(stage);
+
         Skin skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
 
         //GAME BUTTONS
@@ -289,11 +292,15 @@ public class GameScreen implements Screen {
         //Create main table and pause tables
         table = new Table();
         table.setFillParent(true);
-        stage.addActor(table);
 
         pauseTable = new Table();
         pauseTable.setFillParent(true);
-        stage.addActor(pauseTable);
+
+        if (stage != null) {
+            stage.addActor(table);
+            stage.addActor(pauseTable);
+        }
+
 
         //Set the visibility of the tables. Particularly used when coming back from options or skillTree
         if (gameStatus == GAME_PAUSED) {
@@ -1010,6 +1017,13 @@ public class GameScreen implements Screen {
      */
     public float getDifficulty() {
         return difficulty;
+    }
+
+    /**
+     * @return the stage
+     */
+    public Stage getStage() {
+        return stage;
     }
 
     /**

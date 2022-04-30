@@ -9,7 +9,10 @@ import com.mygdx.pirategame.gameobjects.enemy.College;
 import com.mygdx.pirategame.gameobjects.enemy.CollegeMetadata;
 import com.mygdx.pirategame.save.GameScreen;
 import com.mygdx.pirategame.tests.FakeGL20;
+import com.mygdx.pirategame.world.AvailableSpawn;
+import org.junit.Assert;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -18,7 +21,7 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * Test the college class
- * @author James McNair, Marc Perales Salomo
+ * @author James McNair, Marc Perales Salomo, Charlie Crosley
  */
 @RunWith(PirateGameTest.class)
 public class CollegeTest {
@@ -39,7 +42,7 @@ public class CollegeTest {
 		// at least from my testing it does not even work in a @Before method
 		MockClass.mockHudStatic();
 
-		mockedGameScreen = MockClass.mockGameScreen();
+		mockedGameScreen = MockClass.mockGameScreenWithPlayer();
 	}
 	
 	/**
@@ -63,6 +66,9 @@ public class CollegeTest {
 		assertEquals(Hud.getPoints(), Integer.valueOf(100));
 	}
 
+	/**
+	 * test to see if game ends when alcuin is defeated
+	 */
 	@Test
 	public void testOnTrigAlcuinDeath() {
 		GameScreen screen = mockedGameScreen;
@@ -75,5 +81,41 @@ public class CollegeTest {
 		// call to check if the death screen is displayed
 		screen.gameOverCheck();
 		assertEquals(screen.isGameRunning(), false);
+	}
+
+	/**
+	 * test to see if game ends when alcuin is defeated
+	 */
+	@Test
+	public void testShipAddedToCollege() {
+		GameScreen screen = mockedGameScreen;
+		College college = new College(screen, CollegeMetadata.ALCUIN, 1, new AvailableSpawn());
+		Assert.assertFalse(college.fleet.isEmpty());
+	}
+
+	/**
+	 * test to see if the college takes damage upon contact
+	 */
+	@Test
+	public void testOnContact() {
+		GameScreen screen = mockedGameScreen;
+		College college = new College(screen, CollegeMetadata.ALCUIN, 0, null);
+		float oldHealth = college.health;
+		college.onContact();
+		float newHealth = college.health;
+		Assert.assertNotEquals(oldHealth, newHealth);
+	}
+
+	/**
+	 * test to see if the college takes damage upon contact
+	 */
+	@Ignore
+	public void testFireCannonball() {
+		GameScreen screen = mockedGameScreen;
+		College college = new College(screen, CollegeMetadata.ALCUIN, 0, null);
+		int oldCannonballCount = college.cannonBalls.size;
+		college.fire();
+		int newCannonballCount = college.cannonBalls.size;
+		Assert.assertNotEquals(oldCannonballCount, newCannonballCount);
 	}
 }
