@@ -24,6 +24,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.mygdx.pirategame.Hud;
@@ -177,19 +178,16 @@ public class GameScreen implements Screen {
             // Initialize a hud
             hud = new Hud(game.batch);
 
-            loadManager.load(this);
+
+        ships = new ArrayList<>();
+        monsters = new ArrayList<>();
+        Tornados = new ArrayList<>();
+        Coins = new ArrayList<>();
+
+        loadManager.load(this);
 
             // Setting Stage
             stage = new Stage(new ScreenViewport());
-
-            //Random tornado
-            Tornados = new ArrayList<>();
-            for (int i = 0; i < 5; i++) {
-                pos_tornado = getRandomLocation();
-                //Add a tornado at the random coords
-                Tornados.add(new Tornado(this, pos_tornado[0], pos_tornado[1]));
-
-            }
 
             // Adds message to tell the player they can open the gold shop
             shopLabel = new Label("Press \"E\" to enter the Gold Shop", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
@@ -376,6 +374,7 @@ public class GameScreen implements Screen {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 gameStatus = GAME_RUNNING;
+                game.killGame();
                 pauseTable.setVisible(false);
                 table.setVisible(true);
                 game.changeScreen(PirateGame.MENU);
@@ -1000,6 +999,10 @@ public class GameScreen implements Screen {
      */
     public List<SeaMonster> getMonsters() {
         return monsters;
+    }
+
+    public List<Tornado> getTornadoes() {
+        return Tornados;
     }
 
     /**

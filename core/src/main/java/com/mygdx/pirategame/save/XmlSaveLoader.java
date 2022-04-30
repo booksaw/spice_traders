@@ -8,6 +8,7 @@ import com.mygdx.pirategame.gameobjects.enemy.CollegeMetadata;
 import com.mygdx.pirategame.gameobjects.enemy.EnemyShip;
 import com.mygdx.pirategame.gameobjects.enemy.SeaMonster;
 import com.mygdx.pirategame.gameobjects.entity.Coin;
+import com.mygdx.pirategame.gameobjects.entity.Tornado;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -78,8 +79,13 @@ public class XmlSaveLoader extends SaveLoader {
             }
 
             NodeList monsterList = root.getElementsByTagName("monster");
-            for (int i = 0; i < shipList.getLength(); i++) {
+            for (int i = 0; i < monsterList.getLength(); i++) {
                 screen.getMonsters().add(new SeaMonster(screen, (Element) monsterList.item(i)));
+            }
+
+            NodeList tornadoList = root.getElementsByTagName("tornado");
+            for (int i = 0; i < tornadoList.getLength(); i++) {
+                screen.getTornadoes().add(new Tornado(screen, (Element) tornadoList.item(i)));
             }
 
             //Random coins

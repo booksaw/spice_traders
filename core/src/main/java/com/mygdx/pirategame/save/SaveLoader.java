@@ -4,6 +4,8 @@ import com.mygdx.pirategame.Hud;
 import com.mygdx.pirategame.PirateGame;
 import com.mygdx.pirategame.gameobjects.enemy.CollegeMetadata;
 import com.mygdx.pirategame.gameobjects.enemy.EnemyShip;
+import com.mygdx.pirategame.gameobjects.enemy.SeaMonster;
+import com.mygdx.pirategame.gameobjects.entity.Tornado;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -15,7 +17,6 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
-import java.util.Locale;
 
 /**
  * Used as a superclass for all loaders
@@ -83,6 +84,19 @@ public abstract class SaveLoader {
 
             }
 
+            // saving the sea monster
+            for(SeaMonster monster : screen.getMonsters()){
+                Element monsterEle = document.createElement("monster");
+                monster.save(document, monsterEle);
+                root.appendChild(monsterEle);
+            }
+
+            // saving the tornados
+            for(Tornado tornado : screen.getTornadoes()){
+                Element tornadoEle = document.createElement("tornado");
+                tornado.save(document, tornadoEle);
+                root.appendChild(tornadoEle);
+            }
 
             document.appendChild(root);
             // creating the XML file

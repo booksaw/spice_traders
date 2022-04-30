@@ -112,7 +112,7 @@ public class College extends Enemy {
         cannonBalls = new Array<>();
 
         //Generates college fleet
-        NodeList shipList = element.getElementsByTagName("ship");
+        NodeList shipList = element.getElementsByTagName("collegeship");
         for (int i = 0; i < shipList.getLength(); i++) {
             fleet.add(new EnemyShip(screen, ship, ((Element) shipList.item(i)), collegeMeta));
         }
@@ -188,7 +188,7 @@ public class College extends Enemy {
     protected void saveChild(Document document, Element element) {
 
         for(EnemyShip ship : fleet) {
-            Element shipEle = document.createElement("ship");
+            Element shipEle = document.createElement("collegeship");
             ship.save(document, shipEle);
             element.appendChild(shipEle);
         }
