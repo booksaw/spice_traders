@@ -1,11 +1,14 @@
 package com.mygdx.pirategame;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.mygdx.pirategame.gameobjects.Player;
 import com.mygdx.pirategame.pathfinding.PathFinder;
 import com.mygdx.pirategame.save.GameScreen;
 import com.mygdx.pirategame.screen.GoldShop;
@@ -14,7 +17,7 @@ import org.mockito.internal.util.reflection.Whitebox;
 
 /**
  * Useful util methods used to mock specific classes within the game
- * @author James McNair, Dan Wade, Marc Perales Salomo
+ * @author James McNair, Dan Wade, Marc Perales Salomo, Charlie Crosley
  */
 public class MockClass {
 
@@ -52,6 +55,8 @@ public class MockClass {
         return game;
     }
 
+
+
     /**
      * Used to mock the game screen so it can be used in tests
      * @return The created game screen
@@ -74,6 +79,13 @@ public class MockClass {
 
         // mocking the game difficulty
         Mockito.when(screen.getDifficulty()).thenReturn(1f);
+
+        // Mock camera with the same config as the actual game camera
+        OrthographicCamera camera = new OrthographicCamera();
+        camera.zoom = 0.0155f;
+        FitViewport viewport = new FitViewport(1280, 720, camera);
+        camera.position.set(viewport.getWorldWidth() / 3, viewport.getWorldHeight() / 3, 0);
+        Mockito.when(screen.getCamera()).thenReturn(camera);
 
         return screen;
     }
@@ -105,5 +117,4 @@ public class MockClass {
     public boolean getGameStatus() {
         return gameStatus;
     }
-
 }

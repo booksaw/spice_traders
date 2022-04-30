@@ -26,8 +26,8 @@ public class Player extends Sprite {
     public World world;
     public Body b2body;
     private Sound breakSound, cannonballHitSound;
-    private Array<CannonFire> cannonBalls;
-    private float timeFired = 0;
+    public Array<CannonFire> cannonBalls;
+    public float timeFired = 0;
     private int cannonVelocity = 5;
     private float tornadoTime;
     float targetX = 0;
@@ -59,11 +59,9 @@ public class Player extends Sprite {
         // Sets cannonball array
         cannonBalls = new Array<>();
         // Decrease health if playing on hard mode
-        System.out.println(screen.difficulty);
         if (screen.difficulty < 1){
             Hud.changeHealth(-(int) (Hud.getHealth() * screen.difficulty / 4));
         }
-        System.out.println(Hud.getHealth());
     }
 
     /**

@@ -46,7 +46,7 @@ public class EnemyShip extends Enemy {
     public CollegeMetadata collegeMeta;
     private final Sound destroy;
     private final Sound hit;
-    private Array<CollegeFire> cannonBalls;
+    public Array<CollegeFire> cannonBalls;
 
     private PathManager pathManager;
 
@@ -55,7 +55,7 @@ public class EnemyShip extends Enemy {
      */
     private int updateDelay = 0;
 
-    private List<Checkpoint> path;
+    public List<Checkpoint> path;
 
     /**
      * Instantiates enemy ship
@@ -161,7 +161,7 @@ public class EnemyShip extends Enemy {
 
         if (setToDestroy) {
             //Play death noise
-            if (GameScreen.game.getPreferences().isEffectsEnabled()) {
+            if (GameScreen.game != null && GameScreen.game.getPreferences().isEffectsEnabled()) {
                 destroy.play(GameScreen.game.getPreferences().getEffectsVolume());
             }
             world.destroyBody(b2body);
@@ -307,10 +307,9 @@ public class EnemyShip extends Enemy {
     public void onContact() {
         updateDelay = 50;
         //Play collision sound
-        if (GameScreen.game.getPreferences().isEffectsEnabled()) {
+        if (GameScreen.game != null && GameScreen.game.getPreferences().isEffectsEnabled()) {
             hit.play(GameScreen.game.getPreferences().getEffectsVolume());
         }
-        System.out.println(damage);
         //Deal with the damage
         health -= damage;
         bar.changeHealth(damage);

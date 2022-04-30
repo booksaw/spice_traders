@@ -107,7 +107,7 @@ public class CollegeTest {
 	}
 
 	/**
-	 * test to see if the college takes damage upon contact
+	 * test to see if a cannonball is spawned when the fired method is called
 	 */
 	@Ignore
 	public void testFireCannonball() {
