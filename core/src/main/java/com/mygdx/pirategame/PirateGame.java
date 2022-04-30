@@ -61,10 +61,10 @@ public class PirateGame extends Game {
 	public boolean gameRunning = true;
 
 	// Constant for selecting difficulty
-	public final static float EASY = 1.3f;
-	public final static float NORMAL = 1f;
+	public final static float EASY = 2.5f;
+	public final static float NORMAL = 1.5f;
 	public final static float HARD = 0.7f;
-	public float DIFFICULTY = 1;
+	public float DIFFICULTY = NORMAL;
 
 
 	/**
