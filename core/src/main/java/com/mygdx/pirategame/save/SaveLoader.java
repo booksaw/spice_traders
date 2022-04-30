@@ -6,7 +6,6 @@ import com.mygdx.pirategame.gameobjects.enemy.CollegeMetadata;
 import com.mygdx.pirategame.gameobjects.enemy.EnemyShip;
 import com.mygdx.pirategame.gameobjects.enemy.SeaMonster;
 import com.mygdx.pirategame.gameobjects.entity.Tornado;
-import jdk.internal.misc.FileSystemOption;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -18,7 +17,6 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
-import java.util.Locale;
 
 /**
  * Used as a superclass for all loaders
