@@ -107,8 +107,6 @@ public class DeathScreen implements Screen {
                 parent.killEndScreen();
             }
         });
-
-
     }
 
     /**

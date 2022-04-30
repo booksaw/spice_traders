@@ -219,8 +219,6 @@ public class SeaMonster extends Enemy {
      */
     public boolean inPlayerRange() {
         return screen.getPlayerPos().dst(b2body.getPosition()) < 7;
-        /*Vector2 pos = screen.getPlayerPos();
-        return pos.dst(b2body.getPosition()) < 7;*/
     }
 
     /**
@@ -364,6 +362,9 @@ public class SeaMonster extends Enemy {
         }
     }
 
+    /**
+     * Destroys the Sea Monster and plays death sound
+     */
     public void destroySeaMonster() {
         //Play death noise
         // Checking if game is null allows testing of this function

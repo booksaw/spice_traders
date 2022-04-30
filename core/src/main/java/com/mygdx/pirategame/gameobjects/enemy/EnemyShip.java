@@ -41,7 +41,6 @@ public class EnemyShip extends Enemy {
     public static final int COLLISIONOFFSET = 15;
     public static boolean movement = true;
     public static boolean fire = true;
-    // TODO: Stop cannonballs using 'fire'
 
     private Texture enemyShip;
     public CollegeMetadata collegeMeta;
@@ -218,13 +217,6 @@ public class EnemyShip extends Enemy {
         }
         Vector2 v = travelToCheckpoint(speed, cp);
         b2body.setLinearVelocity(v);
-
-        // below code is to move the ship to a coordinate (target)
-        //Vector2 target = new Vector2(960 / PirateGame.PPM, 2432 / PirateGame.PPM);
-        //target.sub(b2body.getPosition());
-        //target.nor();
-        //float speed = 1.5f;
-        //b2body.setLinearVelocity(target.scl(speed));
     }
 
     @Override
@@ -294,7 +286,6 @@ public class EnemyShip extends Enemy {
         bdef.type = BodyDef.BodyType.DynamicBody;
         b2body = world.createBody(bdef);
 
-        //b2body.setLinearDamping(1);
         //Sets collision boundaries
         FixtureDef fdef = new FixtureDef();
         CircleShape shape = new CircleShape();
@@ -328,7 +319,7 @@ public class EnemyShip extends Enemy {
 
 
     /**
-     * Called when an enemy ship colldes with the player
+     * Called when an enemy ship collides with the player
      */
     @Override
     public void onContactOther() {
@@ -337,7 +328,7 @@ public class EnemyShip extends Enemy {
     }
 
     /**
-     * Updates the ship image. Particuarly change texture on college destruction
+     * Updates the ship image. Particularly change texture on college destruction
      *
      * @param alignment Associated college
      * @param path      Path of new texture
@@ -347,7 +338,6 @@ public class EnemyShip extends Enemy {
         enemyShip = new Texture(path);
         setRegion(enemyShip);
     }
-
 
     /**
      * Checks if the ship should pathfind or just sit still (used to reduce needless load)

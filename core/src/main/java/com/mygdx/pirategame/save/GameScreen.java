@@ -79,8 +79,8 @@ public class GameScreen implements Screen {
     private final TiledMap map;
     private final OrthogonalTiledMapRenderer renderer;
 
-    private final World world;
-    private final Box2DDebugRenderer b2dr;
+    private World world;
+    private Box2DDebugRenderer b2dr;
 
     Player player;
     private static HashMap<CollegeMetadata, College> colleges = new HashMap<>();
@@ -91,7 +91,7 @@ public class GameScreen implements Screen {
     private static ArrayList<Tornado> Tornados = new ArrayList<>();
 
     private final AvailableSpawn invalidSpawn = new AvailableSpawn();
-    private final Hud hud;
+    private Hud hud;
 
     public static final int GAME_RUNNING = 0;
     public static final int GAME_PAUSED = 1;
@@ -108,10 +108,6 @@ public class GameScreen implements Screen {
 
     public Random rand = new Random();
 
-    private Integer attackingCollege;
-    private final List<Integer> collegesLeft = new LinkedList<Integer>(Arrays.asList(1, 2, 3));
-    private final Random collegeRand = new Random();
-
     private GoldShop goldShop;
     private static Label shopLabel;
     private final SaveLoader loadManager;
@@ -121,11 +117,11 @@ public class GameScreen implements Screen {
     /**
      * Initialises the Game Screen,
      * generates the world data and data for entities that exist upon it,
-     *
-     * @param game passes game data to current class,
+     *  @param game passes game data to current class,
      * @param loadManager The class which manages loading and saving the game
+     * @param headlessMode passes whether the game is running in headless
      */
-    public GameScreen(PirateGame game, SaveLoader loadManager) {
+    public GameScreen(PirateGame game, SaveLoader loadManager, boolean headlessMode) {
         gameStatus = GAME_RUNNING;
         GameScreen.game = game;
         this.loadManager = loadManager;
@@ -138,34 +134,50 @@ public class GameScreen implements Screen {
         // set the difficulty of the game
         difficulty = game.DIFFICULTY;
 
-        // Initialize a hud
-        hud = new Hud(game.batch);
-
-        // Initialising box2d physics
-        world = new World(new Vector2(0, 0), true);
-        if (PHYSICSDEBUG) {
-            b2dr = new Box2DDebugRenderer();
-        } else {
-            b2dr = null;
-        }
-
-        // making the Tiled tmx file render as a map
-        maploader = new TmxMapLoader();
-        map = maploader.load("map/map.tmx");
-        renderer = new OrthogonalTiledMapRenderer(map, getUnitScale());
-        pathFinder = new PathFinder(this, 64);
-
-        new WorldCreator(this);
-
-        // stores tutorial texture
-        tutorialTexture = new Texture("Tutorial.png");
-        tutorials = new Sprite(tutorialTexture);
-
-        // Setting up contact listener for collisions
-        world.setContactListener(new WorldContactListener());
-
         // Spawning enemy ship and coin. x and y is spawn location
         colleges = new HashMap<>();
+
+        ships = new ArrayList<>();
+        monsters = new ArrayList<>();
+        Coins = new ArrayList<>();
+
+        if (headlessMode) {
+
+            maploader = null;
+            map = null;
+            renderer = null;
+            pathFinder = null;
+            tutorials = null;
+            tutorialTexture = null;
+            // Setting Stage
+            stage = null;
+        } else {
+            // Initialising box2d physics
+            world = new World(new Vector2(0, 0), true);
+            if (PHYSICSDEBUG) {
+                b2dr = new Box2DDebugRenderer();
+            } else {
+                b2dr = null;
+            }
+
+            // making the Tiled tmx file render as a map
+            maploader = new TmxMapLoader();
+            map = maploader.load("map/map.tmx");
+            renderer = new OrthogonalTiledMapRenderer(map, getUnitScale(), game.batch);
+            pathFinder = new PathFinder(this, 64);
+
+            new WorldCreator(this);
+
+            // stores tutorial texture
+            tutorialTexture = new Texture("Tutorial.png");
+            tutorials = new Sprite(tutorialTexture);
+
+            // Setting up contact listener for collisions
+            world.setContactListener(new WorldContactListener());
+
+            // Initialize a hud
+            hud = new Hud(game.batch);
+
 
         ships = new ArrayList<>();
         monsters = new ArrayList<>();
@@ -174,21 +186,22 @@ public class GameScreen implements Screen {
 
         loadManager.load(this);
 
-        //Setting stage
-        stage = new Stage(new ScreenViewport());
+            // Setting Stage
+            stage = new Stage(new ScreenViewport());
 
+            // Adds message to tell the player they can open the gold shop
+            shopLabel = new Label("Press \"E\" to enter the Gold Shop", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+            Table table1 = new Table(); // Shop text
+            table1.add(shopLabel).padTop(20).top();
+            table1.top();
+            table1.setFillParent(true);
+            shopLabel.setVisible(false);
+            stage.addActor(table1);
 
-        // Adds message to tell the player they can open the gold shop
-        shopLabel = new Label("Press \"E\" to enter the Gold Shop", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        Table table1 = new Table(); // Shop text
-        table1.add(shopLabel).padTop(20).top();
-        table1.top();
-        table1.setFillParent(true);
-        shopLabel.setVisible(false);
-        stage.addActor(table1);
+            // Initialise the gold shop
+            goldShop = new GoldShop(GameScreen.game, camera, this);
+        }
 
-        // Initialise the gold shop
-        goldShop = new GoldShop(GameScreen.game, camera, this);
     }
 
     /**
@@ -306,7 +319,6 @@ public class GameScreen implements Screen {
         pauseTable.row().pad(20, 0, 10, 0);
         pauseTable.add(exit).fillX().uniformX();
         pauseTable.center();
-
 
         pauseButton.addListener(new ChangeListener() {
             @Override
@@ -436,7 +448,6 @@ public class GameScreen implements Screen {
             if (college.getValue().getMetaData().isPlayer()) {
                 float distance = position.dst(college.getValue().getMetaData().getCentrePosition());
                 if (distance < college.getValue().getMetaData().getDistance()) {
-                    //System.out.println(distance);
                     shopLabel.setVisible(true);
 
                     if (Gdx.input.isKeyJustPressed(Input.Keys.E)) {
@@ -600,7 +611,6 @@ public class GameScreen implements Screen {
             college.getValue().draw(game.batch);
         }
 
-
         //Updates all ships
         for (int i = 0; i < ships.size(); i++) {
             // if the ship is in a college
@@ -724,27 +734,6 @@ public class GameScreen implements Screen {
     }
 
     /**
-     * When called, finds the next college that the player can attack
-     */
-    public void nextCollege() {
-        // Selects, at random, an index from length of collegeLeft list
-        Integer collegeIndex = collegeRand.nextInt(collegesLeft.size());
-        // Gets the collegeID from the collegeLeft list
-        attackingCollege = collegesLeft.get(collegeIndex);
-        // Removes the college selected from the collegeLeft list
-        collegesLeft.remove(collegeIndex);
-    }
-
-    /**
-     * Returns the college which can currently be attacked
-     *
-     * @return integer : returns CollegeID
-     */
-    public Integer getAttackingCollege() {
-        return attackingCollege;
-    }
-
-    /**
      * Checks if the game is over
      * i.e. goal reached (all colleges bar 0 are destroyed)
      */
@@ -818,8 +807,6 @@ public class GameScreen implements Screen {
     public static void setMaxSpeed(Float value) {
         maxSpeed = value;
     }
-
-
 
     /**
      * Fetches the current shooting delay
@@ -956,7 +943,6 @@ public class GameScreen implements Screen {
         }
     }
 
-
     /**
      * @return Returns the tile map renderer
      */
@@ -1026,6 +1012,9 @@ public class GameScreen implements Screen {
         return difficulty;
     }
 
+    /**
+     * @return if the game is running
+     */
     public boolean isGameRunning() {
         return game.isGameRunning();
     }

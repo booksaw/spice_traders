@@ -29,7 +29,9 @@ public class Player extends Sprite {
     private Array<CannonFire> cannonBalls;
     private float timeFired = 0;
     private int cannonVelocity = 5;
-
+    private float tornadoTime;
+    float targetX = 0;
+    float targetY = 0;
     public static boolean inTornadoRange = false;
 
     /**
@@ -95,26 +97,16 @@ public class Player extends Sprite {
         }
 
         if (inTornadoRange) {
-            //System.out.println("close");
             // move player towards tornado if in range
-
-            // position of target to move towards
-            float targetX = 0;
-            float targetY = 0;
 
             // position of player
             float sourceX = b2body.getPosition().x;
             float sourceY = b2body.getPosition().y;
 
-            // If the tornado is close to the player, move away from it
-            double distance = Math.sqrt(Math.pow(targetX - b2body.getWorldCenter().x, 2) + Math.pow(targetY - b2body.getWorldCenter().y, 2));
-
             double tornadoDistance = GameScreen.getNearestTornado().getDistance();
 
             if (tornadoDistance > 8) {
-                //System.out.println("far");
                 Player.inTornadoRange = false;
-                //Entity.tornadoContact();
             }
             // Uses a triangle to calculate the new trajectory
             double newAngle = Math.atan2(targetY - sourceY, targetX - sourceX);
@@ -128,6 +120,21 @@ public class Player extends Sprite {
             b2body.setTransform(newPos, 0);
         }
 
+        // target position changes based on time
+        if (tornadoTime > 15) {
+            targetY = screen.getTileMapHeight();
+        }
+        if (tornadoTime > 30) {
+            targetX = screen.getTileMapWidth();;
+        }
+        if (tornadoTime > 45) {
+            targetY = 0;
+        }
+        if (tornadoTime > 60) {
+            tornadoTime = 0;
+        }
+
+        tornadoTime += dt;
         // Add delay timer between shots
         timeFired += dt;
     }

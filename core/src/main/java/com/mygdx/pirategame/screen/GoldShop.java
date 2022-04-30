@@ -43,7 +43,6 @@ public class GoldShop implements Screen {
     private GameScreen gameScreen;
     private Sound purchaseSound;
 
-
     private static TextButton fasterCannonBtn;
     private TextButton healthBoostBtn;
     private TextButton increaseCannonDamageBtn;

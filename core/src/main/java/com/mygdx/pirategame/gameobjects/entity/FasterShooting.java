@@ -35,7 +35,6 @@ public class FasterShooting extends PowerUp {
         setBounds(0,0,48 / PirateGame.PPM, 48 / PirateGame.PPM);
         //Set the texture
         setRegion(fasterShooting);
-        // TODO : Fix texture scaling
         //Sets origin of the speed boost
         setOrigin(24 / PirateGame.PPM,24 / PirateGame.PPM);
 
@@ -70,13 +69,12 @@ public class FasterShooting extends PowerUp {
     }
 
     /**
-     * Handle expiration of the powerup
+     * Handle expiration of the power up
      */
     @Override
     public void endPowerUp() {
         // Reset the speed of shooting by resetting shooting delay
         GameScreen.setShootingDelay(0.5f);
-        // TODO : Adjust to better speed values
 
         active = false;
         Gdx.app.log("fasterShooting", "ended");

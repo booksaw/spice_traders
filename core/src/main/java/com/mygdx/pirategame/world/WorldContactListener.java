@@ -41,7 +41,6 @@ public class WorldContactListener implements ContactListener {
                     ((Entity) fixB.getUserData()).entityContact();
                 }
                 break;
-                // TODO: ABSORPTION_HEART_BIT collides twice ??????
             case PirateGame.ABSORPTION_HEART_BIT | PirateGame.PLAYER_BIT:
                 if(fixA.getFilterData().categoryBits == PirateGame.ABSORPTION_HEART_BIT) {
                     ((Entity) fixA.getUserData()).entityContact();
@@ -151,7 +150,6 @@ public class WorldContactListener implements ContactListener {
     @Override
     public void endContact(Contact contact) {
         // Displays contact message
-        //Gdx.app.log("End Contact", "");
     }
 
     /**

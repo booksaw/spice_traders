@@ -1,10 +1,5 @@
 package com.mygdx.pirategame.tests.save;
 
-import com.mygdx.pirategame.save.GameScreen;
-import org.junit.Test;
-
-import static org.junit.Assert.assertFalse;
-
 /**
  * Tests for the GameScreen class
  * @author James McNair
@@ -12,11 +7,15 @@ import static org.junit.Assert.assertFalse;
 public class GameScreenTest {
 
     /**
+     * Duplicate code so I commented it out - Marc
+     *
+     *
      * Test to ensure the debug tools are disabled
-     */
+     *
     @Test
     public void testDebugToolsDisabled() {
         assertFalse(GameScreen.PHYSICSDEBUG);
     }
 
+    */
 }
