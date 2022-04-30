@@ -12,12 +12,12 @@ import com.mygdx.pirategame.gameobjects.enemy.SeaMonster;
 import com.mygdx.pirategame.pathfinding.pathManager.AttackPath;
 import com.mygdx.pirategame.save.GameScreen;
 import com.mygdx.pirategame.tests.FakeGL20;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.*;
+import org.junit.rules.Timeout;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
+
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -28,6 +28,9 @@ import org.mockito.Mockito;
 public class SeaMonsterTest {
 
     private static GameScreen mockedGameScreen;
+
+    @ClassRule
+    public static Timeout classTimeout = new Timeout(100, TimeUnit.SECONDS);
 
     /**
      * Setup the testing environment
@@ -52,15 +55,6 @@ public class SeaMonsterTest {
     @Test(expected = Test.None.class)
     public void testInstantiation() {
         new SeaMonster(mockedGameScreen, 10, 10);
-    }
-
-    /**
-     * Tests the creation of the object from a save file, using arbitrary coordinates
-     */
-    //@Test(expected = Test.None.class)
-    @Ignore
-    public void testInstantiationSaveFile() {
-        new SeaMonster(mockedGameScreen, null);
     }
 
     /**
@@ -130,7 +124,7 @@ public class SeaMonsterTest {
     }
 
     /**
-     * Tests to see if the sea monster generates a new path when in range of the player
+     * Tests to see if the sea monster stops moving when player moves out of range
      */
     @Test
     public void testPlayerMovesOutOfRange() {
@@ -142,7 +136,7 @@ public class SeaMonsterTest {
     }
 
     /**
-     * Tests to see if the sea monster generates a new path when in range of the player
+     * Tests to see if the sea monster generates a new path when the path is null
      */
     @Test
     public void testEmptyPath() {

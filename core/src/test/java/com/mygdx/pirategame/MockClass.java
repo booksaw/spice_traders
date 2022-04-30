@@ -87,6 +87,8 @@ public class MockClass {
 
         Mockito.when(screen.getPlayerPos()).thenReturn(new Vector2(13*64 / PirateGame.PPM, 11*64 / PirateGame.PPM));
 
+        Mockito.when(screen.getCenteredPlayerPos()).thenReturn(new Vector2(13*64 / PirateGame.PPM, 11*64 / PirateGame.PPM));
+
         return screen;
     }
 
