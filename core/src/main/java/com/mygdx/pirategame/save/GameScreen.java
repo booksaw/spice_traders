@@ -89,6 +89,7 @@ public class GameScreen implements Screen {
     private static ArrayList<Coin> Coins = new ArrayList<>();
     public static ArrayList<PowerUp> PowerUps = new ArrayList<>();
     public static ArrayList<Tornado> Tornados = new ArrayList<>();
+    private static HashMap<String, Float> powerUpTimer = new HashMap<>();
 
     private final AvailableSpawn invalidSpawn = new AvailableSpawn();
     private Hud hud;
@@ -117,7 +118,7 @@ public class GameScreen implements Screen {
     /**
      * Initialises the Game Screen,
      * generates the world data and data for entities that exist upon it,
-     *  @param game passes game data to current class,
+     * @param game passes game data to current class,
      * @param loadManager The class which manages loading and saving the game
      * @param headlessMode passes whether the game is running in headless
      */
@@ -188,6 +189,13 @@ public class GameScreen implements Screen {
 
             loadManager.load(this);
 
+            powerUpTimer = new HashMap<>();
+            powerUpTimer.put("absorptionHeart", (float) 0);
+            powerUpTimer.put("coinMagnet", (float) 0);
+            powerUpTimer.put("fasterShooting", (float) 0);
+            powerUpTimer.put("freezeEnemy", (float) 0);
+            powerUpTimer.put("speedBoost", (float) 0);
+
             // Setting Stage
             stage = new Stage(new ScreenViewport());
 
@@ -203,7 +211,6 @@ public class GameScreen implements Screen {
             // Initialise the gold shop
             goldShop = new GoldShop(GameScreen.game, camera, this);
         }
-
     }
 
     /**
@@ -385,6 +392,7 @@ public class GameScreen implements Screen {
                 pauseTable.setVisible(false);
                 table.setVisible(true);
                 game.changeScreen(PirateGame.MENU);
+                resetPowerUps();
             }
         });
     }
@@ -751,6 +759,7 @@ public class GameScreen implements Screen {
             game.changeScreen(PirateGame.DEATH);
             game.killGame();
             game.resetValues();
+            resetPowerUps();
         }
         //Win game if all colleges destroyed
         else if (getCollege(CollegeMetadata.ANNELISTER).destroyed && getCollege(CollegeMetadata.CONSTANTINE).destroyed && getCollege(CollegeMetadata.GOODRICKE).destroyed) {
@@ -758,6 +767,7 @@ public class GameScreen implements Screen {
             game.changeScreen(PirateGame.VICTORY);
             game.killGame();
             game.resetValues();
+            resetPowerUps();
         }
     }
 
@@ -906,6 +916,20 @@ public class GameScreen implements Screen {
         goldShop.hide();
         goldShop = null;
         resume();
+    }
+
+    public HashMap<String, Float> getPowerUpTimer() {
+        return powerUpTimer;
+    }
+
+    public void resetPowerUps() {
+        powerUpTimer.put("absorptionHeart", (float) 0);
+        powerUpTimer.put("coinMagnet", (float) 0);
+        powerUpTimer.put("fasterShooting", (float) 0);
+        powerUpTimer.put("freezeEnemy", (float) 0);
+        powerUpTimer.put("speedBoost", (float) 0);
+        // Resets the display counters
+        Hud.resetPowerUpTimers();
     }
 
     /**

@@ -78,7 +78,7 @@ public class CoinMagnet extends PowerUp {
         if (!destroyed) {
             toggleCoinMagnet = true;
             active = true;
-            timeLeft += (duration / 2);
+            screen.getPowerUpTimer().put("coinMagnet", duration / 2);
 
             // Set to destroy
             setToDestroyed = true;
@@ -108,15 +108,16 @@ public class CoinMagnet extends PowerUp {
             toggleCoinMagnet();
             toggleCoinMagnet = false;
         }
+        timeLeft = screen.getPowerUpTimer().get("coinMagnet");
         // Ability lasts for a specified duration
         if (timer > duration) {
             endPowerUp();
             timer = 0;
-            timeLeft = 0;
+            screen.getPowerUpTimer().put("coinMagnet", (float) 0);
         }
         else if (active) {
             timer += Gdx.graphics.getDeltaTime();
-            timeLeft -= Gdx.graphics.getDeltaTime();
+            screen.getPowerUpTimer().put("coinMagnet", (timeLeft - Gdx.graphics.getDeltaTime()));
             Hud.setCoinMagnetTimer(timeLeft);
         }
     }

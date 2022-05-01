@@ -43,7 +43,7 @@ public class FasterShooting extends PowerUp {
     }
 
     /**
-     * Updates the speed boost state. If needed, deletes the speed boost if picked up
+     * Updates the faster shooting state. If needed, deletes the faster shooting if picked up
      */
     public void update() {
         //If coin is set to destroy and isn't, destroy it
@@ -55,15 +55,16 @@ public class FasterShooting extends PowerUp {
         else if(!destroyed) {
             setPosition(b2body.getPosition().x - getWidth() / 2f, b2body.getPosition().y - getHeight() / 2f);
         }
+        timeLeft = screen.getPowerUpTimer().get("fasterShooting");
         // Ability lasts for a specified duration
         if (timer > duration) {
             endPowerUp();
             timer = 0;
-            timeLeft = 0;
+            screen.getPowerUpTimer().put("fasterShooting", (float) 0);
         }
         else if (active) {
             timer += Gdx.graphics.getDeltaTime();
-            timeLeft -= Gdx.graphics.getDeltaTime();
+            screen.getPowerUpTimer().put("fasterShooting", (timeLeft - Gdx.graphics.getDeltaTime()));
             Hud.setFasterShootingTimer(timeLeft);
         }
     }
@@ -81,7 +82,7 @@ public class FasterShooting extends PowerUp {
     }
 
     /**
-     * Defines all the parts of the speed boost physical model. Sets it up for collisions
+     * Defines all the parts of the faster shooting physical model. Sets it up for collisions
      */
     @Override
     protected void defineEntity() {
@@ -107,13 +108,13 @@ public class FasterShooting extends PowerUp {
     }
 
     /**
-     * What happens when an entity collides with the speed boost. Only the player ship can collide/activate this function
+     * What happens when an entity collides with the faster shooting. Only the player ship can collide/activate this function
      */
     @Override
     public void entityContact() {
         if (!destroyed) {
             active = true;
-            timeLeft += (duration / 2);
+            screen.getPowerUpTimer().put("fasterShooting", duration / 2);
             // Increase speed of shooting by decreasing shooting delay
             GameScreen.changeShootingDelay((float) 30);
 
