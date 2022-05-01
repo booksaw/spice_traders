@@ -55,15 +55,16 @@ public class FreezeEnemy extends PowerUp {
         else if(!destroyed) {
             setPosition(b2body.getPosition().x - getWidth() / 2f, b2body.getPosition().y - getHeight() / 2f);
         }
+        timeLeft = screen.getPowerUpTimer().get("freezeEnemy");
         // Ability lasts for a specified duration
         if (timer > duration) {
             endPowerUp();
             timer = 0;
-            timeLeft = 0;
+            screen.getPowerUpTimer().put("freezeEnemy", (float) 0);
         }
         else if (active) {
             timer += Gdx.graphics.getDeltaTime();
-            timeLeft -= Gdx.graphics.getDeltaTime();
+            screen.getPowerUpTimer().put("freezeEnemy", (timeLeft - Gdx.graphics.getDeltaTime()));
             Hud.setFreezeEnemyTimer(timeLeft);
         }
     }
@@ -111,7 +112,7 @@ public class FreezeEnemy extends PowerUp {
     public void entityContact() {
         if (!destroyed) {
             active = true;
-            timeLeft += (duration / 2);
+            screen.getPowerUpTimer().put("freezeEnemy", duration / 2);
             // Stop enemy movement
             EnemyShip.movement = false;
             EnemyShip.fire = false;

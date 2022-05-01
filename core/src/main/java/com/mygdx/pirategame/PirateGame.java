@@ -6,6 +6,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.mygdx.pirategame.gameobjects.entity.SpeedBoost;
 import com.mygdx.pirategame.save.GameScreen;
 import com.mygdx.pirategame.save.NewGameSaveLoader;
 import com.mygdx.pirategame.screen.*;
@@ -188,12 +189,9 @@ public class PirateGame extends Game {
 		GameScreen.setMaxSpeed(4f);
 		GameScreen.setAcceleration(0.1f);
 		GameScreen.setShootingDelay(1f);
-
-		// Turn off power ups
-		// TODO: Turn off power ups
 	}
 	/**
-	 * Kills the game screen and skill tree so they can be refreshed on next game start
+	 * Kills the game screen and skill tree, so they can be refreshed on next game start
 	 */
 	public void killGame(){
 		gameScreen = null;

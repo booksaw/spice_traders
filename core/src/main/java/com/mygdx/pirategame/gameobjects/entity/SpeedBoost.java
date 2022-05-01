@@ -55,15 +55,16 @@ public class SpeedBoost extends PowerUp {
         else if(!destroyed) {
             setPosition(b2body.getPosition().x - getWidth() / 2f, b2body.getPosition().y - getHeight() / 2f);
         }
+        timeLeft = screen.getPowerUpTimer().get("speedBoost");
         // Ability lasts for a specified duration
         if (timer > duration) {
             endPowerUp();
             timer = 0;
-            timeLeft = 0;
+            screen.getPowerUpTimer().put("speedBoost", (float) 0);
         }
         else if (active) {
             timer += Gdx.graphics.getDeltaTime();
-            timeLeft -= Gdx.graphics.getDeltaTime();
+            screen.getPowerUpTimer().put("speedBoost", (timeLeft - Gdx.graphics.getDeltaTime()));
             Hud.setSpeedBoostTimer(timeLeft);
         }
     }
@@ -114,7 +115,7 @@ public class SpeedBoost extends PowerUp {
     public void entityContact() {
         if (!destroyed) {
             active = true;
-            timeLeft += (duration / 2);
+            screen.getPowerUpTimer().put("speedBoost", duration / 2);
             // Increase speed and acceleration variables (by percentage)
             GameScreen.changeMaxSpeed((float) 10);
             GameScreen.changeAcceleration((float) 15);

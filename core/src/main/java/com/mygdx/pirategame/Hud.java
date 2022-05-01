@@ -334,6 +334,17 @@ public class Hud implements Disposable {
     }
 
     /**
+     * Resets hud timers for all power ups
+     */
+    public static void resetPowerUpTimers() {
+        coinMagnet = (float) 0;
+        speedBoost = (float) 0;
+        absorptionHeart = (float) 0;
+        fasterShooting = (float) 0;
+        freezeEnemy = (float) 0;
+    }
+
+    /**
      * Changes health by value increase
      *
      * @param value Increase to health
