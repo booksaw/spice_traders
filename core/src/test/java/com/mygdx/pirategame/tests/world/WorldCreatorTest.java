@@ -42,6 +42,7 @@ public class WorldCreatorTest {
 	/**
 	 * Tests the creation of the object, as the object does not have any methods
 	 * this is all that needs covering
+	 * TEST ID: UT_43
 	 */
 	@Test(expected = Test.None.class)
 	public void testInstantiation() {

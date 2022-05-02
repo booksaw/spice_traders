@@ -74,6 +74,7 @@ public class increaseCannonDamageTest {
 
     /**
      * Test cannon damage increases after purchase
+     * TEST ID: UT_33
      */
     @Test
     public void testCannonDamageIncrease() {
@@ -97,6 +98,7 @@ public class increaseCannonDamageTest {
 
     /**
      * Test user balance decreases by the price of the increase cannon damage powerup on purchase from Gold Shop
+     * TEST ID: UT_32
      */
     @Test
     public void testCoinBalanceAfterPurchase(){
@@ -113,6 +115,7 @@ public class increaseCannonDamageTest {
 
     /**
      * Test that the player is not given increased cannon damage if they do not have enough coins
+     * TEST ID: UT_29
      */
     @Test
     public void testNotEnoughCoins(){

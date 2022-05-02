@@ -56,6 +56,7 @@ public class healthBoostTest {
 
     /**
      * Test player's health increases after purchase
+     * TEST ID: UT_31
      */
     @Test
     public void testHealthIncrease(){
@@ -75,6 +76,7 @@ public class healthBoostTest {
 
     /**
      * Test user balance decreases by the price of the health boost on purchase from Gold Shop
+     * TEST ID: UT_32
      */
     @Test
     public void testCoinBalanceAfterPurchase(){
@@ -92,6 +94,7 @@ public class healthBoostTest {
 
     /**
      * Test that the player is not given a health boost if they do not have enough coins
+     * TEST ID: UT_29
      */
     @Test
     public void testNotEnoughCoins(){

@@ -55,6 +55,7 @@ public class EnemyShipTest {
 
     /**
      * test to see if the college takes damage upon contact
+     * TEST ID: UT_9
      */
     @Test
     public void testOnContact() {
@@ -68,6 +69,7 @@ public class EnemyShipTest {
 
     /**
      * test to see if a cannonball is destroyed when set to destroy and the ship object is updated
+     * TEST ID: UT_10
      */
     @Ignore
     public void testDestroyCannonball() {
@@ -83,6 +85,7 @@ public class EnemyShipTest {
 
     /**
      * test to see if the ship is destroyed when updated with setToDestroy flag as true
+     * TEST ID: UT_11
      */
     @Test
     public void testDestroyShip() {
@@ -101,6 +104,7 @@ public class EnemyShipTest {
 
     /**
      * test to see if a cannonball is spawned when the fired method is called
+     * TEST ID: UT_12
      */
     @Ignore
     public void testFireCannonball() {
