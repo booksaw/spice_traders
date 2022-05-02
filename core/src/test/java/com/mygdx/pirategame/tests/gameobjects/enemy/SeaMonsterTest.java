@@ -28,6 +28,7 @@ import java.util.concurrent.TimeUnit;
 public class SeaMonsterTest {
 
     private static GameScreen mockedGameScreen;
+    private static SeaMonster seaMonster;
 
     @ClassRule
     public static Timeout classTimeout = new Timeout(100, TimeUnit.SECONDS);
@@ -47,15 +48,8 @@ public class SeaMonsterTest {
         MockClass.mockHudStatic();
 
         mockedGameScreen = MockClass.mockGameScreenWithPlayer();
-    }
+        seaMonster = new SeaMonster(mockedGameScreen, 10, 10);
 
-    /**
-     * Tests the creation of the object, using arbitrary coordinates
-     * TEST ID: UT_13
-     */
-    @Test(expected = Test.None.class)
-    public void testInstantiation() {
-        new SeaMonster(mockedGameScreen, 10, 10);
     }
 
     /**
