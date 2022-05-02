@@ -166,7 +166,7 @@ public class GameScreen implements Screen {
             // making the Tiled tmx file render as a map
             maploader = new TmxMapLoader();
             map = maploader.load("map/map.tmx");
-            renderer = new OrthogonalTiledMapRenderer(map, getUnitScale(), game.batch);
+            renderer = new OrthogonalTiledMapRenderer(map, getUnitScale());
             pathFinder = new PathFinder(this, 64);
 
             new WorldCreator(this);
