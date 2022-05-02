@@ -52,12 +52,20 @@ public class GameScreenTest {
 
 	}
 
+	/**
+	 * Ensure the debugging tools are disabled
+	 * TEST ID: UT_2
+	 */
 	@Test
 	public void testDebugToolsDisabled() {
 		assertFalse(GameScreen.PHYSICSDEBUG);
 	}
 
 
+	/**
+	 * Ensure the game screen can be instantiated
+	 * TEST ID: UT_35
+	 */
 	@Test
 	public void testConstructor() {
 		GameScreen screen = new GameScreen(mockedPirateGame, new NewGameSaveLoader(), true);
@@ -68,6 +76,7 @@ public class GameScreenTest {
 
 	/**
 	 * Tests to see if each power up type is added
+	 * TEST ID: UT_36
 	 */
 	@Ignore
 	public void testAddPowerUps() {
@@ -84,6 +93,7 @@ public class GameScreenTest {
 
 	/**
 	 * Tests to see if the table of buttons becomes visible when changing to the screen
+	 * TEST ID: UT_37
 	 */
 	@Test
 	public void testScreenChange() {
@@ -95,6 +105,7 @@ public class GameScreenTest {
 
 	/**
 	 * Tests to see if the function returns a random location
+	 * TEST ID: UT_38
 	 */
 	@Test
 	public void testGetRandomLocation() {
@@ -106,6 +117,7 @@ public class GameScreenTest {
 
 	/**
 	 * Tests to see if enemy's damage is changed
+	 * TEST ID: UT_39
 	 */
 	@Ignore
 	public void testEnemyDamage() {
@@ -118,6 +130,7 @@ public class GameScreenTest {
 
 	/**
 	 * Tests to see if the pause method pauses the game
+	 * TEST ID: UT_40
 	 */
 	@Test
 	public void testPauseGame() {
@@ -128,6 +141,7 @@ public class GameScreenTest {
 
 	/**
 	 * Tests to see if the resume method unpauses the game
+	 * TEST ID: UT_41
 	 */
 	@Test
 	public void testResumeGame() {

@@ -22,6 +22,7 @@ import static org.junit.Assert.assertTrue;
 /**
  * Unit tests for the PathFinder class
  * @author James McNair
+ * TEST ID: UT_34
  */
 @RunWith(PirateGameTest.class)
 public class PathFinderTest {

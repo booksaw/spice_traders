@@ -48,6 +48,7 @@ public class CollegeTest {
 	/**
 	 * test to ensure points increase when a college is destroyed (when college is
 	 * not owned by player)
+	 * TEST ID: UT_4
 	 */
 	@Test
 	public void testPointsOnDestroy() {
@@ -68,6 +69,7 @@ public class CollegeTest {
 
 	/**
 	 * test to see if game ends when alcuin is defeated
+	 * TEST ID: UT_5
 	 */
 	@Test
 	public void testOnTrigAlcuinDeath() {
@@ -84,7 +86,8 @@ public class CollegeTest {
 	}
 
 	/**
-	 * test to see if game ends when alcuin is defeated
+	 * test to see if ships are added correctly
+	 * TEST ID: UT_6
 	 */
 	@Test
 	public void testShipAddedToCollege() {
@@ -95,6 +98,7 @@ public class CollegeTest {
 
 	/**
 	 * test to see if the college takes damage upon contact
+	 * TEST ID: UT_7
 	 */
 	@Test
 	public void testOnContact() {
@@ -108,6 +112,7 @@ public class CollegeTest {
 
 	/**
 	 * test to see if a cannonball is spawned when the fired method is called
+	 * TEST ID: UT_8
 	 */
 	@Ignore
 	public void testFireCannonball() {

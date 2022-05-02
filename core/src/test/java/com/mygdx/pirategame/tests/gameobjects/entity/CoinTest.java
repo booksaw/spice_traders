@@ -58,7 +58,8 @@ public class CoinTest {
 
 
     /**
-     * Tests to see if heart is destroyed after setting destroyed to true and updating
+     * Tests to see if coin is destroyed after setting destroyed to true and updating
+     * TEST ID: UT_44
      */
     @Test
     public void testDestroy() {
@@ -77,6 +78,7 @@ public class CoinTest {
     /**
      * Tests to see if the coin moves position when in range of the player whilst
      * the coin magnet power up is activated
+     * TEST ID: UT_26
      */
     @Test
     public void testMagnetOn() {
@@ -92,6 +94,7 @@ public class CoinTest {
 
     /**
      * Tests to see if the collision body is correctly defined
+     * TEST ID: UT_26
      */
     @Test
     public void testDefineEntity() {
@@ -102,6 +105,7 @@ public class CoinTest {
     /**
      * Tests to see if the larger collision body is used when
      * the toggle function is called
+     * TEST ID: UT_26
      */
     @Test
     public void testMagnetCollisionBodyOn() {
@@ -113,6 +117,7 @@ public class CoinTest {
     /**
      * Tests to see if the default collision body is used when
      * the toggle function is called whilst the larger body is currently active
+     * TEST ID: UT_23
      */
     @Test
     public void testMagnetCollisionBodyOff() {
@@ -124,6 +129,7 @@ public class CoinTest {
 
     /**
      * Tests to see if the coin recognises if the coin magnet is activated
+     * TEST ID: UT_24
      */
     @Test
     public void testMagnetActive() {
@@ -136,6 +142,7 @@ public class CoinTest {
     /**
      * Tests to see if entity is destroyed upon contact with another object
      * body destruction has been previously tested when setToDestroyed is true
+     * TEST ID: UT_26
      */
     @Test
     public void testContact() {

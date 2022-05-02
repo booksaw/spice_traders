@@ -54,6 +54,7 @@ public class CoinMagnetTest {
 
     /**
      * Tests to see if power up is destroyed after setting destroyed to true and updating
+     * TEST ID: UT_21
      */
     @Test
     public void testDestroy() {
@@ -71,6 +72,7 @@ public class CoinMagnetTest {
 
     /**
      * Tests to see if the power up is positioned correctly when not destroyed
+     * TEST ID: UT_22
      */
     @Test
     public void testPosition() {
@@ -84,6 +86,7 @@ public class CoinMagnetTest {
 
     /**
      * Tests to see if power up ends correctly
+     * TEST ID: UT_23
      */
     @Test
     public void testPowerupEnd() {
@@ -96,6 +99,7 @@ public class CoinMagnetTest {
 
     /**
      * Tests to see if the collision body is correctly defined
+     * TEST ID: UT_24
      */
     @Test
     public void testDefineEntity() {
@@ -105,6 +109,7 @@ public class CoinMagnetTest {
 
     /**
      * Tests to see if the coin magnet is activated properly
+     * TEST ID: UT_26
      */
     @Test
     public void testToggleCoinMagnet() {
@@ -118,6 +123,7 @@ public class CoinMagnetTest {
     /**
      * Tests to see if entity is destroyed upon contact with another object
      * body destruction has been previously tested when setToDestroyed is true
+     * TEST ID: UT_26
      */
     @Test
     public void testContact() {

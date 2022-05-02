@@ -89,7 +89,7 @@ public class GameScreen implements Screen {
     private static ArrayList<Coin> Coins = new ArrayList<>();
     public static ArrayList<PowerUp> PowerUps = new ArrayList<>();
     public static ArrayList<Tornado> Tornados = new ArrayList<>();
-    private static HashMap<String, Float> powerUpTimer = new HashMap<>();
+    public static HashMap<String, Float> powerUpTimer = new HashMap<>();
 
     private final AvailableSpawn invalidSpawn = new AvailableSpawn();
     private Hud hud;
@@ -166,7 +166,7 @@ public class GameScreen implements Screen {
             // making the Tiled tmx file render as a map
             maploader = new TmxMapLoader();
             map = maploader.load("map/map.tmx");
-            renderer = new OrthogonalTiledMapRenderer(map, getUnitScale(), game.batch);
+            renderer = new OrthogonalTiledMapRenderer(map, getUnitScale());
             pathFinder = new PathFinder(this, 64);
 
             new WorldCreator(this);
@@ -179,7 +179,7 @@ public class GameScreen implements Screen {
             world.setContactListener(new WorldContactListener());
 
             // Initialize a hud
-            hud = new Hud(game.batch);
+            hud = new Hud(game.batch, false);
 
 
             ships = new ArrayList<>();
