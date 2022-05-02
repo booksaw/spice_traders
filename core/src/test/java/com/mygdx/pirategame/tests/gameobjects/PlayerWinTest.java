@@ -74,6 +74,7 @@ public class PlayerWinTest{
 
     /**
      * Test to see the game ends when all colleges are defeated
+     * TEST ID: UR_45
      */
     @Test
     public void testPlayerWin(){
