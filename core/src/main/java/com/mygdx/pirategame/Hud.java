@@ -77,7 +77,7 @@ public class Hud implements Disposable {
      *
      * @param sb Batch of images used in the hud
      */
-    public Hud(SpriteBatch sb) {
+    public Hud(SpriteBatch sb, boolean headlessmode) {
         health = 100;
         score = 0;
         coins = 0;
@@ -92,7 +92,9 @@ public class Hud implements Disposable {
         coin = new Image(coinPic);
 
         viewport = new ScreenViewport();
-        stage = new Stage(viewport, sb);
+        if (!headlessmode) {
+            stage = new Stage(viewport, sb);
+        }
 
         //Creates tables
         Table table1 = new Table(); //Counters
@@ -122,9 +124,12 @@ public class Hud implements Disposable {
         table1.add(coinLabel).padTop(20).top().right().padRight(40);
         table1.row();
         table1.add(scoreLabel).padTop(22).top().right().padRight(40);
-        stage.addActor(table3);
-        stage.addActor(table2);
-        stage.addActor(table1);
+
+        if (!headlessmode) {
+            stage.addActor(table3);
+            stage.addActor(table2);
+            stage.addActor(table1);
+        }
 
         // Set images
         magnet = new Texture("entity/magnet.png");
@@ -153,8 +158,10 @@ public class Hud implements Disposable {
         fasterShootingLabel = new Label(String.format("%03f", fasterShooting), new Label.LabelStyle(new BitmapFont(), Color.YELLOW));
         freezeEnemyLabel = new Label(String.format("%03f", freezeEnemy), new Label.LabelStyle(new BitmapFont(), Color.YELLOW));
 
-        stage.addActor(table5);
-        stage.addActor(table4);
+        if (!headlessmode) {
+            stage.addActor(table5);
+            stage.addActor(table4);
+        }
     }
 
     /**
@@ -448,6 +455,13 @@ public class Hud implements Disposable {
 
     public static Integer getPoints() {
         return score;
+    }
+
+    /**
+     * Sets the value of the timer
+     */
+    public void setTimeCount(float time) {
+        timeCount = time;
     }
 
     /**

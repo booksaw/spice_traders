@@ -10,6 +10,7 @@ import com.mygdx.pirategame.MockClass;
 import com.mygdx.pirategame.PirateGameTest;
 import com.mygdx.pirategame.gameobjects.entity.AbsorptionHeart;
 import com.mygdx.pirategame.gameobjects.entity.CoinMagnet;
+import com.mygdx.pirategame.gameobjects.entity.PowerUp;
 import com.mygdx.pirategame.save.GameScreen;
 import com.mygdx.pirategame.save.NewGameSaveLoader;
 import com.mygdx.pirategame.tests.FakeGL20;
@@ -18,6 +19,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.junit.Assert;
+
+import java.util.HashMap;
 
 import static org.junit.Assert.assertTrue;
 
