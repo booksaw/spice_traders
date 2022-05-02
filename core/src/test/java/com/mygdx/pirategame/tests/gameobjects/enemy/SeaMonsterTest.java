@@ -49,10 +49,12 @@ public class SeaMonsterTest {
 
         mockedGameScreen = MockClass.mockGameScreenWithPlayer();
         seaMonster = new SeaMonster(mockedGameScreen, 10, 10);
+
     }
 
     /**
      * Tests to see if heart is destroyed after setting destroyed to true and updating
+     * TEST ID: UT_14
      */
     @Test
     public void testDestroy() {
@@ -70,6 +72,7 @@ public class SeaMonsterTest {
 
     /**
      * Tests to see if the collision body is correctly defined
+     * TEST ID: UT_15
      */
     @Test
     public void testDefineEntity() {
@@ -79,6 +82,7 @@ public class SeaMonsterTest {
 
     /**
      * Tests to see if entity loses health upon contact
+     * TEST ID: UT_16
      */
     @Test
     public void testContact() {
@@ -92,6 +96,7 @@ public class SeaMonsterTest {
     /**
      * Tests to see if entity is destroyed upon contact with another object
      * body destruction has been previously tested when setToDestroyed is true
+     * TEST ID: UT_17
      */
     @Test
     public void testContactOther() {
@@ -107,6 +112,7 @@ public class SeaMonsterTest {
     /**
      * Tests to see if the sea monster generates a new path manager
      * and path when in range of the player
+     * TEST ID: UT_18
      */
     @Test
     public void testPlayerInRangeNoPathManager() {
@@ -119,6 +125,7 @@ public class SeaMonsterTest {
 
     /**
      * Tests to see if the sea monster stops moving when player moves out of range
+     * TEST ID: UT_19
      */
     @Test
     public void testPlayerMovesOutOfRange() {
@@ -131,6 +138,7 @@ public class SeaMonsterTest {
 
     /**
      * Tests to see if the sea monster generates a new path when the path is null
+     * TEST ID: UT_20
      */
     @Test
     public void testEmptyPath() {
@@ -142,7 +150,8 @@ public class SeaMonsterTest {
     }
 
     /**
-     * Tests to see if
+     * Tests to see if the ea monster is set to destroy when its health is 0
+     * TEST_ID: UT_14
      */
     @Test
     public void testNoHealth() {

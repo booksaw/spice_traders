@@ -12,6 +12,7 @@ public class AvailableSpawnTest {
 
     /**
      * testing the constructor works as expected
+     * TEST ID: UT_42
      */
     @Test(expected = Test.None.class)
     public void testInstantiation() {
@@ -20,6 +21,7 @@ public class AvailableSpawnTest {
 
     /**
      * Ensuring the correct values are stored as avaliable spawn
+     * TEST ID: UT_42
      */
     @Test
     public void testHashMapValidity() {

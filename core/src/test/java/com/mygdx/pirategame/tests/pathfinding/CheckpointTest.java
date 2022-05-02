@@ -11,6 +11,7 @@ import org.junit.Test;
 /**
  * Unit testing for the checkpoint class
  * @author James McNair
+ * TEST ID: UT_34
  */
 public class CheckpointTest {
 
