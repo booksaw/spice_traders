@@ -90,6 +90,7 @@ public class fasterCannonTest {
 
     /**
      * Test that the player is not given a faster cannon if they do not have enough coins
+     * TEST ID: UT_29
      */
     @Test
     public void testNotEnoughCoins(){
@@ -110,6 +111,7 @@ public class fasterCannonTest {
      * Test that cannon velocity does not increase greater than 12 on purchase of faster cannon
      * Note that this powerup can be purchased multiple times so is limited to not make the player too powerful
      * The limit of 12 is hardcoded in the purchaseFasterCannon() method in the GoldShop class
+     * TEST ID: UT_30
      */
     @Test
     public void testMaxCannonVelocity(){

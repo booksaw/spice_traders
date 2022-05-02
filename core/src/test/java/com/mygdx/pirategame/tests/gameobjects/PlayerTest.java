@@ -59,6 +59,7 @@ public class PlayerTest {
 
     /**
      * test to see if a cannonball is destroyed when set to destroy and the ship object is updated
+     * TEST ID: UT_27
      */
     @Ignore
     public void testDestroyCannonball() {
@@ -75,6 +76,7 @@ public class PlayerTest {
 
     /**
      * test to see if the tornado moves the player when in range
+     * TEST ID: UT_28
      */
     @Test
     public void testTornado() {
