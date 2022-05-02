@@ -15,6 +15,8 @@ import com.mygdx.pirategame.screen.GoldShop;
 import org.mockito.Mockito;
 import org.mockito.internal.util.reflection.Whitebox;
 
+import java.util.HashMap;
+
 /**
  * Useful util methods used to mock specific classes within the game
  * @author James McNair, Dan Wade, Marc Perales Salomo, Charlie Crosley
@@ -86,6 +88,16 @@ public class MockClass {
         FitViewport viewport = new FitViewport(1280, 720, camera);
         camera.position.set(viewport.getWorldWidth() / 3, viewport.getWorldHeight() / 3, 0);
         Mockito.when(screen.getCamera()).thenReturn(camera);
+
+
+        // Mock the power up timers that are displayed in the HUD
+        HashMap<String, Float> powerUpTimer = new HashMap<>();
+        powerUpTimer.put("absorptionHeart", (float) 0);
+        powerUpTimer.put("coinMagnet", (float) 0);
+        powerUpTimer.put("fasterShooting", (float) 0);
+        powerUpTimer.put("freezeEnemy", (float) 0);
+        powerUpTimer.put("speedBoost", (float) 0);
+        Mockito.when(screen.getPowerUpTimer()).thenReturn(powerUpTimer);
 
         return screen;
     }
