@@ -60,7 +60,11 @@ public class Player extends Sprite {
         cannonBalls = new Array<>();
         // Decrease health if playing on hard mode
         if (screen.difficulty < 1){
-            Hud.changeHealth(-(int) (Hud.getHealth() * screen.difficulty / 4));
+            Hud.changeHealth(-25);
+        }
+        // increase health is playing on easy mode
+        if (screen.difficulty == PirateGame.EASY) {
+            Hud.changeHealth(50);
         }
     }
 

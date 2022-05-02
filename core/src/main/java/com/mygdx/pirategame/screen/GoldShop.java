@@ -49,9 +49,9 @@ public class GoldShop implements Screen {
     private TextButton closeButton;
 
     // Updating these values here will automatically update buttons, labels and tests
-    public final int fasterCannonPrice = 50;
-    public final int healthBoostPrice = 75;
-    public final int increaseCannonDamagePrice = 150;
+    public final int fasterCannonPrice = 15;
+    public final int healthBoostPrice = 5;
+    public final int increaseCannonDamagePrice = 30;
     public final float fasterCannonMultiplier = 1.2f;
     public final int healthBoostValue = 50;
     public final float increaseCannonDamageMultiplier = 1.2f;
