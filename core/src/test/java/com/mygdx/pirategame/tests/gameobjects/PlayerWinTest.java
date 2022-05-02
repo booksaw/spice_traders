@@ -50,6 +50,7 @@ public class PlayerWinTest{
         // note all mocking cannot appear in a @Test annotated method
         // or the mocking will not work, all mocking must occur in @BeforeClass
         // at least from my testing it does not even work in a @Before method
+
         MockClass.mockHudStatic();
 
         mockedGameScreen = MockClass.mockGameScreenWithPlayer();
@@ -57,17 +58,10 @@ public class PlayerWinTest{
 
         Mockito.when(mockedGameScreen.getGame()).thenReturn(mockedPirateGame);
 
-        HashMap<CollegeMetadata, College> colleges = new HashMap<>();
-
         Alcuin = new College(mockedGameScreen,CollegeMetadata.ALCUIN,0,null);
         AnneLister = new College(mockedGameScreen,CollegeMetadata.ANNELISTER,0,null);
         Constantine = new College(mockedGameScreen, CollegeMetadata.CONSTANTINE,0,null);
         Goodricke = new College(mockedGameScreen, CollegeMetadata.GOODRICKE,0,null);
-
-        colleges.put(CollegeMetadata.ANNELISTER,AnneLister);
-        colleges.put(CollegeMetadata.CONSTANTINE,Constantine);
-        colleges.put(CollegeMetadata.GOODRICKE,Goodricke);
-
 
         Mockito.when(mockedGameScreen.getCollege(CollegeMetadata.ANNELISTER)).thenReturn(AnneLister);
         Mockito.when(mockedGameScreen.getCollege(CollegeMetadata.CONSTANTINE)).thenReturn(Constantine);
@@ -86,6 +80,7 @@ public class PlayerWinTest{
         // Make sure game is running
         assertEquals(true, mockedPirateGame.isGameRunning());
 
+        // Set first college defeated
         AnneLister.setToDestroy = true;
         AnneLister.update(0);
         mockedGameScreen.gameOverCheck();
@@ -93,6 +88,7 @@ public class PlayerWinTest{
         // Check game is still running (two colleges remaining)
         assertEquals(true, mockedPirateGame.isGameRunning());
 
+        // Set second college defeated
         Constantine.setToDestroy = true;
         Constantine.update(0);
         mockedGameScreen.gameOverCheck();

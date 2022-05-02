@@ -756,6 +756,7 @@ public class GameScreen implements Screen {
         //Lose game if ship on 0 health or Alcuin is destroyed
         if (Hud.getHealth() <= 0 || getCollege(CollegeMetadata.ALCUIN).destroyed) {
             getGame().gameRunning = false;
+            // If camera is null, it is likely we are testing so don't need to change screen
             if (camera != null){
                 getGame().changeScreen(PirateGame.DEATH);
             }
@@ -766,6 +767,7 @@ public class GameScreen implements Screen {
         //Win game if all colleges destroyed
         else if (getCollege(CollegeMetadata.ANNELISTER).destroyed && getCollege(CollegeMetadata.CONSTANTINE).destroyed && getCollege(CollegeMetadata.GOODRICKE).destroyed) {
             getGame().gameRunning = false;
+            // If camera is null, it is likely we are testing so don't need to change screen
             if (camera != null){
                 getGame().changeScreen(PirateGame.VICTORY);
             }
@@ -1065,11 +1067,16 @@ public class GameScreen implements Screen {
      * @return if the game is running
      */
     public boolean isGameRunning() {
-
         PirateGame game = getGame();
         return game.isGameRunning();
     }
 
+    /**
+     * Get the main game class
+     * Method created to aid with testing with Mockito
+     * When testing, this method is caught by Mockito and a mocked PirateGame is returned instead (see PlayerWinTest)
+     * @return PirateGame object
+     */
     public PirateGame getGame(){
         return this.game;
     }
