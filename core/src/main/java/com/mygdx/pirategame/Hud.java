@@ -172,63 +172,64 @@ public class Hud implements Disposable {
             scoreLabel.setText(String.format("%03d", score));
             timeCount = 0;
 
-            // Checks if each power up has been collected and adds it to display
-            if (coinMagnet > 0) {
-                table4.add(coinMagnetLabel).padBottom(25).top().right().padRight(40);
-                table4.row();
-                table5.add(magnetImg).width(32).height(32).padBottom(16).padRight(90);
-                table5.row();
-                coinMagnetLabel.setText(String.format("%01d", (Math.round(coinMagnet))));
+            if (table4 !=null && table5 != null) {
+                // Checks if each power up has been collected and adds it to display
+                if (coinMagnet > 0) {
+                    table4.add(coinMagnetLabel).padBottom(25).top().right().padRight(40);
+                    table4.row();
+                    table5.add(magnetImg).width(32).height(32).padBottom(16).padRight(90);
+                    table5.row();
+                    coinMagnetLabel.setText(String.format("%01d", (Math.round(coinMagnet))));
+                }
+                if (coinMagnet < 1) {
+                    table4.removeActor(coinMagnetLabel);
+                    table5.removeActor(magnetImg);
+                }
+                if (speedBoost > 0) {
+                    table4.add(speedBoostLabel).padBottom(25).top().right().padRight(40);
+                    table4.row();
+                    table5.add(boltImg).width(32).height(32).padBottom(16).padRight(90);
+                    table5.row();
+                    speedBoostLabel.setText(String.format("%01d", (Math.round(speedBoost))));
+                }
+                if (speedBoost < 1) {
+                    table4.removeActor(speedBoostLabel);
+                    table5.removeActor(boltImg);
+                }
+                if (absorptionHeart > 0) {
+                    table4.add(absorptionHeartLabel).padBottom(25).top().right().padRight(40);
+                    table4.row();
+                    table5.add(heartImg).width(32).height(32).padBottom(16).padRight(90);
+                    table5.row();
+                    absorptionHeartLabel.setText(String.format("%01d", (Math.round(absorptionHeart))));
+                }
+                if (absorptionHeart < 1) {
+                    table4.removeActor(absorptionHeartLabel);
+                    table5.removeActor(heartImg);
+                }
+                if (fasterShooting > 0) {
+                    table4.add(fasterShootingLabel).padBottom(25).top().right().padRight(40);
+                    table4.row();
+                    table5.add(gunImg).width(32).height(32).padBottom(16).padRight(90);
+                    table5.row();
+                    fasterShootingLabel.setText(String.format("%01d", (Math.round(fasterShooting))));
+                }
+                if (fasterShooting < 1) {
+                    table4.removeActor(fasterShootingLabel);
+                    table5.removeActor(gunImg);
+                }
+                if (freezeEnemy > 0) {
+                    table4.add(freezeEnemyLabel).padBottom(25).top().right().padRight(40);
+                    table4.row();
+                    table5.add(iceImg).width(32).height(32).padBottom(16).padRight(90);
+                    table5.row();
+                    freezeEnemyLabel.setText(String.format("%01d", (Math.round(freezeEnemy))));
+                }
+                if (freezeEnemy < 1) {
+                    table4.removeActor(freezeEnemyLabel);
+                    table5.removeActor(iceImg);
+                }
             }
-            if (coinMagnet < 1) {
-                table4.removeActor(coinMagnetLabel);
-                table5.removeActor(magnetImg);
-            }
-            if (speedBoost > 0) {
-                table4.add(speedBoostLabel).padBottom(25).top().right().padRight(40);
-                table4.row();
-                table5.add(boltImg).width(32).height(32).padBottom(16).padRight(90);
-                table5.row();
-                speedBoostLabel.setText(String.format("%01d", (Math.round(speedBoost))));
-            }
-            if (speedBoost < 1) {
-                table4.removeActor(speedBoostLabel);
-                table5.removeActor(boltImg);
-            }
-            if (absorptionHeart > 0) {
-                table4.add(absorptionHeartLabel).padBottom(25).top().right().padRight(40);
-                table4.row();
-                table5.add(heartImg).width(32).height(32).padBottom(16).padRight(90);
-                table5.row();
-                absorptionHeartLabel.setText(String.format("%01d", (Math.round(absorptionHeart))));
-            }
-            if (absorptionHeart < 1) {
-                table4.removeActor(absorptionHeartLabel);
-                table5.removeActor(heartImg);
-            }
-            if (fasterShooting > 0) {
-                table4.add(fasterShootingLabel).padBottom(25).top().right().padRight(40);
-                table4.row();
-                table5.add(gunImg).width(32).height(32).padBottom(16).padRight(90);
-                table5.row();
-                fasterShootingLabel.setText(String.format("%01d", (Math.round(fasterShooting))));
-            }
-            if (fasterShooting < 1) {
-                table4.removeActor(fasterShootingLabel);
-                table5.removeActor(gunImg);
-            }
-            if (freezeEnemy > 0) {
-                table4.add(freezeEnemyLabel).padBottom(25).top().right().padRight(40);
-                table4.row();
-                table5.add(iceImg).width(32).height(32).padBottom(16).padRight(90);
-                table5.row();
-                freezeEnemyLabel.setText(String.format("%01d", (Math.round(freezeEnemy))));
-            }
-            if (freezeEnemy < 1) {
-                table4.removeActor(freezeEnemyLabel);
-                table5.removeActor(iceImg);
-            }
-
             //Check if a points' boundary is met
             SkillTreeScreen.pointsCheck(score);
         }
