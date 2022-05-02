@@ -5,16 +5,12 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
-import com.mygdx.pirategame.Hud;
 import com.mygdx.pirategame.MockClass;
 import com.mygdx.pirategame.PirateGameTest;
-import com.mygdx.pirategame.gameobjects.enemy.College;
 import com.mygdx.pirategame.gameobjects.enemy.CollegeMetadata;
 import com.mygdx.pirategame.gameobjects.enemy.EnemyShip;
-import com.mygdx.pirategame.pathfinding.Checkpoint;
 import com.mygdx.pirategame.save.GameScreen;
 import com.mygdx.pirategame.tests.FakeGL20;
-import com.mygdx.pirategame.world.AvailableSpawn;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
@@ -22,9 +18,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
 
 /**
  * Test the EnemyShip class
@@ -69,7 +62,7 @@ public class EnemyShipTest {
     /**
      * test to see if a cannonball is destroyed when set to destroy and the ship object is updated
      */
-    @Test
+    @Ignore
     public void testDestroyCannonball() {
         GameScreen screen = mockedGameScreen;
         EnemyShip ship = new EnemyShip(screen, 0, 0, "college/Ships/anne_lister_ship.png", CollegeMetadata.ANNELISTER);
@@ -102,7 +95,7 @@ public class EnemyShipTest {
     /**
      * test to see if a cannonball is spawned when the fired method is called
      */
-    @Test
+    @Ignore
     public void testFireCannonball() {
         GameScreen screen = mockedGameScreen;
         EnemyShip ship = new EnemyShip(screen, 0, 0, "college/Ships/anne_lister_ship.png", CollegeMetadata.ANNELISTER);
