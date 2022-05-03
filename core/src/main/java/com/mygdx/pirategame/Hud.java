@@ -76,6 +76,7 @@ public class Hud implements Disposable {
      * Adjusts hud with viewport
      *
      * @param sb Batch of images used in the hud
+     * @param headlessmode If the hud is being run in headless mode
      */
     public Hud(SpriteBatch sb, boolean headlessmode) {
         health = 100;
@@ -460,6 +461,7 @@ public class Hud implements Disposable {
 
     /**
      * Sets the value of the timer
+     * @param time the delta time of the change
      */
     public void setTimeCount(float time) {
         timeCount = time;

@@ -38,6 +38,8 @@ public class PathFinder {
      * @param sourceY      the y source location
      * @param destinationX the x destination
      * @param destinationY the y destination
+     * @param width The width of the object being pathed
+     * @param height The height of the object being pathed
      * @return the path as a list of checkpoint, or null if no path could be found
      */
     public List<Checkpoint> getPath(float sourceX, float sourceY, float destinationX, float destinationY, float width, float height) {

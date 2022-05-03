@@ -93,7 +93,7 @@ public class PirateGame extends Game {
 
 	/**
 	 * Change the difficulty of the game
-	 * @param difficulty
+	 * @param difficulty the difficulty of the game
 	 */
 	public void changeDifficulty(float difficulty) {
 		// Ensure that only easy, normal or hard can be selected
