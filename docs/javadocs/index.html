@@ -7,14 +7,13 @@
         min-height: 100vh;
         display: grid;
         grid-template-rows: 1fr auto;
-        overflow-y: hidden;
     }
     .footer {
         grid-row-start: 2;
         grid-row-end: 3;
     }
     #content {
-        position: absolute; left: 0; right: 0; bottom: 0; top: 80px;
+        position:absolute; left: 0; right: 0; bottom: 0; top:50px; 
     }
 </style>
 <html lang="en-us"><head>
@@ -63,12 +62,12 @@
     <div class="wrapper"><div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
         <nav class="uk-navbar-container uk-margin" uk-navbar="mode: click;" style="padding-right: 3rem">
             <ul class="uk-navbar-nav uk-visible@s">
-                <li><a style="font-size: 18px; text-transform: none" href="/spice_traders/">Home</a></li>
+                <li class="uk-active"><a style="font-size: 18px; text-transform: none" href="/spice_traders/">Home</a></li>
                 <li><a style="font-size: 18px; text-transform:none" href="/spice_traders/about">About</a></li>
                 <li><a style="font-size: 18px; text-transform:none" href="/spice_traders/updates">Weekly Updates</a></li>
-                <li><a style="font-size: 18px; text-transform: none" href="/spice_traders/schedule">Assessment Scheduling</a></li>
+                <li><a style="font-size: 18px; text-transform:none" href="/spice_traders/schedule">Assessment Scheduling</a></li>
                 <li><a style="font-size: 18px; text-transform:none" href="/spice_traders/testing">Testing</a></li>
-                <li class="uk-active"><a style="font-size: 18px; text-transform:none" href="/spice_traders/javadocs">JavaDocs</a></li>
+                <li><a style="font-size: 18px; text-transform:none" href="/spice_traders/javadocs">JavaDocs</a></li>
             </ul>
             <a class="uk-navbar-toggle uk-hidden@s" uk-toggle="target: #sidenav" uk-navbar-toggle-icon href="#"></a>
         </nav>
@@ -77,12 +76,12 @@
     <div id="sidenav" uk-offcanvas="overlay: true">
         <div class="uk-offcanvas-bar uk-flex uk-flex-column">
             <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical">
-                <li><a style="font-size: 18px" href="/spice_traders/"> Home </a></li>
+                <li class="uk-active"><a style="font-size: 18px" href="/spice_traders/"> Home </a></li>
                 <li><a style="font-size: 18px" href="/spice_traders/about">About</a></li>
                 <li><a style="font-size: 18px" href="/spice_traders/updates">Weekly Updates</a></li>
                 <li><a style="font-size: 18px" href="/spice_traders/schedule">Assessment Scheduling</a></li>
                 <li><a style="font-size: 18px;" href="/spice_traders/testing">Testing</a></li>
-                <li class="uk-active"><a style="font-size: 18px;" href="/spice_traders/javadocs">JavaDocs</a></li>
+                <li><a style="font-size: 18px;" href="/spice_traders/javadocs">JavaDocs</a></li>
             </ul>
         </div>
     </div>
@@ -96,9 +95,9 @@
     <link rel="stylesheet" href="/css/about.min.css">
 
     <!-- Main -->
-    <section>
+    <section style="height: 100%; top: 200px; bottom: 0;">
         <div id="content">
-            <iframe id="myFrame" style="border: none; height: 100%; width: 100%; position:absolute;" target="_parent" src="/spice_traders/javadocs/JavaDocs/index.html" title="Main site" scrolling="yes" seamless="seamless"></iframe>
+            <iframe id="myFrame" style="border: none;height: 100%; width: 100%; position:absolute; z-index: 0; top: 30px; bottom: 0;" target="_parent" src="/javadocs/javadocs/index.html" title="Main site" scrolling="yes" seamless="seamless"></iframe>
         </div>
     </section>
 
