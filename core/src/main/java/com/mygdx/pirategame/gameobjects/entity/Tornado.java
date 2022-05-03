@@ -92,6 +92,7 @@ public class Tornado extends Entity {
 
     /**
      * Updates the tornado state.
+     * @param dt The delta time of the update
      */
     public void update(float dt) {
         timer += dt;

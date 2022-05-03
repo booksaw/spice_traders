@@ -26,6 +26,7 @@ public class Checkpoint {
     /**
      * @param x the x coord of the checkpoint in game space
      * @param y the y coord of the checkpoint in game space
+     * @param gradient The gradient of the tilemap
      */
     public Checkpoint(float x, float y, float gradient) {
         this.x = x;

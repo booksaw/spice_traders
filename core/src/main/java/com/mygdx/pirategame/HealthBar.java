@@ -55,6 +55,7 @@ public class HealthBar {
 
     /**
      * Renders health bar
+     * @param batch the batch controlling rendering
      */
     public void render(Batch batch){
         healthBar.draw(batch);

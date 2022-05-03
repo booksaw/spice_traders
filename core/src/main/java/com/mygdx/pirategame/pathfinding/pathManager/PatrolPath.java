@@ -30,7 +30,7 @@ public class PatrolPath extends WaitingPath{
 
     /**
      * Generate a new destination within range of the college the ship belongs to
-     * @return
+     * @return The generated destination
      */
     @Override
     public Vector2 generateDestination() {

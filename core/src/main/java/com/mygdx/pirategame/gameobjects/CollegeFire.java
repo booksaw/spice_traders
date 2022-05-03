@@ -53,7 +53,7 @@ public class CollegeFire extends Sprite {
      * Defines custom projectile
      *
      * @param screen Visual data
-     * @param texture
+     * @param texture The texture of the bullet
      * @param x starting x position of projectile
      * @param y starting y position of projectile
      * @param width width of sprite
@@ -188,7 +188,7 @@ public class CollegeFire extends Sprite {
     }
 
     /**
-     * Returns destruction status
+     * @return destruction status
      */
     public boolean isDestroyed(){
         return destroyed;

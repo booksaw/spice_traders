@@ -273,8 +273,8 @@ public class GoldShop implements Screen {
     }
 
     /**
-     * @param width
-     * @param height
+     * @param width The width to resize to
+     * @param height The height to resize to
      */
     @Override
     public void resize(int width, int height) {
@@ -301,7 +301,7 @@ public class GoldShop implements Screen {
     }
 
     /**
-     * Called when this screen is no longer the current screen for a {@link Game}.
+     * Called when this screen is no longer the current screen for a Game.
      */
     @Override
     public void hide() {

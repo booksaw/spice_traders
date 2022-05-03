@@ -142,7 +142,7 @@ public class CannonFire extends Sprite {
     }
 
     /**
-     * Returns destruction status
+     * @return  destruction status
      */
     public boolean isDestroyed(){
         return destroyed;

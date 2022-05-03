@@ -71,6 +71,7 @@ public class Player extends Sprite {
     /**
      * used to load player information from file
      * @param element The element that stores the player information
+     * @param screen The GameScreen controlling the player
      */
     public Player(GameScreen screen, Element element) {
         this(screen);
@@ -238,6 +239,7 @@ public class Player extends Sprite {
     /**
      * Used to save the player information into the given element
      * @param element The given element
+     * @param document the document for the DOM
      */
     public void save(Document document, Element element) {
         Element xCoord = document.createElement("x");

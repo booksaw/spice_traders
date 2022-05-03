@@ -10,7 +10,7 @@ public interface PathManager {
 
     /**
      * Generates a destination (called when a the current path fails or is completed)
-     * @return
+     * @return The generated destination
      */
     public abstract Vector2 generateDestination();
 
