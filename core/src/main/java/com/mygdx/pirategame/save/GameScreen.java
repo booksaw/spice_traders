@@ -468,6 +468,7 @@ public class GameScreen implements Screen {
                     if (Gdx.input.isKeyJustPressed(Input.Keys.E)) {
                         if (gameStatus == GOLD_SHOP) {
                             closeShop();
+                            gameStatus = GAME_RUNNING;
                         } else if (gameStatus == GAME_RUNNING) {
                             openShop();
                         }
@@ -919,6 +920,7 @@ public class GameScreen implements Screen {
         goldShop.hide();
         table.setVisible(true);
         pauseTable.setVisible(false);
+        goldShop = null;
         resume();
     }
 
