@@ -924,11 +924,20 @@ public class GameScreen implements Screen {
         resume();
     }
 
+    /**
+     * Fetches the power up timers
+     *
+     * @return power up timer hashmap
+     */
     public HashMap<String, Float> getPowerUpTimer() {
         return powerUpTimer;
     }
 
+    /**
+     * Resets the values for the power up timers, used when the game ends or restarts
+     */
     public void resetPowerUps() {
+        // Resets the timer for each power up
         powerUpTimer.put("absorptionHeart", (float) 0);
         powerUpTimer.put("coinMagnet", (float) 0);
         powerUpTimer.put("fasterShooting", (float) 0);
