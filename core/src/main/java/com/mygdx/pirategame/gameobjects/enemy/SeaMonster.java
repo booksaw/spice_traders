@@ -35,7 +35,7 @@ import java.util.List;
 public class SeaMonster extends Enemy {
 
     public static final int COLLISIONRADIUS = 100;
-    public static final int COLLISIONOFFSET = 15;
+    public static final int COLLISIONOFFSET = 30;
     public boolean movement = false;
     public boolean fire = true;
     float angle;
