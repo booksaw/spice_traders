@@ -60,8 +60,7 @@ public class Tornado extends Entity {
         setRegion(tornado);
         // Sets origin of the tornado
         setOrigin(24 / PirateGame.PPM, 24 / PirateGame.PPM);
-        tornadoSound = Gdx.audio.newSound(Gdx.files.internal("sfx_and_music/coin-pickup.mp3")); // CHANGE
-
+        tornadoSound = Gdx.audio.newSound(Gdx.files.internal("sfx_and_music/tornado-swoosh.mp3"));
         player = screen.getPlayer();
 
         setPosition(b2body.getPosition().x - getWidth() / 2f, b2body.getPosition().y - getHeight() / 2f);
@@ -83,7 +82,7 @@ public class Tornado extends Entity {
         setRegion(tornado);
         // Sets origin of the tornado
         setOrigin(24 / PirateGame.PPM, 24 / PirateGame.PPM);
-        tornadoSound = Gdx.audio.newSound(Gdx.files.internal("sfx_and_music/coin-pickup.mp3")); // CHANGE
+        tornadoSound = Gdx.audio.newSound(Gdx.files.internal("sfx_and_music/tornado-swoosh.mp3"));
 
         player = screen.getPlayer();
 
@@ -103,10 +102,10 @@ public class Tornado extends Entity {
         }
 
         if (getDistance() < 3) {
-            if (moveTimer > 1) {
-                System.out.println(getDistance());
+            if (moveTimer > 0.5) {
                 Player.inTornadoRange = true;
                 moveTimer = 0;
+                tornadoSound.play(screen.game.getPreferences().getEffectsVolume());
             }
         }
 
