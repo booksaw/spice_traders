@@ -56,13 +56,14 @@ public class HelpScreen implements Screen {
 
         //Text
         Label Controls1 = new Label("WASD to move", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-        Label Controls2 = new Label("E to fire", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        Label Controls2 = new Label("Move your mouse and left-click to fire in the direction of your mouse", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         Label Controls3 = new Label("ESCAPE to see menu", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         Label objective1 = new Label("The objective is to take over or destroy all other colleges", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         Label objective2 = new Label("Destroy the college flag with cannons", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         Label objective3 = new Label("Collect coins on the way", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         Label skillInfo1 = new Label("Automatically upgrade as you play", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         Label skillInfo2 = new Label("See your upgrades in the skills tab", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
+        Label goldShopInfo1 = new Label("Purchase upgrades in the gold shop. Visit your home college and press E to open the gold shop", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
 
         //Return Button
         TextButton backButton = new TextButton("Return", skin);
@@ -94,6 +95,8 @@ public class HelpScreen implements Screen {
         Other.add(skillInfo1);
         Other.row();
         Other.add(skillInfo2).padBottom((40));
+        Other.row();
+        Other.add(goldShopInfo1);
         Other.center();
     }
 
