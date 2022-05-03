@@ -557,7 +557,6 @@ public class GameScreen implements Screen {
             int[] loc = getRandomLocation();
             // Add a tornado at the random location
             Tornados.add(new Tornado(this, loc[0], loc[1]));
-            System.out.println("Tornado Released");
             // Reset timer to 0, every x seconds a tornado is released
             timeTornado = 0;
         }
