@@ -917,10 +917,9 @@ public class GameScreen implements Screen {
      * Closes gold shop
      */
     public void closeShop() {
-        goldShop = new GoldShop(GameScreen.game, camera, this);
-        goldShop.show();
         goldShop.hide();
-        goldShop = null;
+        table.setVisible(true);
+        pauseTable.setVisible(false);
         resume();
     }
 

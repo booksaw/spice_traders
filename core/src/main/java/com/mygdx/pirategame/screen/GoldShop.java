@@ -1,6 +1,7 @@
 package com.mygdx.pirategame.screen;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -73,6 +74,8 @@ public class GoldShop implements Screen {
 
     }
 
+    private InputProcessor processor;
+
     /**
      * Called when this screen becomes the current screen
      */
@@ -85,6 +88,7 @@ public class GoldShop implements Screen {
         Skin skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
 
         //Set the input processor
+        processor = Gdx.input.getInputProcessor();
         Gdx.input.setInputProcessor(stage);
         // Create a table that fills the screen
         Table table = new Table();
@@ -310,6 +314,7 @@ public class GoldShop implements Screen {
         healthBoostBtn.setDisabled(true);
         increaseCannonDamageBtn.setDisabled(true);
         closeButton.setDisabled(true);
+        Gdx.input.setInputProcessor(processor);
     }
 
     /**
