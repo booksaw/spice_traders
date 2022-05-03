@@ -95,9 +95,11 @@
     <link rel="stylesheet" href="/css/about.min.css">
 
     <!-- Main -->
-    <div id="content">
-        <iframe id="myFrame" style="border: none; height: 100%; width: 100%; position:absolute;" src="/spice_traders/javadocs/javadocs/index.html" title="Main site" scrolling="yes" seamless="seamless"></iframe>
-    </div>
+    <section style="height: 100%; top: 200px; bottom: 0;">
+        <div id="content">
+            <iframe id="myFrame" style="border: none;height: 100%; width: 100%; position:absolute; z-index: 0; top: 30px; bottom: 0;" target="_parent" src="/javadocs/javadocs/index.html" title="Main site" scrolling="yes" seamless="seamless"></iframe>
+        </div>
+    </section>
 
     <!-- JS Plugins/Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit.min.js"></script>
