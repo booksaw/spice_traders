@@ -107,7 +107,7 @@ public class Player extends Sprite {
 
             double tornadoDistance = GameScreen.getNearestTornado().getDistance();
 
-            if (tornadoDistance > 8) {
+            if (tornadoDistance > 7) {
                 Player.inTornadoRange = false;
             }
             // Uses a triangle to calculate the new trajectory
