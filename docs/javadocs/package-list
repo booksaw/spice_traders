@@ -1,0 +1,10 @@
+com.mygdx.pirategame
+com.mygdx.pirategame.gameobjects
+com.mygdx.pirategame.gameobjects.enemy
+com.mygdx.pirategame.gameobjects.entity
+com.mygdx.pirategame.gameobjects.tileobject
+com.mygdx.pirategame.pathfinding
+com.mygdx.pirategame.pathfinding.pathManager
+com.mygdx.pirategame.save
+com.mygdx.pirategame.screen
+com.mygdx.pirategame.world
